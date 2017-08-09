@@ -1,0 +1,172 @@
+{"frames": [
+
+{
+	"filename": "survivor-move_flashlight_0.png",
+	"frame": {"x":824,"y":1,"w":269,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":269,"h":168},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_1.png",
+	"frame": {"x":822,"y":347,"w":270,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":270,"h":168},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_2.png",
+	"frame": {"x":551,"y":176,"w":270,"h":169},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":270,"h":169},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_3.png",
+	"frame": {"x":552,"y":1,"w":270,"h":169},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":270,"h":169},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_4.png",
+	"frame": {"x":817,"y":704,"w":270,"h":169},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":270,"h":169},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_5.png",
+	"frame": {"x":821,"y":521,"w":270,"h":169},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":270,"h":169},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_6.png",
+	"frame": {"x":550,"y":349,"w":270,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":28,"w":270,"h":170},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_7.png",
+	"frame": {"x":277,"y":176,"w":272,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":27,"w":272,"h":171},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_8.png",
+	"frame": {"x":277,"y":1,"w":273,"h":173},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":25,"w":273,"h":173},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_9.png",
+	"frame": {"x":1,"y":533,"w":274,"h":174},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":24,"w":274,"h":174},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_10.png",
+	"frame": {"x":1,"y":1,"w":274,"h":176},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":23,"w":274,"h":176},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_11.png",
+	"frame": {"x":1,"y":179,"w":274,"h":175},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":30,"y":23,"w":274,"h":175},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_12.png",
+	"frame": {"x":1,"y":356,"w":273,"h":175},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":23,"w":273,"h":175},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_13.png",
+	"frame": {"x":276,"y":356,"w":272,"h":174},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":32,"y":24,"w":272,"h":174},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_14.png",
+	"frame": {"x":1,"y":709,"w":270,"h":172},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":26,"w":270,"h":172},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_15.png",
+	"frame": {"x":273,"y":709,"w":270,"h":171},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":27,"w":270,"h":171},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_16.png",
+	"frame": {"x":277,"y":532,"w":270,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":28,"w":270,"h":170},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_17.png",
+	"frame": {"x":545,"y":704,"w":270,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":28,"w":270,"h":170},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_18.png",
+	"frame": {"x":549,"y":532,"w":270,"h":170},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":28,"w":270,"h":170},
+	"sourceSize": {"w":305,"h":231}
+},
+{
+	"filename": "survivor-move_flashlight_19.png",
+	"frame": {"x":823,"y":172,"w":270,"h":168},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":33,"y":29,"w":270,"h":168},
+	"sourceSize": {"w":305,"h":231}
+}],
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "enemyMove.png",
+	"format": "RGBA8888",
+	"size": {"w":1094,"h":882},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:024e186ca79a6a7ee613260e7ac1d5c5:66652861a761883336055dddcd32cf7e:3a0fe04c46a10fbd076b402615749fee$"
+}
+}
