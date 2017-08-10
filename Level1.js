@@ -13,7 +13,6 @@ Game.Level1.prototype = {
     let collisionLayer = map.createLayer('Collision');
     this.collisionLayer = collisionLayer;
     collisionLayer.visible = false;
-    console.log("here");
     map.setCollisionByExclusion([], true, this.collisionLayer);
     collisionLayer.resizeWorld();
 
@@ -47,18 +46,16 @@ Game.Level1.prototype = {
     start = map.objects.meta.find(o => o.name == 'start');
     this.cutscene = true;
 
-    // start position and angle of our player's sprite
     this.player.position.set(entrance.x, entrance.y + 30);
     this.player.angle = 0;
 
-    // start the cutscene
     let tween = game.add.tween(this.player).to({ x: start.x, y: start.y }, 1500);
     tween.onComplete.add(() => {
       this.cutscene = false;
     });
     tween.start();
 
-    // show collision layer
+
     game.input.keyboard.addKey(Phaser.KeyCode.C).onDown.add(() => {
       this.collisionLayer.visible = !this.collisionLayer.visible;
     });
@@ -69,13 +66,10 @@ Game.Level1.prototype = {
     game.camera.x = game.world.centerX - game.width / 2;
 
 
-
-
     //**** INVENTORY TEST */
     inventory = game.add.image(200, 0, 'inventory');
     inventory.visible = false;
     inventory.scale.set(0.5);
-
     var style = { font: "16px Courier", fill: "#000", tabs: [164, 120, 80] };
     var headings = ['Name', 'Damage', 'Speed'];
     text = game.add.text(232, 64, '', style);
@@ -101,10 +95,11 @@ Game.Level1.prototype = {
       text.visible = !text.visible;
       inventory.visible = !inventory.visible;
     });
+
+     //****** INVENTORY TEST */
+
   },
   update: function (game) {
-
-   
     if (this.cutscene) return;
 
     let keyboardCursors = this.keyboardCursors;
@@ -113,18 +108,13 @@ Game.Level1.prototype = {
     let moveSpeed = this.moveSpeed;
     let joystick = this.joystick;
 
-    // set our player's velocity to 0
-    // so the sprite doesn't move when there is no input from our player
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
 
-    // keyboard movement
-    // left and right keyboard movement
     if (keyboardCursors.left.isDown || wasd.left.isDown) moveSpeed.x = -player.MOVE_SPEED;
     else if (keyboardCursors.right.isDown || wasd.right.isDown) moveSpeed.x = player.MOVE_SPEED;
     else moveSpeed.x = 0;
 
-    // up and down keyboard movement
     if (keyboardCursors.up.isDown || wasd.up.isDown) moveSpeed.y = -player.MOVE_SPEED;
     else if (keyboardCursors.down.isDown || wasd.down.isDown) moveSpeed.y = player.MOVE_SPEED;
     else moveSpeed.y = 0;
@@ -138,11 +128,9 @@ Game.Level1.prototype = {
     if (Phaser.Rectangle.containsPoint(this.exitRect, player.position)) {
       this.state.start('Outside');
     }
-    // // let phaser handle our player collision with the collision layer
+
     game.physics.arcade.collide(this.player, this.collisionLayer);
     if (Math.abs(player.body.velocity.x) > 0 || Math.abs(player.body.velocity.y) > 0) {
-      // play the animation, phaser just returns when it's currently animating
-      // so it's fine to call it on every frame
       player.play('move');
     } else {
       player.play('idle');
