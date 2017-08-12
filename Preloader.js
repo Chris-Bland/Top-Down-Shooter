@@ -15,8 +15,8 @@ Game.Preloader.prototype = {
         this.load.image('woodland', 'assets/woodland.png')
 
         this.load.atlas('player', 'assets/Rifle-Man.png', './assets/Rifle-Man.json');
-        this.load.atlas('enemy', 'assets/enemyMove.png', './assets/enemyMove.json');
-        this.load.atlas('enemyTest', 'assets/enemy.png', 'assets/enemy.json');
+        this.load.atlas('flashlightEnemy', 'assets/enemy.png', 'assets/enemy.json');
+        this.load.atlas('shotgunEnemy', 'assets/shotgunEnemy.png', 'assets/shotgunEnemy.json');
         
 
          this.load.image('button', 'assets/button.png');

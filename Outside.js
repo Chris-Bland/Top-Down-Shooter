@@ -6,7 +6,9 @@ var start;
 var tavern = null;
 var player;
 var bullets;
+var enemyBullets;
 var shootTime = 0;
+var enemyShootTime = 0;
 var map;
 var healthText;
 var health;
@@ -16,8 +18,13 @@ var playerLevel = 1;
 var levelText;
 var totalEnemies;
 var deadEnemies = 0;
+var deadShotgunEnemies = 0;
 var day = false;
 var count = 0;
+var shadowTexture;
+var lightAngle = Math.PI / 4;
+var numberOfRays = 20;
+var rayLength = 100;
 
 
 Game.Outside.prototype = {
@@ -42,27 +49,21 @@ Game.Outside.prototype = {
     player.animations.add('move', [4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 18, true);
     player.play('move');
     player.maxHealth = 100;
-    console.log('maxhealth:', player.maxHealth);
     player.health = player.maxHealth;
-    console.log('player health:', player.health);
     game.physics.arcade.enable(player);
     player.body.setSize(100, 150, 100, 50);
     game.camera.follow(player);
+    player.body.collideWorldBounds = true;
 
     enemiesTotal = 20;
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < enemiesTotal; i++) {
-      // var enemy = enemies.create(game.world.randomX, game.world.randomY, 'enemy');
-      // enemy.animations.add('move', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], 19, true);
-
-
-
-      var enemy = enemies.create(game.world.randomX, game.world.randomY, 'enemyTest');
-      enemy.animations.add('move', [29,11,16,22,23,24,22,13,2,12,0,6,1,7,20,27,8,14,15,17], 17, true);
-      enemy.animations.add('idle', [31,28,41,38,43,37,36,42,35,30,34,30,35,42,36,37,43,38,41,28],28,true);
-      enemy.animations.add('melee', [31,10,9,5,4,3,19,40,44,18,39,32,25,26,33], 33, true);
+      var enemy = enemies.create(game.world.randomX, game.world.randomY, 'flashlightEnemy');
+      enemy.animations.add('melee', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 35, true);
+      enemy.animations.add('move', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46], 46, true);
+      enemy.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 14, true);
       enemy.play('idle');
       enemy.anchor.setTo(0.5, 0.5);
       game.physics.enable(enemy, Phaser.Physics.ARCADE);
@@ -72,9 +73,29 @@ Game.Outside.prototype = {
       enemy.scale.setTo(0.3);
       enemy.body.velocity.x = 0,
         enemy.body.velocity.y = 0
-
     }
     enemies.setAll('health', 100);
+
+    shotgunEnemiesTotal = 40;
+    shotgunEnemies = game.add.group();
+    shotgunEnemies.enableBody = true;
+    shotgunEnemies.physicsBodyType = Phaser.Physics.ARCADE;
+    for (var i = 0; i < shotgunEnemiesTotal; i++) {
+      var shotgunEnemy = shotgunEnemies.create(game.world.randomX, game.world.randomY, 'shotgunEnemy');
+      shotgunEnemy.animations.add('shoot', [7, 15, 23], 7, true);
+      shotgunEnemy.animations.add('move', [0, 4, 5, 6, 12, 13, 14, 19, 20, 21, 22], 0, true);
+      shotgunEnemy.animations.add('idle', [0, 1, 2, 3, 8, 9, 10, 11, 16, 17, 18], 0, true);
+      shotgunEnemy.play('idle');
+      shotgunEnemy.anchor.setTo(0.5, 0.5);
+      game.physics.enable(shotgunEnemy, Phaser.Physics.ARCADE);
+      shotgunEnemy.body.immovable = false;
+      shotgunEnemy.body.collideWorldBounds = true;
+      shotgunEnemy.body.allowGravity = true;
+      shotgunEnemy.scale.setTo(0.3);
+      shotgunEnemy.body.velocity.x = 0,
+        shotgunEnemy.body.velocity.y = 0
+    }
+    shotgunEnemies.setAll('health', 100);
     map.createLayer('Foreground');
 
     let exit = map.objects.meta.find(o => o.name == 'exit');
@@ -117,7 +138,7 @@ Game.Outside.prototype = {
     bullets = game.add.group();
     bullets.enableBody = true;
     bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    bullets.createMultiple(100, 'bullet');
+    bullets.createMultiple(5, 'bullet');
     bullets.setAll('anchor.x', -1);
     bullets.setAll('anchor.y', -1);
     bullets.setAll('scale.x', 0.5);
@@ -125,14 +146,29 @@ Game.Outside.prototype = {
     bullets.setAll('outOfBoundsKill', true);
     bullets.setAll('checkWorldBounds', true);
 
-    this.shadowTexture = this.game.add.bitmapData(this.game.width + 500, this.game.height + 500);
+
+    enemyBullets = game.add.group();
+    enemyBullets.enableBody = true;
+    enemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
+    enemyBullets.createMultiple(100, 'bullet');
+    enemyBullets.setAll('anchor.x', -1);
+    enemyBullets.setAll('anchor.y', -1);
+    enemyBullets.setAll('scale.x', 0.5);
+    enemyBullets.setAll('scale.y', 0.5);
+    enemyBullets.setAll('outOfBoundsKill', true);
+    enemyBullets.setAll('checkWorldBounds', true);
+
+    this.shadowTexture = this.game.add.bitmapData(this.game.width, this.game.height);
     this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
     this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
+
 
     healthText = this.add.text(232, 120, 'score: 0', { fontSize: '32px', fill: '#fff' });
     healthText.fixedToCamera = true;
     levelText = this.add.text(240, 150, 'score: 0', { fontSize: '32px', fill: '#fff' });
     levelText.fixedToCamera = true;
+
+    console.log('this.lightSprite: ', this.lightSprite);
 
   },
   //******************************UPDATE****************************** */
@@ -140,6 +176,7 @@ Game.Outside.prototype = {
   //******************************UPDATE****************************** */
   //collisionHandler
   update: function (game) {
+    this.lightSprite.reset(this.game.camera.x, this.game.camera.y);
     let player = this.player;
     health = player.health;
     healthText.text = 'Player Health: ' + health;
@@ -147,10 +184,9 @@ Game.Outside.prototype = {
     let keyboardCursors = this.keyboardCursors;
     let wasd = this.wasd;
     let moveSpeed = this.moveSpeed;
-    this.lightSprite.reset(this.game.camera.x, this.game.camera.y);
-    this.updateShadowTexture();
-    if (this.cutscene) return;
+    
 
+    if (this.cutscene) return;
     if (playerLevel >= 2) {
       player.MOVE_SPEED = 400;
     } else if (playerLevel >= 3) {
@@ -158,37 +194,92 @@ Game.Outside.prototype = {
       player.damage = player.damage += 10;
     }
     game.physics.arcade.overlap(bullets, enemies, this.enemyShot, null, this);
+    game.physics.arcade.overlap(bullets, shotgunEnemies, this.enemyShot, null, this);
     game.physics.arcade.overlap(enemies, player, this.resetPlayer);
+    game.physics.arcade.overlap(player, enemyBullets, this.playerShot, null, this);
 
 
     if (game.input.mousePointer.isDown) {
+      shotgunEnemies.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 300);
       enemies.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 300);
       this.shootBullet(player);
       console.log("Player XP: ", playerXP);
       console.log("Player Level: ", playerLevel);
     }
     enemies.forEachAlive(function (enemies) {
+      console.log('enemies', enemies);
+      console.log('game', game);
       enemies.body.collideWorldBounds = true,
         enemies.body.velocity.x = 0,
         enemies.body.velocity.y = 0,
         enemies.rotation = game.physics.arcade.angleToXY(enemies, player.x, player.y);
-      chasePlayer(enemies);
+        chasePlayer(enemies);
+
+    });
+ 
+    
+    shotgunEnemies.forEachAlive(function (shotgunEnemies) {
+      shotgunEnemies.body.collideWorldBounds = true,
+        shotgunEnemies.body.velocity.x = 0;
+      shotgunEnemies.body.velocity.y = 0;
+      shotgunEnemies.rotation = game.physics.arcade.angleToXY(shotgunEnemies, player.x, player.y);
+      shootPlayer(shotgunEnemies);
+
     });
 
+    function chasePlayer(enemies) {
+      if (
+        (player.alive && game.physics.arcade.distanceBetween(player, enemies) > 30) &&
+        (player.alive && game.physics.arcade.distanceBetween(player, enemies) < 400)
+      ) {
+        game.physics.arcade.moveToObject(enemies, player, 300);
+        enemies.animations.play('move');
+        console.log('FL enemy move');
+      }
+      else if (player.alive && game.physics.arcade.distanceBetween(player, enemies) <= 30) {
+        enemies.animations.play('melee');
+        console.log('FL enemy melee');
+      }
+      else {
+        enemies.animations.play('idle');
+      }
+    }
+    function shootPlayer(shotgunEnemies) {
+      if (
+        (player.alive && game.physics.arcade.distanceBetween(player, shotgunEnemies) > 200) &&
+        (player.alive && game.physics.arcade.distanceBetween(player, shotgunEnemies) < 400)
+      ) {
+        game.physics.arcade.moveToObject(shotgunEnemies, player, 150);
+        shotgunEnemies.animations.play('move');
+        console.log('SG enemy move');
+      }
+      else if (player.alive && game.physics.arcade.distanceBetween(player, shotgunEnemies) <= 200) {
+        shotgunEnemies.animations.play('shoot');
+        fireBullets(shotgunEnemies, player);
+        console.log('SG enemy shoot');
+      }
+      else {
+        shotgunEnemies.animations.play('idle');
+      }
+    }
+    function fireBullets(shotgunEnemies) {
+      if (game.time.now > enemyShootTime) {
+        bullet = enemyBullets.getFirstExists(false);
+        if (bullet) {
+          bullet.reset(shotgunEnemies.x, shotgunEnemies.y + 8);
+          bullet.body.velocity.x = 100;
+          enemyShootTime = game.time.now + 200;
+          bullet.rotation = game.physics.arcade.moveToObject(bullet, player, 500);
+        }
+      }
+    }
     if (deadEnemies < enemies.countDead()) {
       deadEnemies = enemies.countDead();
       playerXP += 5;
     }
-    function chasePlayer(enemies) {
-        if (player.alive && game.physics.arcade.distanceBetween(player, enemies) <= 400) {
-          game.physics.arcade.moveToObject(enemies, player, 150);
-          console.log("here");
-          enemies.play('move');
-        }
-        if(player.alive && game.physics.arcade.distanceBetween(player, enemies) <= 5){
-          console.log('here melee');
-          enemies.play('melee');
-        }
+    if (deadShotgunEnemies < shotgunEnemies.countDead()) {
+      deadShotgunEnemies = shotgunEnemies.countDead();
+      playerXP += 10;
     }
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
@@ -213,7 +304,6 @@ Game.Outside.prototype = {
     }
     game.physics.arcade.collide(this.player, this.collisionLayer);
 
-    game.physics.arcade.collide(this.enemies, this.collisionLayer);
     if (Math.abs(player.body.velocity.x) > 0 || Math.abs(player.body.velocity.y) > 0) {
 
       player.play('move');
@@ -224,24 +314,29 @@ Game.Outside.prototype = {
     if (wasd.shoot.isDown) {
       this.shootBullet(player);
     }
-    // count += 1;
-    // console.log('count: ', count);
-    // if (count >= 100) {
-    //   count = 0;
-    //   day = !day;
-    // }
-    // this.lightSprite.reset(this.game.camera.x, this.game.camera.y);
-    // if (day === false) {
-    //   this.updateShadowTexture();
 
-    // }
-    // else if (day === true) {
-    //   // this.disableShadowTexture();
-    // }
+
+    count += 1;
+    console.log('count: ', count);
+    if (count >= 200) {
+      count = 0;
+      day = !day;
+    }
+
+    if (day === false) {
+    this.updateShadowTexture(player);
+    enemies.moveSpeed = 1000;
+    }
+    else if (day === true) {
+      this.lightSprite.kill();
+      enemies.moveSpeed = 150
+ 
+    }
     if (player.health <= 0) {
       this.state.start('Level1');
     }
     playerLevel = Math.round(Math.log(playerXP, gameXPsteps));
+
   },
   render(game) {
     if (this.collisionLayer.visible) {
@@ -253,6 +348,11 @@ Game.Outside.prototype = {
     enemies.damage(20);
     bullets.kill();
   },
+  playerShot: function (player, enemyBullets) {
+    console.log('PLAYER SHOT');
+    player.damage(10);
+    enemyBullets.kill();
+  },
   shootBullet: function (player) {
     if (this.time.now > shootTime) {
       bullet = bullets.getFirstExists(false);
@@ -262,11 +362,22 @@ Game.Outside.prototype = {
         shootTime = this.time.now + 100;
         bullet.rotation = this.physics.arcade.moveToPointer(bullet, 10000, this.input.activePointer, 100);
         bullet.lifespan = 3000;
-        //alt bullet.destroy(3000);
       }
     }
   },
-  updateShadowTexture: function () {
+  shootPlayer: function (shotgunEnemies) {
+    if (this.time.now > enemyShootTime) {
+      enemyBullet = enemyBullets.getFirstExists(false);
+      if (enemyBullet) {
+        enemyBullet.reset(shotgunEnemies.x, shotgunEnemies.y);
+        enemyBullet.body.velocity.x = 100;
+        enemyShootTime = this.time.now + 2000;
+        enemyBullet.lifespan = 1000;
+      }
+    }
+  },
+
+  updateShadowTexture: function (sprite) {
     this.shadowTexture.context.fillStyle = 'rgb(10, 10, 10)';
     this.shadowTexture.context.fillRect(0, 0, this.game.width + 500, this.game.height + 500);
     var radius = 200 + this.game.rnd.integerInRange(1, 20),
@@ -282,24 +393,7 @@ Game.Outside.prototype = {
     this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
     this.shadowTexture.context.fill();
     this.shadowTexture.dirty = true;
-  },
 
-  disableShadowTexture: function () {
-    this.shadowTexture.context.fillStyle = 'rgb(10, 10, 10)';
-    this.shadowTexture.context.fillRect(0, 0, this.game.width, this.game.height);
-    var radius = 1000 + this.game.rnd.integerInRange(1, 20),
-      heroX = this.player.x - this.game.camera.x,
-      heroY = this.player.y - this.game.camera.y;
-    var gradient = this.shadowTexture.context.createRadialGradient(
-      heroX, heroY, 100 * 0.75,
-      heroX, heroY, radius);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-    this.shadowTexture.context.beginPath();
-    this.shadowTexture.context.fillStyle = gradient;
-    this.shadowTexture.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
-    this.shadowTexture.context.fill();
-    this.shadowTexture.dirty = true;
   },
 
   resetPlayer: function (player) {
