@@ -16,6 +16,7 @@ var playerXP = 1;
 var gameXPsteps = 15;
 var playerLevel = 1;
 var levelText;
+var experienceText;
 var totalEnemies;
 var deadEnemies = 0;
 var deadShotgunEnemies = 0;
@@ -30,7 +31,8 @@ var rayLength = 100;
 Game.Outside.prototype = {
   create: function (game) {
     map = this.add.tilemap("outside");
-    map.addTilesetImage('woodland', 'woodland');
+    // map.addTilesetImage('woodland', 'woodland');
+    map.addTilesetImage('testingTile', 'woodland');
 
     let layer = map.createLayer('Base');
     layer.resizeWorld();
@@ -39,6 +41,13 @@ Game.Outside.prototype = {
     collisionLayer.visible = true;
     map.setCollisionByExclusion([], true, this.collisionLayer);
     collisionLayer.resizeWorld();
+    //TEST
+    let foregroundCollisionLayer = map.createLayer('ForegroundObjects');
+    this.foregroundCollisionLayer = foregroundCollisionLayer;
+    foregroundCollisionLayer.visible = true;
+    map.setCollisionByExclusion([], true, this.foregroundCollisionLayer);
+    foregroundCollisionLayer.resizeWorld();
+    //TEST
 
     var player = game.add.sprite(100, 240, 'player');
     this.player = player;
@@ -55,7 +64,7 @@ Game.Outside.prototype = {
     game.camera.follow(player);
     player.body.collideWorldBounds = true;
 
-    enemiesTotal = 20;
+    enemiesTotal = 2;
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -76,7 +85,7 @@ Game.Outside.prototype = {
     }
     enemies.setAll('health', 100);
 
-    shotgunEnemiesTotal = 40;
+    shotgunEnemiesTotal = 2;
     shotgunEnemies = game.add.group();
     shotgunEnemies.enableBody = true;
     shotgunEnemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -162,11 +171,14 @@ Game.Outside.prototype = {
     this.lightSprite = this.game.add.image(this.game.camera.x, this.game.camera.y, this.shadowTexture);
     this.lightSprite.blendMode = Phaser.blendModes.MULTIPLY;
 
-
-    healthText = this.add.text(232, 120, 'score: 0', { fontSize: '32px', fill: '#fff' });
+    var barConfig = {x: 200, y: 100};
+ 
+    healthText = this.add.text(0, 0, "health", { fontSize: '32px', fill: '#fff' });
     healthText.fixedToCamera = true;
-    levelText = this.add.text(240, 150, 'score: 0', { fontSize: '32px', fill: '#fff' });
+    levelText = this.add.text(0, 30, "level", { fontSize: '32px', fill: '#fff' });
     levelText.fixedToCamera = true;
+    // experienceText = this.add.text(0, 50, 'score: 0', { fontSize: '32px', fill: '#fff' });
+    // experienceText.fixedToCamera = true;
 
     console.log('this.lightSprite: ', this.lightSprite);
 
@@ -179,8 +191,15 @@ Game.Outside.prototype = {
     this.lightSprite.reset(this.game.camera.x, this.game.camera.y);
     let player = this.player;
     health = player.health;
-    healthText.text = 'Player Health: ' + health;
+    maxHealth = player.maxHealth;
+    healthText.text = 'Player Health: ' + health + "/" + maxHealth;
     levelText.text = 'Player Level: ' + playerLevel;
+
+
+
+    // experienceText.text = ('Experience: ' + playerXP + "/" + Math.log(gameXPsteps));
+
+
     let keyboardCursors = this.keyboardCursors;
     let wasd = this.wasd;
     let moveSpeed = this.moveSpeed;
@@ -206,9 +225,8 @@ Game.Outside.prototype = {
       console.log("Player XP: ", playerXP);
       console.log("Player Level: ", playerLevel);
     }
+
     enemies.forEachAlive(function (enemies) {
-      console.log('enemies', enemies);
-      console.log('game', game);
       enemies.body.collideWorldBounds = true,
         enemies.body.velocity.x = 0,
         enemies.body.velocity.y = 0,
@@ -303,6 +321,7 @@ Game.Outside.prototype = {
       this.state.start('Level1');
     }
     game.physics.arcade.collide(this.player, this.collisionLayer);
+    game.physics.arcade.collide(this.player, this.foregroundCollisionLayer);
 
     if (Math.abs(player.body.velocity.x) > 0 || Math.abs(player.body.velocity.y) > 0) {
 
@@ -310,15 +329,12 @@ Game.Outside.prototype = {
     } else {
       player.play('idle');
     }
-
     if (wasd.shoot.isDown) {
       this.shootBullet(player);
     }
-
-
     count += 1;
     console.log('count: ', count);
-    if (count >= 200) {
+    if (count >= 500) {
       count = 0;
       day = !day;
     }
@@ -335,14 +351,23 @@ Game.Outside.prototype = {
     if (player.health <= 0) {
       this.state.start('Level1');
     }
+
+
+
+
+    if(player.health <= 30){
+      player.tint = Math.random() * 0xffffff;
+    }
+  
+    
     playerLevel = Math.round(Math.log(playerXP, gameXPsteps));
 
   },
   render(game) {
-    if (this.collisionLayer.visible) {
-      game.debug.body(this.player);
-    }
-    game.debug.text(game.time.fps, 5, 14, '#00ff00');
+    // if (this.collisionLayer.visible) {
+    //   game.debug.body(this.player);
+    // }
+    // game.debug.text(game.time.fps, 5, 14, '#00ff00');
   },
   enemyShot: function (bullets, enemies) {
     enemies.damage(20);

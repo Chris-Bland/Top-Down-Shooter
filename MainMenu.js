@@ -6,13 +6,19 @@ var titlescreen;
 
 Game.MainMenu.prototype = {
     create:function(game){
+        background = game.add.sprite(0,0);
+        background.width = 800;
+        background.height = 800;
+        filter = game.add.filter('Fire', 800,800);
+        filter.alpha = 0.0;
+        background.filters = [filter];
         this.createButton(game,"Play",game.world.centerX,game.world.centerY +32, 300, 100, function(){
-            this.state.start('Level1');
+            this.state.start('Outside');
         });
-        this.createButton(game,"Outside",game.world.centerX,game.world.centerY +110, 300, 100, function(){
-             this.state.start('Outside');
-        });
-        this.createButton(game,"About",game.world.centerX,game.world.centerY +192, 300, 100, function(){
+        // this.createButton(game,"Outside",game.world.centerX,game.world.centerY +110, 300, 100, function(){
+        //      this.state.start('Outside');
+        // });
+        this.createButton(game,"About",game.world.centerX,game.world.centerY +110, 300, 100, function(){
             console.log("About HERE");
         });
         titlescreen = game.add.sprite(game.world.centerX,game.world.centerY - 192, 'titlescreen');
@@ -20,6 +26,7 @@ Game.MainMenu.prototype = {
         titlescreen.anchor.setTo(0.5,0.5);
     },
     update:function(game){
+        filter.update();
 
     },
     createButton:function(game,string,x,y,width,height,callback){
