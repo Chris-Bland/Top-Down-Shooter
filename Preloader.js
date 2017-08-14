@@ -10,11 +10,10 @@ Game.Preloader.prototype = {
         // Tiled exported tilemap
         this.load.tilemap('tavernTakeTwo', 'assets/tavernTakeTwo.json', null, Phaser.Tilemap.TILED_JSON);
         // this.load.tilemap('outside', 'assets/outsideTakeTwo.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.tilemap('outside', 'assets/outsidev2.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.tilemap('outside', 'assets/outsideCompound.json', null, Phaser.Tilemap.TILED_JSON);
 
         this.load.image('tiles', 'assets/tilesetHouse.png');
-        // this.load.image('woodland', 'assets/woodland.png');
-        this.load.image('woodland', 'assets/magecity.png')
+        this.load.image('woodland', 'assets/testingTile.png');
      
 
         this.load.atlas('player', 'assets/Rifle-Man.png', './assets/Rifle-Man.json');

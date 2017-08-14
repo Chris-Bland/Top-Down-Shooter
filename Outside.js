@@ -3,6 +3,10 @@
 Game.Outside = function (game) { };
 var entrance;
 var start;
+var spawn1;
+var spawn2;
+var spawn3;
+var spawn4;
 var tavern = null;
 var player;
 var bullets;
@@ -23,9 +27,7 @@ var deadShotgunEnemies = 0;
 var day = false;
 var count = 0;
 var shadowTexture;
-var lightAngle = Math.PI / 4;
-var numberOfRays = 20;
-var rayLength = 100;
+
 
 
 Game.Outside.prototype = {
@@ -41,17 +43,17 @@ Game.Outside.prototype = {
     collisionLayer.visible = true;
     map.setCollisionByExclusion([], true, this.collisionLayer);
     collisionLayer.resizeWorld();
-    //TEST
+
     let foregroundCollisionLayer = map.createLayer('ForegroundObjects');
     this.foregroundCollisionLayer = foregroundCollisionLayer;
     foregroundCollisionLayer.visible = true;
     map.setCollisionByExclusion([], true, this.foregroundCollisionLayer);
     foregroundCollisionLayer.resizeWorld();
-    //TEST
+ 
 
     var player = game.add.sprite(100, 240, 'player');
     this.player = player;
-    player.MOVE_SPEED = 200;
+    player.MOVE_SPEED = 500;
     player.anchor.set(0.5);
     player.scale.set(0.2);
     player.animations.add('idle', [0, 1, 2, 3, 5, 6, 7, 8, 14, 19, 20], 20, true);
@@ -64,12 +66,20 @@ Game.Outside.prototype = {
     game.camera.follow(player);
     player.body.collideWorldBounds = true;
 
-    enemiesTotal = 2;
+    spawn1 = map.objects.meta.find(o => o.name == 'spawn1');
+    spawn2 = map.objects.meta.find(o => o.name == 'spawn2');
+    spawn3 = map.objects.meta.find(o => o.name == 'spawn3');
+    spawn4 = map.objects.meta.find(o => o.name == 'spawn4');
+
+    enemiesTotal = 15;
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < enemiesTotal; i++) {
-      var enemy = enemies.create(game.world.randomX, game.world.randomY, 'flashlightEnemy');
+      var spawn = chooseSpawn(1,4);
+      var randomX = Math.random() * 300;
+      var randomY = Math.random() * 300;
+      var enemy = enemies.create(spawn.x + randomX, spawn.y + randomY, 'flashlightEnemy');
       enemy.animations.add('melee', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 35, true);
       enemy.animations.add('move', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46], 46, true);
       enemy.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 14, true);
@@ -81,16 +91,20 @@ Game.Outside.prototype = {
       enemy.body.allowGravity = true;
       enemy.scale.setTo(0.3);
       enemy.body.velocity.x = 0,
-        enemy.body.velocity.y = 0
+      enemy.body.velocity.y = 0
     }
+    console.log("enemies:", enemies);
     enemies.setAll('health', 100);
 
-    shotgunEnemiesTotal = 2;
+    shotgunEnemiesTotal = 10;
     shotgunEnemies = game.add.group();
     shotgunEnemies.enableBody = true;
     shotgunEnemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < shotgunEnemiesTotal; i++) {
-      var shotgunEnemy = shotgunEnemies.create(game.world.randomX, game.world.randomY, 'shotgunEnemy');
+      var spawn = chooseSpawn(1,4);
+      var randomX = Math.random() * 300;
+      var randomY = Math.random() * 300;
+      var shotgunEnemy = shotgunEnemies.create(spawn.x + randomX, spawn.y + randomY, 'shotgunEnemy');
       shotgunEnemy.animations.add('shoot', [7, 15, 23], 7, true);
       shotgunEnemy.animations.add('move', [0, 4, 5, 6, 12, 13, 14, 19, 20, 21, 22], 0, true);
       shotgunEnemy.animations.add('idle', [0, 1, 2, 3, 8, 9, 10, 11, 16, 17, 18], 0, true);
@@ -102,7 +116,7 @@ Game.Outside.prototype = {
       shotgunEnemy.body.allowGravity = true;
       shotgunEnemy.scale.setTo(0.3);
       shotgunEnemy.body.velocity.x = 0,
-        shotgunEnemy.body.velocity.y = 0
+      shotgunEnemy.body.velocity.y = 0
     }
     shotgunEnemies.setAll('health', 100);
     map.createLayer('Foreground');
@@ -127,7 +141,6 @@ Game.Outside.prototype = {
 
     this.player.position.set(entrance.x, entrance.y + 30);
     this.player.angle = 0;
-
 
     let tween = game.add.tween(this.player).to({ x: start.x, y: start.y }, 1500);
     tween.onComplete.add(() => {
@@ -195,11 +208,6 @@ Game.Outside.prototype = {
     healthText.text = 'Player Health: ' + health + "/" + maxHealth;
     levelText.text = 'Player Level: ' + playerLevel;
 
-
-
-    // experienceText.text = ('Experience: ' + playerXP + "/" + Math.log(gameXPsteps));
-
-
     let keyboardCursors = this.keyboardCursors;
     let wasd = this.wasd;
     let moveSpeed = this.moveSpeed;
@@ -216,7 +224,6 @@ Game.Outside.prototype = {
     game.physics.arcade.overlap(bullets, shotgunEnemies, this.enemyShot, null, this);
     game.physics.arcade.overlap(enemies, player, this.resetPlayer);
     game.physics.arcade.overlap(player, enemyBullets, this.playerShot, null, this);
-
 
     if (game.input.mousePointer.isDown) {
       shotgunEnemies.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 300);
@@ -320,8 +327,10 @@ Game.Outside.prototype = {
     if (Phaser.Rectangle.containsPoint(this.exitRect, player.position)) {
       this.state.start('Level1');
     }
+
     game.physics.arcade.collide(this.player, this.collisionLayer);
     game.physics.arcade.collide(this.player, this.foregroundCollisionLayer);
+
 
     if (Math.abs(player.body.velocity.x) > 0 || Math.abs(player.body.velocity.y) > 0) {
 
@@ -333,7 +342,7 @@ Game.Outside.prototype = {
       this.shootBullet(player);
     }
     count += 1;
-    console.log('count: ', count);
+ 
     if (count >= 500) {
       count = 0;
       day = !day;
@@ -431,6 +440,21 @@ function checkOverlap(spriteA, spriteB) {
   var boundsB = spriteB.getBounds();
 
   return Phaser.Rectangle.intersects(boundsA, boundsB);
+}
+function chooseSpawn(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  let number = Math.floor(Math.random() * (max - min + 1)) + min; 
+  if(number === 1){
+    return spawn1;
+  } else if (number === 2){
+    return spawn2;
+  } else if (number === 3){
+    return spawn3;
+  } else if(number == 4){
+    return spawn4;
+  }
+
 }
 
 
