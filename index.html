@@ -1,11 +1,11 @@
 <html>  
     <head>
-        <script type="text/javascript" src="phaser.js"></script>
-        <script type="text/javascript" src="boot.js"></script>
-        <script type="text/javascript" src="preloader.js"></script>
-        <script type="text/javascript" src="mainMenu.js"></script>
-        <script type="text/javascript" src="levelOutside.js"></script>
-        <script type="text/javascript" src="levelHouse.js"></script>  
+        <script type="text/javascript" src="./phaser.js"></script>
+        <script type="text/javascript" src="./Boot.js"></script>
+        <script type="text/javascript" src="./preloader.js"></script>
+        <script type="text/javascript" src="./mainMenu.js"></script>
+        <script type="text/javascript" src="./levelOutside.js"></script>
+        <script type="text/javascript" src="./levelHouse.js"></script>  
         <link rel="stylesheet" href="assets/css/style.css">   
     </head>
     <body>
@@ -13,12 +13,12 @@
         <script type = "text/javascript">
             window.onload = function(){
                 var game = new Phaser.Game(800,800,Phaser.AUTO, "GameDiv");
-                game.state.add('boot',Game.Boot);
+                game.state.add('Boot',Game.Boot);
                 game.state.add('preloader',Game.Preloader);
                 game.state.add('mainMenu',Game.MainMenu);
                 game.state.add('levelOutside',Game.LevelOutside);
                 game.state.add('levelHouse',Game.LevelHouse);
-                game.state.start('boot');
+                game.state.start('Boot');
             };
 </script>
     </body>
