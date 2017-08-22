@@ -1,12 +1,12 @@
 
-Game.Level1 = function (game) { };
+Game.LevelHouse = function (game) { };
 var entrance;
 var start;
 var tavern = null;
-Game.Level1.prototype = {
+Game.LevelHouse.prototype = {
   create: function (game) {
-    let map = this.add.tilemap("tavernTakeTwo");
-    map.addTilesetImage('tavern-tileset', 'tiles');
+    let map = this.add.tilemap("inside");
+    map.addTilesetImage('inside-tileset', 'inside-tileset');
 
     let layer = map.createLayer('Base');
     layer.resizeWorld();
@@ -126,7 +126,7 @@ Game.Level1.prototype = {
       player.rotation = game.physics.arcade.angleToPointer(player);
     
     if (Phaser.Rectangle.containsPoint(this.exitRect, player.position)) {
-      this.state.start('Outside');
+      this.state.start('levelOutisde');
     }
 
     game.physics.arcade.collide(this.player, this.collisionLayer);
@@ -135,7 +135,6 @@ Game.Level1.prototype = {
     } else {
       player.play('idle');
     }
-
   },
 
   render(game) {
@@ -146,49 +145,3 @@ Game.Level1.prototype = {
   },
 }
 
-
-//**** PUT IN CREATE */
-//***** GAME PAD CODE */
-// function createVirtualGamepad() {
-//   // create virtual gamepad
-//   let gamepad = game.plugins.add(Phaser.Plugin.VirtualGamepad)
-//   this.joystick = gamepad.addJoystick(60, game.height - 60, 0.5, 'gamepad');
-
-//   // plugin wants the creation of a button
-//   // but there is no usage for it here so i'm just going to hide it
-//   this.gamepadbutton = gamepad.addButton(game.width - 60, game.height - 60, 0.5, 'gamepad');
-//   this.gamepadbutton.visible = false;
-// } 
-
-
-// function initVirtualGamepad() {
-//   // create our virtual gamepad
-//   let gamepad = game.plugins.add(Phaser.Plugin.VirtualGamepad)
-//   this.joystick = gamepad.addJoystick(90, game.height - 90, 0.75, 'gamepad');
-
-//   // plugin wants the creation of a button
-//   // but there is no usage for it here so i'm just going to hide it
-//   let button = gamepad.addButton(game.width - 90, game.height - 90, 0.75, 'gamepad');
-//   button.visible = false;
-// }
-
-
-//**** PUT IN UPDATE */
-//******************************************
-
-  // // virtual gamepad movement
-  // // check first if it's in use before we go through all the logic below
-  // if (joystick.properties.inUse) {
-  //   // set the sprite's angle from the plugin
-  //   player.angle = joystick.properties.angle;
-
-  //   // the plugin has a max of 99
-  //   // i'm just adding a bit more for faster movement
-  //   player.body.velocity.x = joystick.properties.x * 1.5;
-  //   player.body.velocity.y = joystick.properties.y * 1.5;
-
-
-
-
-//character display manager.
-//observable pattern

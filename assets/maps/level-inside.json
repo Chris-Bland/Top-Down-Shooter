@@ -85,11 +85,11 @@
         {
          "columns":9,
          "firstgid":1,
-         "image":"..\/Assets\/tilesetHouse.png",
+         "image":"..\/Assets\/inside-tileset.png",
          "imageheight":416,
          "imagewidth":288,
          "margin":0,
-         "name":"tavern-tileset",
+         "name":"inside-tileset",
          "spacing":0,
          "tilecount":117,
          "tileheight":32,

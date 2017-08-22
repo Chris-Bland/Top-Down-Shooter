@@ -26,6 +26,6 @@ Game.Boot.prototype = {
 
     create: function() {
         
-        this.state.start('Preloader');
+        this.state.start('preloader');
     }
 }

@@ -1,26 +1,24 @@
 <html>  
     <head>
-
-
         <script type="text/javascript" src="./phaser.js"></script>
-        <script type="text/javascript" src="./Boot.js"></script>
-        <script type="text/javascript" src="./Preloader.js"></script>
-        <script type="text/javascript" src="./MainMenu.js"></script>
-        <script type="text/javascript" src="./Level1.js"></script>
-        <script type="text/javascript" src="./Outside.js"></script>    
-        <script type="text/javascript" src="./HealthBar.standalone.js"></script>
+        <script type="text/javascript" src="./boot.js"></script>
+        <script type="text/javascript" src="./preloader.js"></script>
+        <script type="text/javascript" src="./mainMenu.js"></script>
+        <script type="text/javascript" src="./levelOutside.js"></script>
+        <script type="text/javascript" src="./levelHouse.js"></script>  
+        <link rel="stylesheet" href="assets/css/style.css">   
     </head>
     <body>
+        <h1> Top Down Shooter</h1>
         <script type = "text/javascript">
             window.onload = function(){
                 var game = new Phaser.Game(800,800,Phaser.AUTO, "GameDiv");
-
-                game.state.add('Boot',Game.Boot);
-                game.state.add('Preloader',Game.Preloader);
-                game.state.add('MainMenu',Game.MainMenu);
-                game.state.add('Level1',Game.Level1);
-                game.state.add('Outside',Game.Outside);
-                game.state.start('Boot');
+                game.state.add('boot',Game.Boot);
+                game.state.add('preloader',Game.Preloader);
+                game.state.add('mainMenu',Game.MainMenu);
+                game.state.add('levelOutside',Game.LevelOutside);
+                game.state.add('levelHouse',Game.LevelHouse);
+                game.state.start('boot');
             };
 </script>
     </body>

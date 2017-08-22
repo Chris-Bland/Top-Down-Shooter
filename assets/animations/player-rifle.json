@@ -323,7 +323,7 @@
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "Rifle-Man.png",
+	"image": "player-rifle.png",
 	"format": "RGBA8888",
 	"size": {"w":1834,"h":473},
 	"scale": "1",
