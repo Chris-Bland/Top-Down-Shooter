@@ -9,7 +9,7 @@ Game.MainMenu.prototype = {
         background.filters = [filter];
 
         this.createButton(game,"Play",game.world.centerX,game.world.centerY +32, 300, 100, function(){
-            this.state.start('LevelOutside');
+            this.state.start('levelOutside');
         });
         this.createButton(game,"About",game.world.centerX,game.world.centerY +110, 300, 100, function(){
             console.log("Top down, survival tower defence built with phaser library");

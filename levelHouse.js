@@ -126,7 +126,7 @@ Game.LevelHouse.prototype = {
       player.rotation = game.physics.arcade.angleToPointer(player);
     
     if (Phaser.Rectangle.containsPoint(this.exitRect, player.position)) {
-      this.state.start('LevelOutisde');
+      this.state.start('levelOutisde');
     }
 
     game.physics.arcade.collide(this.player, this.collisionLayer);
