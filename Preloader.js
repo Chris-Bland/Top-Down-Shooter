@@ -26,6 +26,6 @@ Game.Preloader.prototype = {
         
 
     create: function () {
-        this.state.start('mainMenu');
+        this.state.start('MainMenu');
     }
 }

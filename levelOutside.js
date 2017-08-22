@@ -263,7 +263,7 @@ Game.LevelOutside.prototype = {
     calculateDeadEnemies(enemies);
 
     if (player.health <= 0) {
-      this.state.start('levelHouse');
+      this.state.start('LevelHouse');
     }
     if (player.health <= 30) {
       player.tint = Math.random() * 0xffffff;
