@@ -89,7 +89,7 @@ Game.LevelOutside.prototype = {
       enemy.body.allowGravity = true;
       enemy.scale.setTo(0.3);
       enemy.body.velocity.x = 0,
-        enemy.body.velocity.y = 0
+      enemy.body.velocity.y = 0
     }
     console.log("enemies:", enemies);
     enemies.setAll('health', 100);
@@ -185,9 +185,6 @@ Game.LevelOutside.prototype = {
   },
 
   update: function (game) {
-
-
-
     if (this.cutscene) return;
     let player = this.player;
     this.playerLight.reset(this.game.camera.x, this.game.camera.y);
@@ -204,17 +201,21 @@ Game.LevelOutside.prototype = {
     game.physics.arcade.collide(this.player, this.collisionLayer);
     game.physics.arcade.collide(this.player, this.foregroundCollisionLayer);
 
-
     playerLevelUpgrades(player);
 
     game.physics.arcade.overlap(playerBullets, enemies, this.enemyShot, null, this);
     game.physics.arcade.overlap(playerBullets, shotgunEnemies, this.enemyShot, null, this);
-    game.physics.arcade.overlap(enemies, player, this.resetPlayer);
+    game.physics.arcade.overlap(enemies, player, resetPlayer);
     game.physics.arcade.overlap(player, shotgunEnemyBullets, this.playerShot, null, this);
 
+    function resetPlayer () {
+      game.camera.shake(0.005, 500);
+      player.health -= 1;
+    }
+   
+    // game.physics.arcade.overlap(playerBullets, this.collisionLayer, this.bulletCollide, null, this);
+
     if (game.input.mousePointer.isDown) {
-      shotgunEnemies.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 300);
-      enemies.forEach(game.physics.arcade.moveToPointer, game.physics.arcade, false, 300);
       this.shootBullet(player);
     }
 
@@ -236,29 +237,26 @@ Game.LevelOutside.prototype = {
     } else {
       player.play('idle');
     }
-    if (playerInteraction.shoot.isDown) {
-      this.shootBullet(player);
-    }
+
     if (Phaser.Rectangle.containsPoint(this.exitRectangle, player.position)) {
       this.state.start('levelHouse');
     }
     player.rotation = game.physics.arcade.angleToPointer(player);
 
     enemies.forEachAlive(function (enemies) {
-      enemies.body.collideWorldBounds = true,
+        enemies.body.collideWorldBounds = true,
         enemies.body.velocity.x = 0,
         enemies.body.velocity.y = 0,
         enemies.rotation = game.physics.arcade.angleToXY(enemies, player.x, player.y);
       chasePlayer(player, enemies, game);
-
     });
+
     shotgunEnemies.forEachAlive(function (shotgunEnemies) {
       shotgunEnemies.body.collideWorldBounds = true,
         shotgunEnemies.body.velocity.x = 0;
       shotgunEnemies.body.velocity.y = 0;
       shotgunEnemies.rotation = game.physics.arcade.angleToXY(shotgunEnemies, player.x, player.y);
       shootPlayer(player, shotgunEnemies, game);
-
     });
 
     calculateDeadEnemies(enemies);
@@ -326,6 +324,12 @@ Game.LevelOutside.prototype = {
     player.damage(10);
     shotgunEnemyBullets.kill();
   },
+
+  bulletCollide: function(playerBullets){
+
+    playerBullets.kill();
+  },
+
   shootBullet: function (player) {
     if (this.time.now > shootTime) {
       bullet = playerBullets.getFirstExists(false);
@@ -348,12 +352,7 @@ Game.LevelOutside.prototype = {
         enemyBullet.lifespan = 1000;
       }
     }
-  },
-  
-  resetPlayer: function (player) {
-    // game.camera.shake(0.05, 500);
-    player.health -= 1;
-  },
+  }
 }
 
 function playerLevelUpgrades(player) {
