@@ -205,16 +205,13 @@ Game.LevelOutside.prototype = {
 
     game.physics.arcade.overlap(playerBullets, enemies, this.enemyShot, null, this);
     game.physics.arcade.overlap(playerBullets, shotgunEnemies, this.enemyShot, null, this);
-    game.physics.arcade.overlap(enemies, player, resetPlayer);
+    game.physics.arcade.overlap(enemies, player, meleePlayer);
     game.physics.arcade.overlap(player, shotgunEnemyBullets, this.playerShot, null, this);
 
-    function resetPlayer () {
+    function meleePlayer () {
       game.camera.shake(0.005, 500);
       player.health -= 1;
     }
-   
-    // game.physics.arcade.overlap(playerBullets, this.collisionLayer, this.bulletCollide, null, this);
-
     if (game.input.mousePointer.isDown) {
       this.shootBullet(player);
     }
