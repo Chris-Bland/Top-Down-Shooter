@@ -24,7 +24,7 @@ var experienceText;
 var totalEnemies;
 var deadEnemies = 0;
 var deadShotgunEnemies = 0;
-var day = true;
+var day = false;
 var count = 0;
 var fogOfWar;
 
@@ -33,7 +33,6 @@ var fogOfWar;
 Game.LevelOutside.prototype = {
   create: function (game) {
     map = this.add.tilemap("outside");
-    // map.addTilesetImage('woodland', 'woodland');
     map.addTilesetImage('outside-tileset', 'outside-tileset');
 
     let layer = map.createLayer('Base');
@@ -49,7 +48,6 @@ Game.LevelOutside.prototype = {
     foregroundCollisionLayer.visible = true;
     map.setCollisionByExclusion([], true, this.foregroundCollisionLayer);
     foregroundCollisionLayer.resizeWorld();
-
 
     var player = game.add.sprite(100, 240, 'player');
     this.player = player;
@@ -187,19 +185,22 @@ Game.LevelOutside.prototype = {
   },
 
   update: function (game) {
-   
+
+
+
     if (this.cutscene) return;
     let player = this.player;
     this.playerLight.reset(this.game.camera.x, this.game.camera.y);
     let keyboardCursors = this.keyboardCursors;
     let playerInteraction = this.playerInteraction;
     let moveSpeed = this.moveSpeed;
-    // dayNightCycle(player, enemies);
+    let playerLight = this.playerLight;
+    let fogOfWar = this.fogOfWar;
+    dayNightCycle(playerLight, fogOfWar, player);
     health = player.health;
     maxHealth = player.maxHealth;
     healthText.text = 'Player Health: ' + health + "/" + maxHealth;
     levelText.text = 'Player Level: ' + playerLevel;
-
     game.physics.arcade.collide(this.player, this.collisionLayer);
     game.physics.arcade.collide(this.player, this.foregroundCollisionLayer);
 
@@ -271,44 +272,43 @@ Game.LevelOutside.prototype = {
 
     playerLevel = Math.round(Math.log(playerXP, gameXPsteps));
 
-    function dayNightCycle() {
+
+
+    function dayNightCycle(playerLight, fogOfWar, player) {
+      console.log('count:', count);
       count += 1;
       if (count >= 500) {
         count = 0;
         day = !day;
       }
       if (day === false) {
-        updatefogOfWar(player, this.fogOfWar);
+        updatefogOfWar(playerLight, fogOfWar, player);
+        
         enemies.moveSpeed = 1000;
       }
       else if (day === true) {
-        this.playerLight.kill();
+        playerLight.kill();
         enemies.moveSpeed = 150
       }
     }
     
-    function updatefogOfWar() {
-      console.log('fogofWar: ', this.fogOfWar);
-      this.fogOfWar.context.fillStyle = 'rgb(10, 10, 10)';
-      this.fogOfWar.context.fillRect(0, 0, this.game.width + 500, this.game.height + 500);
-      var radius = 200 + this.game.rnd.integerInRange(1, 20),
-        heroX = this.player.x - this.game.camera.x,
-        heroY = this.player.y - this.game.camera.y;
-      var gradient = this.fogOfWar.context.createRadialGradient(
+    function updatefogOfWar(playerLight, fogOfWar, player) {
+      fogOfWar.context.fillStyle = 'rgb(10, 10, 10)';
+      fogOfWar.context.fillRect(0, 0, game.width + 500, game.height + 500);
+      var radius = 200 + game.rnd.integerInRange(1, 20),
+        heroX = player.x - game.camera.x,
+        heroY = player.y - game.camera.y;
+      var gradient = fogOfWar.context.createRadialGradient(
         heroX, heroY, 100 * 0.75,
         heroX, heroY, radius);
       gradient.addColorStop(0, 'rgba(255, 255, 255, 1.0)');
       gradient.addColorStop(1, 'rgba(255, 255, 255, 0.0)');
-      this.fogOfWar.context.beginPath();
-      this.fogOfWar.context.fillStyle = gradient;
-      this.fogOfWar.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
-      this.fogOfWar.context.fill();
-      this.fogOfWar.dirty = true;
-    
+      fogOfWar.context.beginPath();
+      fogOfWar.context.fillStyle = gradient;
+      fogOfWar.context.arc(heroX, heroY, radius, 0, Math.PI * 2, false);
+      fogOfWar.context.fill();
+      fogOfWar.dirty = true;
     }
-
-
-
   },
   render(game) {
     // if (this.collisionLayer.visible) {
@@ -355,7 +355,6 @@ Game.LevelOutside.prototype = {
     player.health -= 1;
   },
 }
-
 
 function playerLevelUpgrades(player) {
   if (playerLevel >= 2) {

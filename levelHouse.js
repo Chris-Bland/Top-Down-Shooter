@@ -81,7 +81,6 @@ Game.LevelHouse.prototype = {
       ['Pistol', '15', '5'],
       ['Rifle', '55', '2'],
       ['Shotgun', '45', '4',]
-
     ];
     var text2 = game.add.text(232, 120, '', style);
     text2.parseList(swords);
@@ -95,9 +94,6 @@ Game.LevelHouse.prototype = {
       text.visible = !text.visible;
       inventory.visible = !inventory.visible;
     });
-
-     //****** INVENTORY TEST */
-
   },
   update: function (game) {
     if (this.cutscene) return;
@@ -126,7 +122,7 @@ Game.LevelHouse.prototype = {
       player.rotation = game.physics.arcade.angleToPointer(player);
     
     if (Phaser.Rectangle.containsPoint(this.exitRect, player.position)) {
-      this.state.start('levelOutisde');
+      this.state.start('levelOutside');
     }
 
     game.physics.arcade.collide(this.player, this.collisionLayer);
