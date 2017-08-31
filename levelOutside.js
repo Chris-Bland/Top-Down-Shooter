@@ -7,7 +7,6 @@ var spawn1;
 var spawn2;
 var spawn3;
 var spawn4;
-var tavern = null;
 var player;
 var playerBullets;
 var shotgunEnemyBullets;
@@ -24,30 +23,27 @@ var experienceText;
 var totalEnemies;
 var deadEnemies = 0;
 var deadShotgunEnemies = 0;
-var day = false;
+var day = true;
 var count = 0;
 var fogOfWar;
-
 
 
 Game.LevelOutside.prototype = {
   create: function (game) {
     map = this.add.tilemap("outside");
-    map.addTilesetImage('outside-tileset', 'outside-tileset');
+    map.addTilesetImage('large-map', 'large-map');
+    
+
 
     let layer = map.createLayer('Base');
     layer.resizeWorld();
     let collisionLayer = map.createLayer('Collision');
     this.collisionLayer = collisionLayer;
-    collisionLayer.visible = true;
+    collisionLayer.visible = false;
     map.setCollisionByExclusion([], true, this.collisionLayer);
     collisionLayer.resizeWorld();
 
-    let foregroundCollisionLayer = map.createLayer('ForegroundObjects');
-    this.foregroundCollisionLayer = foregroundCollisionLayer;
-    foregroundCollisionLayer.visible = true;
-    map.setCollisionByExclusion([], true, this.foregroundCollisionLayer);
-    foregroundCollisionLayer.resizeWorld();
+
 
     var player = game.add.sprite(100, 240, 'player');
     this.player = player;
@@ -94,7 +90,7 @@ Game.LevelOutside.prototype = {
     console.log("enemies:", enemies);
     enemies.setAll('health', 100);
 
-    shotgunEnemiesTotal = 10;
+    shotgunEnemiesTotal = 15;
     shotgunEnemies = game.add.group();
     shotgunEnemies.enableBody = true;
     shotgunEnemies.physicsBodyType = Phaser.Physics.ARCADE;
@@ -117,7 +113,10 @@ Game.LevelOutside.prototype = {
         shotgunEnemy.body.velocity.y = 0
     }
     shotgunEnemies.setAll('health', 100);
-    map.createLayer('Foreground');
+
+    let layerForeground = map.createLayer('Foreground');
+    layerForeground.resizeWorld();
+
 
     this.keyboardCursors = game.input.keyboard.createCursorKeys();
     this.moveSpeed = { x: 0, y: 0 }
@@ -162,7 +161,6 @@ Game.LevelOutside.prototype = {
     playerBullets.setAll('outOfBoundsKill', true);
     playerBullets.setAll('checkWorldBounds', true);
 
-
     shotgunEnemyBullets = game.add.group();
     shotgunEnemyBullets.enableBody = true;
     shotgunEnemyBullets.physicsBodyType = Phaser.Physics.ARCADE;
@@ -182,24 +180,29 @@ Game.LevelOutside.prototype = {
     healthText.fixedToCamera = true;
     levelText = this.add.text(0, 30, "level", { fontSize: '32px', fill: '#fff' });
     levelText.fixedToCamera = true;
+    console.log('here');
   },
 
   update: function (game) {
+    console.log('here!!!!?!!!');
     if (this.cutscene) return;
+    console.log('here????');
     let player = this.player;
-    this.playerLight.reset(this.game.camera.x, this.game.camera.y);
+    // let playerLight = this.playerLight;
+    // let fogOfWar = this.fogOfWar;
+    // this.playerLight.reset(this.game.camera.x, this.game.camera.y);
+    // dayNightCycle(playerLight, fogOfWar, player);
     let keyboardCursors = this.keyboardCursors;
     let playerInteraction = this.playerInteraction;
     let moveSpeed = this.moveSpeed;
-    let playerLight = this.playerLight;
-    let fogOfWar = this.fogOfWar;
-    dayNightCycle(playerLight, fogOfWar, player);
+ 
+
     health = player.health;
     maxHealth = player.maxHealth;
     healthText.text = 'Player Health: ' + health + "/" + maxHealth;
     levelText.text = 'Player Level: ' + playerLevel;
     game.physics.arcade.collide(this.player, this.collisionLayer);
-    game.physics.arcade.collide(this.player, this.foregroundCollisionLayer);
+    game.physics.arcade.collide(this.player, this.foregroundStacked);
 
     playerLevelUpgrades(player);
 
@@ -238,6 +241,7 @@ Game.LevelOutside.prototype = {
     if (Phaser.Rectangle.containsPoint(this.exitRectangle, player.position)) {
       this.state.start('levelHouse');
     }
+
     player.rotation = game.physics.arcade.angleToPointer(player);
 
     enemies.forEachAlive(function (enemies) {
@@ -269,23 +273,23 @@ Game.LevelOutside.prototype = {
 
 
 
-    function dayNightCycle(playerLight, fogOfWar, player) {
-      console.log('count:', count);
-      count += 1;
-      if (count >= 500) {
-        count = 0;
-        day = !day;
-      }
-      if (day === false) {
-        updatefogOfWar(playerLight, fogOfWar, player);
+    // function dayNightCycle(playerLight, fogOfWar, player) {
+    //   console.log('count:', count);
+    //   count += 1;
+    //   if (count >= 500) {
+    //     count = 0;
+    //     day = !day;
+    //   }
+    //   if (day === false) {
+        // updatefogOfWar(playerLight, fogOfWar, player);
         
-        enemies.moveSpeed = 1000;
-      }
-      else if (day === true) {
-        playerLight.kill();
-        enemies.moveSpeed = 150
-      }
-    }
+    //     enemies.moveSpeed = 1000;
+    //   }
+    //   else if (day === true) {
+    //     playerLight.kill();
+    //     enemies.moveSpeed = 150
+    //   }
+    // }
     
     function updatefogOfWar(playerLight, fogOfWar, player) {
       fogOfWar.context.fillStyle = 'rgb(10, 10, 10)';

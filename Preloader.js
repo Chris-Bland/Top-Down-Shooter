@@ -7,14 +7,21 @@ var fireFilter = 'https://cdn.rawgit.com/photonstorm/phaser/master/v2/filters/Fi
 Game.Preloader.prototype = {
     preload: function () {
         // Tiled exported tilemap
-        this.load.tilemap('outside', './assets/maps/level-outside.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('outside-tileset', './assets/maps/outside-tileset.png');
+        // this.load.tilemap('outside', './assets/maps/level-outside.json', null, Phaser.Tilemap.TILED_JSON);
+        // this.load.image('outside-tileset', './assets/maps/outside-tileset.png');
+
+         this.load.tilemap('outside', './assets/maps/large-map-single-image.json', null, Phaser.Tilemap.TILED_JSON);
+         this.load.image('large-map', './assets/maps/large-map.png');
+      
+
         this.load.tilemap('inside', './assets/maps/level-inside.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('inside-tileset', './assets/maps/inside-tileset.png');
+
 
         this.load.atlas('player', './assets/animations/player-rifle.png', './assets/animations/player-rifle.json');
         this.load.atlas('flashlight-enemy', './assets/sprites/flashlight-enemy.png', './assets/sprites/flashlight-enemy.json');
         this.load.atlas('shotgun-enemy', './assets/sprites/shotgun-enemy.png', './assets/sprites/shotgun-enemy.json');
+
 
          this.load.image('button', './assets/sprites/button.png');
          this.load.image('menu-image', './assets/sprites/menu-image.png');
