@@ -153,7 +153,7 @@ Game.LevelOutside.prototype = {
     playerBullets = game.add.group();
     playerBullets.enableBody = true;
     playerBullets.physicsBodyType = Phaser.Physics.ARCADE;
-    playerBullets.createMultiple(5, 'bullet');
+    playerBullets.createMultiple(10, 'bullet');
     playerBullets.setAll('anchor.x', -1);
     playerBullets.setAll('anchor.y', -1);
     playerBullets.setAll('scale.x', 0.5);
