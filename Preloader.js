@@ -7,11 +7,12 @@ var fireFilter = 'https://cdn.rawgit.com/photonstorm/phaser/master/v2/filters/Fi
 Game.Preloader.prototype = {
     preload: function () {
         // Tiled exported tilemap
-        // this.load.tilemap('outside', './assets/maps/level-outside.json', null, Phaser.Tilemap.TILED_JSON);
-        // this.load.image('outside-tileset', './assets/maps/outside-tileset.png');
+      
 
-         this.load.tilemap('outside', './assets/maps/large-map-single-image.json', null, Phaser.Tilemap.TILED_JSON);
-         this.load.image('large-map', './assets/maps/large-map.png');
+        //  this.load.tilemap('outside', './assets/maps/large-map-single-image.json', null, Phaser.Tilemap.TILED_JSON);
+        //  this.load.image('large-map', './assets/maps/large-map.png');
+        this.load.tilemap('outside', './assets/TMX/BETA-MAP/outside-beta.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.image('large-map', './assets/TMX/BETA-MAP/large-map.png');
       
 
         this.load.tilemap('inside', './assets/maps/level-inside.json', null, Phaser.Tilemap.TILED_JSON);
