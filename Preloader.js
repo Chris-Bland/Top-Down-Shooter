@@ -14,12 +14,19 @@ Game.Preloader.prototype = {
         this.load.tilemap('outside', './assets/TMX/BETA-MAP/outside-beta.json', null, Phaser.Tilemap.TILED_JSON);
         this.load.image('large-map', './assets/TMX/BETA-MAP/large-map.png');
       
+        this.load.tilemap('inside', './assets/TMX/BETA-MAP/inside.json', null, Phaser.Tilemap.TILED_JSON);
+        this.load.image('inside-tileset', './assets/TMX/BETA-MAP/outside-tileset.png');
 
-        this.load.tilemap('inside', './assets/maps/level-inside.json', null, Phaser.Tilemap.TILED_JSON);
-        this.load.image('inside-tileset', './assets/maps/inside-tileset.png');
+        // this.load.tilemap('inside', './assets/maps/level-inside.json', null, Phaser.Tilemap.TILED_JSON);
+        // this.load.image('inside-tileset', './assets/maps/inside-tileset.png');
 
-
-        this.load.atlas('player', './assets/animations/player-rifle.png', './assets/animations/player-rifle.json');
+        // this.load.atlas('player', './assets/animations/player.png', './assets/animations/player.json');
+        this.load.atlasJSONHash(
+            'player',
+            './assets/animations/player.png',
+            './assets/animations/player.json'
+        );
+        // this.load.atlas('player', './assets/animations/player-rifle.png', './assets/animations/player-rifle.json');
         this.load.atlas('flashlight-enemy', './assets/sprites/flashlight-enemy.png', './assets/sprites/flashlight-enemy.json');
         this.load.atlas('shotgun-enemy', './assets/sprites/shotgun-enemy.png', './assets/sprites/shotgun-enemy.json');
 

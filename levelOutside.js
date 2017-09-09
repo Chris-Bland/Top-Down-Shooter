@@ -26,6 +26,11 @@ var deadShotgunEnemies = 0;
 var day = true;
 var count = 0;
 var fogOfWar;
+var count1=0;
+var count2=0;
+var count3=0
+var count4=0;
+
 
 
 Game.LevelOutside.prototype = {
@@ -45,14 +50,30 @@ Game.LevelOutside.prototype = {
 
 
 
-    var player = game.add.sprite(100, 240, 'player');
+    // var player = game.add.sprite(100, 240, 'player');
+    var player=game.add.sprite(100, 240, 'player', 'handgun/idle/01.png');
     this.player = player;
     player.MOVE_SPEED = 500;
     player.anchor.set(0.5);
     player.scale.set(0.2);
-    player.animations.add('idle', [0, 1, 2, 3, 5, 6, 7, 8, 14, 19, 20], 20, true);
-    player.animations.add('move', [4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 18, true);
-    player.play('move');
+    player.animations.add('pistol-idle', Phaser.Animation.generateFrameNames('handgun/idle/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('pistol-move', Phaser.Animation.generateFrameNames('handgun/move/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('pistol-shoot', Phaser.Animation.generateFrameNames('handgun/idle/', 1, 3, '.png', 2), 3, true, false);
+
+    player.animations.add('flashlight-idle', Phaser.Animation.generateFrameNames('flashlight/idle/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('flashlight-move', Phaser.Animation.generateFrameNames('flashlight/move/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('flashlight-attack', Phaser.Animation.generateFrameNames('flashlight/meleeattack/', 1, 15, '.png', 2), 15, true, false);
+
+    player.animations.add('rifle-idle', Phaser.Animation.generateFrameNames('rifle/idle/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('rifle-move', Phaser.Animation.generateFrameNames('rifle/move/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('rifle-shoot', Phaser.Animation.generateFrameNames('rifle/shoot/', 1, 3, '.png', 2), 3, true, false);
+
+    player.animations.add('shotgun-idle', Phaser.Animation.generateFrameNames('shotgun/idle/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('shotgun-move', Phaser.Animation.generateFrameNames('shotgun/move/', 1, 20, '.png', 2), 20, true, false);
+    player.animations.add('shotgun-shoot', Phaser.Animation.generateFrameNames('shotgun/shoot/', 1, 3, '.png', 2), 3, true, false);
+
+
+    player.play('pistol-idle');
     player.maxHealth = 100;
     player.health = player.maxHealth;
     game.physics.arcade.enable(player);
@@ -63,14 +84,13 @@ Game.LevelOutside.prototype = {
     spawn1 = map.objects.meta.find(o => o.name == 'spawn1');
     spawn2 = map.objects.meta.find(o => o.name == 'spawn2');
     spawn3 = map.objects.meta.find(o => o.name == 'spawn3');
-    spawn4 = map.objects.meta.find(o => o.name == 'spawn4');
 
     enemiesTotal = 15;
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < enemiesTotal; i++) {
-      var spawn = chooseSpawn(1, 4);
+      var spawn = chooseSpawn(1, 3);
       var randomX = Math.random() * 300;
       var randomY = Math.random() * 300;
       var enemy = enemies.create(spawn.x + randomX, spawn.y + randomY, 'flashlight-enemy');
@@ -95,7 +115,7 @@ Game.LevelOutside.prototype = {
     shotgunEnemies.enableBody = true;
     shotgunEnemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < shotgunEnemiesTotal; i++) {
-      var spawn = chooseSpawn(1, 4);
+      var spawn = chooseSpawn(1, 3);
       var randomX = Math.random() * 300;
       var randomY = Math.random() * 300;
       var shotgunEnemy = shotgunEnemies.create(spawn.x + randomX, spawn.y + randomY, 'shotgun-enemy');
@@ -125,7 +145,11 @@ Game.LevelOutside.prototype = {
       down: game.input.keyboard.addKey(Phaser.Keyboard.S),
       left: game.input.keyboard.addKey(Phaser.Keyboard.A),
       right: game.input.keyboard.addKey(Phaser.Keyboard.D),
-      shoot: this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
+      shoot: this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
+      pistol: game.input.keyboard.addKey(Phaser.Keyboard.U),
+      rifle: game.input.keyboard.addKey(Phaser.Keyboard.I),
+      shotgun: game.input.keyboard.addKey(Phaser.Keyboard.O),
+      flashlight: game.input.keyboard.addKey(Phaser.Keyboard.P)
     };
     game.input.keyboard.addKey(Phaser.KeyCode.C).onDown.add(() => {
       this.collisionLayer.visible = !this.collisionLayer.visible;
@@ -184,9 +208,9 @@ Game.LevelOutside.prototype = {
   },
 
   update: function (game) {
-    console.log('here!!!!?!!!');
+
     if (this.cutscene) return;
-    console.log('here????');
+
     let player = this.player;
     // let playerLight = this.playerLight;
     // let fogOfWar = this.fogOfWar;
@@ -236,6 +260,88 @@ Game.LevelOutside.prototype = {
       player.play('move');
     } else {
       player.play('idle');
+    }
+
+    if(playerInteraction.pistol.isDown){
+      if(count1 === 0){
+       count1= count1+1;
+        player.play('pistol-idle');
+        console.log('pistol idle')
+
+      } else if (count1 === 1){
+
+        player.play('pistol-move');
+        console.log('pistol move')
+        
+        count1=count1+1;
+      }
+      else if(count1 === 2){
+        count1=0;
+        player.play('pistol-shoot');
+        console.log('pistol shoot')
+        
+      }
+     
+    }
+  
+    if(playerInteraction.shotgun.isDown){
+      if(count2 === 0){
+        count2=count2+1;
+        player.play('shotgun-idle');
+        console.log('shotgun-idle');
+
+      } else if (count2 === 1){
+
+        player.play('shotgun-move');
+        console.log('shotgun-move');
+        count2=count2+1;
+      }
+      else if(count2 === 2){
+        count2=0;
+        player.play('shotgun-shoot');
+        console.log('shotgun-shoot');
+      }
+
+    }
+
+    if(playerInteraction.rifle.isDown){
+      if(count3 === 0){
+        count3=count3+ 1;
+        player.play('rifle-idle');
+        console.log('rifle-idle');
+
+      } else if (count3 === 1){
+
+        player.play('rifle-move');
+        console.log('rifle-move');
+        count3=count3+1;
+      }
+      else if(count3 === 2){
+        count3=0;
+        player.play('rifle-shoot');
+        console.log('rifle-shoot');
+      }
+     
+    }
+
+    if(playerInteraction.flashlight.isDown){
+    
+      if(count4 === 0){
+        count4=count4+1;
+        player.play('flashlight-idle');
+        console.log('flashlight-idle');
+
+      } else if (count4 === 1){
+
+        player.play('flashlight-move');
+        console.log('flashlight-move');
+        count4 =count4+1;
+      }
+      else if(count4 === 2){
+        count4=0;
+        player.play('flashlight-attack');
+        console.log('flashlight-attack');
+      }
     }
 
     if (Phaser.Rectangle.containsPoint(this.exitRectangle, player.position)) {
@@ -436,8 +542,6 @@ function chooseSpawn(minimum, maximum) {
     return spawn2;
   } else if (number === 3) {
     return spawn3;
-  } else if (number == 4) {
-    return spawn4;
-  }
+  } 
 
 }
