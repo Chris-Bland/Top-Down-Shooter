@@ -114,31 +114,64 @@ Game.LevelOutside.prototype = {
     game.camera.follow(player);
     player.body.collideWorldBounds = true;
 
-    // ******************************* EASYSTAR ******************************//
-// ******************************* EASYSTAR ******************************//
 
-
-easystar = new EasyStar.js();
-easystar.setGrid(collisionLayer);
-easystar.setAcceptableTiles([540]);
-easystar.setIterationsPerCalculation(iterationsPerCalculation);
-if (diagonalsAllowed) {
-  easystar.enableDiagonals();
-}
-if (preferGrass) {
-  easystar.setTileCost(2,99999999999);
-}
-
-startPathfinding(player);
-
-// ******************************* EASYSTAR ******************************//
-// ******************************* EASYSTAR ******************************//
 
 
     spawn1 = map.objects.meta.find(o => o.name == 'spawn1');
     spawn2 = map.objects.meta.find(o => o.name == 'spawn2');
     spawn3 = map.objects.meta.find(o => o.name == 'spawn3');
 
+    // ******************************* EASYSTAR ******************************//
+    // ******************************* EASYSTAR ******************************//
+
+
+    // easystar = new EasyStar.js();
+    // easystar.setGrid(map.layers[1].data);
+    // easystar.setAcceptableTiles([6669]);
+    // easystar.enableDiagonals();
+    // easystar.enableCornerCutting();
+    // easystar.findPath((player.x/32), (player.y/32), 87, 6, function (path) {
+    //   if (path === null) {
+    //     console.log("The path to the destination point was not found.");
+    //   } else {
+    //     for (var i = 0; i < path.length; i++) {
+    //       console.log("P: " + i + ", X: " + path[i].x + ",Y: " + path[i].y);
+    //     }
+    //   }
+    // });
+
+    let walkableTiles = [6669]
+    pathfinder = game.plugins.add(Phaser.Plugin.PathFinderPlugin);
+
+    pathfinder.setGrid(map.layers[2].data, walkableTiles);
+    // findPathTo(2,98, (player.x/32), (player.y/32));
+
+    //         function findPathTo(tilex, tiley, playerx, playery) {
+
+    //               this.pathfinder.setCallbackFunction(function(path) {
+
+    //                   path = path || [];
+    //                   for(var i = 0, ilen = path.length; i < ilen; i++) {
+    //                       map.putTile(46, path[i].x, path[i].y);
+    //                   }
+    //                   blocked = false;
+    //                   let tweenChain = {x: [], y: []}
+    //                   for(var i = 0, ilen = path.length; i < ilen; i++) {
+    //                     tweenChain.x.push(path[i].x * 32);
+    //                     tweenChain.y.push(path[i].y * 32);
+    //                   }
+    //                   player.tween = game.add.tween(player);
+    //                   player.tween.to({ x: tweenChain.x, y: tweenChain.y}, (150 * ilen), "Linear");
+    //                   player.tween.start();
+    //               });
+    //               this.pathfinder.preparePathCalculation([(playerx/32),(playery/32)], [tilex,tiley]);
+    //               // this.pathfinder.preparePathCalculation([93,36], [tilex,tiley]);
+    //               // pathfinder.preparePathCalculation([2,36], [tilex,tiley]);
+    //               this.pathfinder.calculatePath();
+
+    //           }
+    // ******************************* EASYSTAR ******************************//
+    // ******************************* EASYSTAR ******************************//
     enemiesTotal = 15;
     enemies = game.add.group();
     enemies.enableBody = true;
@@ -147,7 +180,7 @@ startPathfinding(player);
       var spawn = chooseSpawn(1, 3);
       var randomX = Math.random() * 300;
       var randomY = Math.random() * 300;
-      var enemy = enemies.create(spawn.x + randomX, spawn.y + randomY, 'flashlight-enemy');
+      var enemy = enemies.create(spawn.x, spawn.y, 'flashlight-enemy');
       enemy.animations.add('melee', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 35, true);
       enemy.animations.add('move', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46], 46, true);
       enemy.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 14, true);
@@ -163,6 +196,33 @@ startPathfinding(player);
     }
     console.log("enemies:", enemies);
     enemies.setAll('health', 100);
+
+    
+    enemies.forEachAlive(function (enemies) {
+  findPathTo(87, 6);
+    });
+    function findPathTo(tilex, tiley) {
+      this.pathfinder.setCallbackFunction(function (path) {
+
+        path = path || [];
+        // for (var i = 0, ilen = path.length; i < ilen; i++) {
+        //   map.putTile(46, path[i].x, path[i].y);
+        // }
+       
+        let tweenChain = { x: [], y: [] }
+        for (var i = 0; i < path.length; i++) {
+          tweenChain.x.push(path[i].x * 32);
+          tweenChain.y.push(path[i].y * 32);
+        }
+        enemy.tween = game.add.tween(enemy);
+        enemy.tween.to({ x: tweenChain.x, y: tweenChain.y }, (150 * path.length), "Linear");
+        enemy.tween.start();
+      });
+      // pathfinder.preparePathCalculation([(enemy.x/32),(enemy.y/32)], [tilex,tiley]);
+      pathfinder.preparePathCalculation([2, 36], [tilex, tiley]);
+      this.pathfinder.calculatePath();
+
+    }
 
     shotgunEnemiesTotal = 15;
     shotgunEnemies = game.add.group();
@@ -274,15 +334,13 @@ startPathfinding(player);
     let playerInteraction = this.playerInteraction;
     let moveSpeed = this.moveSpeed;
     let collisionLayer = this.collisionLayer;
-
-// ******************************* EASYSTAR ******************************//
+    let pathfinder = this.pathfinder;
     // ******************************* EASYSTAR ******************************//
-
-			easystar.calculate();
+    // ******************************* EASYSTAR ******************************//
 
 
     // ******************************* EASYSTAR ******************************//
-// ******************************* EASYSTAR ******************************//
+    // ******************************* EASYSTAR ******************************//
 
     health = player.health;
     maxHealth = player.maxHealth;
@@ -460,6 +518,9 @@ startPathfinding(player);
     //   }
     // }
 
+
+
+
     function updatefogOfWar(playerLight, fogOfWar, player) {
       fogOfWar.context.fillStyle = 'rgb(10, 10, 10)';
       fogOfWar.context.fillRect(0, 0, game.width + 500, game.height + 500);
@@ -528,42 +589,60 @@ startPathfinding(player);
 // ******************************* EASYSTAR ******************************//
 // ******************************* EASYSTAR ******************************//
 
+// function findPathTo(tilex, tiley) {
+
+//       pathfinder.setCallbackFunction(function(path) {
+
+//           path = path || [];
+//           for(var i = 0, ilen = path.length; i < ilen; i++) {
+//               map.putTile(46, path[i].x, path[i].y);
+//           }
+//           blocked = false;
+//       });
+
+//       pathfinder.preparePathCalculation([0,0], [tilex,tiley]);
+//       pathfinder.calculatePath();
+
+//   }
+
+
 function startPathfinding(player) {
   console.log("HERE START", player);
   var closures = [];
   var finished = 0;
 
-    
-    findPathForHero(player, function() {
-      finished++;
-      if (finished == player.length) {
-        if (side == 0) {
-          side = 1 ;
-        } else {
-          side = 0;
-        }
-        board = createGrid(boardWidth, boardHeight);
-        console.log("BOARD: ", board)
-        populateBoardWithObjects(board);
-        easystar.setGrid(board);
-        startPathfinding();
+
+  findPathForHero(player, function () {
+    finished++;
+    if (finished == 1) {
+      if (side == 0) {
+        side = 1;
+      } else {
+        side = 0;
       }
-    });
+      easystar.setGrid(this.collisionLayer);
+      console.log('HERE SET GRID: ', easystar.setGrid(this.collisionLayer));
+      startPathfinding();
+    }
+  });
 };
 
 function findPathForHero(hero, callback) {
   console.log('HERE FIND PATH FOR HERO')
-  easystar.findPath(hero.x, hero.y, 10, 10, function(path) {
+  console.log('hero.x', hero.x);
+  console.log('hero.y', hero.y);
+  easystar.findPath(hero.x, hero.y, 10, 10, function (path) {
+    console.log('PATH: ', path);
     if (!path) {
-      var id = setTimeout(function() {
+      var id = setTimeout(function () {
         findPathForHero(hero, callback);
         delete intervals[id];
-      },10);
+      }, 10);
       intervals[id] = true;
       return;
     }
-    
-    path.splice(0,1);
+
+    path.splice(0, 1);
 
     if (path.length == 0) {
       delete intervals[id];
@@ -572,22 +651,22 @@ function findPathForHero(hero, callback) {
       return;
     }
 
-    var id = setInterval(function() {
+    var id = setInterval(function () {
       hero.x = path[0].x;
       hero.y = path[0].y;
       var offsetX = TILE_WIDTH - hero.sprite.width;
       var offsetY = TILE_HEIGHT - hero.sprite.height;
-      var destinationX = hero.x * TILE_WIDTH + offsetX/2;
-      var destinationY = hero.y * TILE_HEIGHT + offsetY/2;
-      createjs.Tween.get(hero.sprite.position).to({x:destinationX, y:destinationY}, 100); //.call(handleComplete);
-      path.splice(0,1);
+      var destinationX = hero.x * TILE_WIDTH + offsetX / 2;
+      var destinationY = hero.y * TILE_HEIGHT + offsetY / 2;
+      createjs.Tween.get(hero.sprite.position).to({ x: destinationX, y: destinationY }, 100); //.call(handleComplete);
+      path.splice(0, 1);
 
       if (path.length == 0) {
         delete intervals[id];
         clearInterval(id);
         callback();
       }
-    },100);
+    }, 100);
     intervals[id] = true;
   });
 }
