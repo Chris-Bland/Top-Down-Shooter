@@ -26,18 +26,48 @@ var deadShotgunEnemies = 0;
 var day = true;
 var count = 0;
 var fogOfWar;
-var count1=0;
-var count2=0;
-var count3=0
-var count4=0;
+var count1 = 0;
+var count2 = 0;
+var count3 = 0
+var count4 = 0;
 
+var pathfinder;
+var marker;
+var blocked = false;
+var path;
+var walkables;
+
+var SCALE = 1;
+var TILE_WIDTH = 32 * SCALE;
+var TILE_HEIGHT = 32 * SCALE;
+var BOARD_PADDING = 5;
+
+var resizeInterval;
+
+
+//UI Vars
+var preferGrass = false;
+var iterationsPerCalculation = 100;
+var diagonalsAllowed = true;
+
+var displayWidth = 800;
+var displayHeight = 800;
+
+var board;
+var boardWidth;
+var boardHeight;
+
+var boardObjectSprites = [];
+var side = 0;
+var easystar;
+var intervals = {};
 
 
 Game.LevelOutside.prototype = {
   create: function (game) {
     map = this.add.tilemap("outside");
     map.addTilesetImage('large-map', 'large-map');
-    
+
 
 
     let layer = map.createLayer('Base');
@@ -50,8 +80,11 @@ Game.LevelOutside.prototype = {
 
 
 
+
+
+
     // var player = game.add.sprite(100, 240, 'player');
-    var player=game.add.sprite(100, 240, 'player', 'handgun/idle/01.png');
+    var player = game.add.sprite(100, 240, 'player', 'handgun/idle/01.png');
     this.player = player;
     player.MOVE_SPEED = 500;
     player.anchor.set(0.5);
@@ -81,6 +114,27 @@ Game.LevelOutside.prototype = {
     game.camera.follow(player);
     player.body.collideWorldBounds = true;
 
+    // ******************************* EASYSTAR ******************************//
+// ******************************* EASYSTAR ******************************//
+
+
+easystar = new EasyStar.js();
+easystar.setGrid(collisionLayer);
+easystar.setAcceptableTiles([540]);
+easystar.setIterationsPerCalculation(iterationsPerCalculation);
+if (diagonalsAllowed) {
+  easystar.enableDiagonals();
+}
+if (preferGrass) {
+  easystar.setTileCost(2,99999999999);
+}
+
+startPathfinding(player);
+
+// ******************************* EASYSTAR ******************************//
+// ******************************* EASYSTAR ******************************//
+
+
     spawn1 = map.objects.meta.find(o => o.name == 'spawn1');
     spawn2 = map.objects.meta.find(o => o.name == 'spawn2');
     spawn3 = map.objects.meta.find(o => o.name == 'spawn3');
@@ -105,7 +159,7 @@ Game.LevelOutside.prototype = {
       enemy.body.allowGravity = true;
       enemy.scale.setTo(0.3);
       enemy.body.velocity.x = 0,
-      enemy.body.velocity.y = 0
+        enemy.body.velocity.y = 0
     }
     console.log("enemies:", enemies);
     enemies.setAll('health', 100);
@@ -219,7 +273,16 @@ Game.LevelOutside.prototype = {
     let keyboardCursors = this.keyboardCursors;
     let playerInteraction = this.playerInteraction;
     let moveSpeed = this.moveSpeed;
- 
+    let collisionLayer = this.collisionLayer;
+
+// ******************************* EASYSTAR ******************************//
+    // ******************************* EASYSTAR ******************************//
+
+			easystar.calculate();
+
+
+    // ******************************* EASYSTAR ******************************//
+// ******************************* EASYSTAR ******************************//
 
     health = player.health;
     maxHealth = player.maxHealth;
@@ -235,7 +298,7 @@ Game.LevelOutside.prototype = {
     game.physics.arcade.overlap(enemies, player, meleePlayer);
     game.physics.arcade.overlap(player, shotgunEnemyBullets, this.playerShot, null, this);
 
-    function meleePlayer () {
+    function meleePlayer() {
       game.camera.shake(0.005, 500);
       player.health -= 1;
     }
@@ -262,83 +325,83 @@ Game.LevelOutside.prototype = {
       player.play('idle');
     }
 
-    if(playerInteraction.pistol.isDown){
-      if(count1 === 0){
-       count1= count1+1;
+    if (playerInteraction.pistol.isDown) {
+      if (count1 === 0) {
+        count1 = count1 + 1;
         player.play('pistol-idle');
         console.log('pistol idle')
 
-      } else if (count1 === 1){
+      } else if (count1 === 1) {
 
         player.play('pistol-move');
         console.log('pistol move')
-        
-        count1=count1+1;
+
+        count1 = count1 + 1;
       }
-      else if(count1 === 2){
-        count1=0;
+      else if (count1 === 2) {
+        count1 = 0;
         player.play('pistol-shoot');
         console.log('pistol shoot')
-        
+
       }
-     
+
     }
-  
-    if(playerInteraction.shotgun.isDown){
-      if(count2 === 0){
-        count2=count2+1;
+
+    if (playerInteraction.shotgun.isDown) {
+      if (count2 === 0) {
+        count2 = count2 + 1;
         player.play('shotgun-idle');
         console.log('shotgun-idle');
 
-      } else if (count2 === 1){
+      } else if (count2 === 1) {
 
         player.play('shotgun-move');
         console.log('shotgun-move');
-        count2=count2+1;
+        count2 = count2 + 1;
       }
-      else if(count2 === 2){
-        count2=0;
+      else if (count2 === 2) {
+        count2 = 0;
         player.play('shotgun-shoot');
         console.log('shotgun-shoot');
       }
 
     }
 
-    if(playerInteraction.rifle.isDown){
-      if(count3 === 0){
-        count3=count3+ 1;
+    if (playerInteraction.rifle.isDown) {
+      if (count3 === 0) {
+        count3 = count3 + 1;
         player.play('rifle-idle');
         console.log('rifle-idle');
 
-      } else if (count3 === 1){
+      } else if (count3 === 1) {
 
         player.play('rifle-move');
         console.log('rifle-move');
-        count3=count3+1;
+        count3 = count3 + 1;
       }
-      else if(count3 === 2){
-        count3=0;
+      else if (count3 === 2) {
+        count3 = 0;
         player.play('rifle-shoot');
         console.log('rifle-shoot');
       }
-     
+
     }
 
-    if(playerInteraction.flashlight.isDown){
-    
-      if(count4 === 0){
-        count4=count4+1;
+    if (playerInteraction.flashlight.isDown) {
+
+      if (count4 === 0) {
+        count4 = count4 + 1;
         player.play('flashlight-idle');
         console.log('flashlight-idle');
 
-      } else if (count4 === 1){
+      } else if (count4 === 1) {
 
         player.play('flashlight-move');
         console.log('flashlight-move');
-        count4 =count4+1;
+        count4 = count4 + 1;
       }
-      else if(count4 === 2){
-        count4=0;
+      else if (count4 === 2) {
+        count4 = 0;
         player.play('flashlight-attack');
         console.log('flashlight-attack');
       }
@@ -351,7 +414,7 @@ Game.LevelOutside.prototype = {
     player.rotation = game.physics.arcade.angleToPointer(player);
 
     enemies.forEachAlive(function (enemies) {
-        enemies.body.collideWorldBounds = true,
+      enemies.body.collideWorldBounds = true,
         enemies.body.velocity.x = 0,
         enemies.body.velocity.y = 0,
         enemies.rotation = game.physics.arcade.angleToXY(enemies, player.x, player.y);
@@ -387,8 +450,8 @@ Game.LevelOutside.prototype = {
     //     day = !day;
     //   }
     //   if (day === false) {
-        // updatefogOfWar(playerLight, fogOfWar, player);
-        
+    // updatefogOfWar(playerLight, fogOfWar, player);
+
     //     enemies.moveSpeed = 1000;
     //   }
     //   else if (day === true) {
@@ -396,7 +459,7 @@ Game.LevelOutside.prototype = {
     //     enemies.moveSpeed = 150
     //   }
     // }
-    
+
     function updatefogOfWar(playerLight, fogOfWar, player) {
       fogOfWar.context.fillStyle = 'rgb(10, 10, 10)';
       fogOfWar.context.fillRect(0, 0, game.width + 500, game.height + 500);
@@ -432,7 +495,7 @@ Game.LevelOutside.prototype = {
     shotgunEnemyBullets.kill();
   },
 
-  bulletCollide: function(playerBullets){
+  bulletCollide: function (playerBullets) {
 
     playerBullets.kill();
   },
@@ -461,6 +524,79 @@ Game.LevelOutside.prototype = {
     }
   }
 }
+
+// ******************************* EASYSTAR ******************************//
+// ******************************* EASYSTAR ******************************//
+
+function startPathfinding(player) {
+  console.log("HERE START", player);
+  var closures = [];
+  var finished = 0;
+
+    
+    findPathForHero(player, function() {
+      finished++;
+      if (finished == player.length) {
+        if (side == 0) {
+          side = 1 ;
+        } else {
+          side = 0;
+        }
+        board = createGrid(boardWidth, boardHeight);
+        console.log("BOARD: ", board)
+        populateBoardWithObjects(board);
+        easystar.setGrid(board);
+        startPathfinding();
+      }
+    });
+};
+
+function findPathForHero(hero, callback) {
+  console.log('HERE FIND PATH FOR HERO')
+  easystar.findPath(hero.x, hero.y, 10, 10, function(path) {
+    if (!path) {
+      var id = setTimeout(function() {
+        findPathForHero(hero, callback);
+        delete intervals[id];
+      },10);
+      intervals[id] = true;
+      return;
+    }
+    
+    path.splice(0,1);
+
+    if (path.length == 0) {
+      delete intervals[id];
+      clearInterval(id);
+      callback();
+      return;
+    }
+
+    var id = setInterval(function() {
+      hero.x = path[0].x;
+      hero.y = path[0].y;
+      var offsetX = TILE_WIDTH - hero.sprite.width;
+      var offsetY = TILE_HEIGHT - hero.sprite.height;
+      var destinationX = hero.x * TILE_WIDTH + offsetX/2;
+      var destinationY = hero.y * TILE_HEIGHT + offsetY/2;
+      createjs.Tween.get(hero.sprite.position).to({x:destinationX, y:destinationY}, 100); //.call(handleComplete);
+      path.splice(0,1);
+
+      if (path.length == 0) {
+        delete intervals[id];
+        clearInterval(id);
+        callback();
+      }
+    },100);
+    intervals[id] = true;
+  });
+}
+
+// ******************************* EASYSTAR ******************************//
+// ******************************* EASYSTAR ******************************//
+
+
+
 
 function playerLevelUpgrades(player) {
   if (playerLevel >= 2) {
@@ -515,6 +651,7 @@ function fireBullets(shotgunEnemies, player, game) {
     }
   }
 }
+
 function calculateDeadEnemies(enemies) {
   if (deadEnemies < enemies.countDead()) {
     deadEnemies = enemies.countDead();
@@ -542,6 +679,6 @@ function chooseSpawn(minimum, maximum) {
     return spawn2;
   } else if (number === 3) {
     return spawn3;
-  } 
+  }
 
 }

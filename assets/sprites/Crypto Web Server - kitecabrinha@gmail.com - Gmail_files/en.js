@@ -1,1 +1,0 @@
-(function() { google.elements.keyboard.loadme({id:"en",title:"English",mappings:{",c":{"":"`1234567890-=qwertyuiop[]\\asdfghjkl;'zxcvbnm,./"},"s,sc":{"":'~!@#$%^&*()_+QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?'},"l,cl":{"":"`1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./"},"sl,scl":{"":'~!@#$%^&*()_+qwertyuiop{}|asdfghjkl:"zxcvbnm<>?'}}}); })()
