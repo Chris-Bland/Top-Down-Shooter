@@ -172,15 +172,15 @@ Game.LevelOutside.prototype = {
     //           }
     // ******************************* EASYSTAR ******************************//
     // ******************************* EASYSTAR ******************************//
-    enemiesTotal = 15;
+    enemiesTotal = 50;
     enemies = game.add.group();
     enemies.enableBody = true;
     enemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < enemiesTotal; i++) {
       var spawn = chooseSpawn(1, 3);
-      var randomX = Math.random() * 300;
-      var randomY = Math.random() * 300;
-      var enemy = enemies.create(spawn.x, spawn.y, 'flashlight-enemy');
+      var randomX = Math.random() * 120;
+      var randomY = Math.random() * 50;
+      var enemy = enemies.create(spawn.x + randomX, spawn.y + randomY, 'flashlight-enemy');
       enemy.animations.add('melee', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 35, true);
       enemy.animations.add('move', [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46], 46, true);
       enemy.animations.add('idle', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], 14, true);
@@ -192,23 +192,23 @@ Game.LevelOutside.prototype = {
       enemy.body.allowGravity = true;
       enemy.scale.setTo(0.3);
       enemy.body.velocity.x = 0,
-        enemy.body.velocity.y = 0
+      enemy.body.velocity.y = 0
+      findPathTo(87, 6, enemy.x, enemy.y, enemy);
     }
-    console.log("enemies:", enemies);
+    
     enemies.setAll('health', 100);
 
-    
-    enemies.forEachAlive(function (enemies) {
-  findPathTo(87, 6);
-    });
-    function findPathTo(tilex, tiley) {
-      this.pathfinder.setCallbackFunction(function (path) {
-
+    function findPathTo(tilex, tiley, enemyx, enemyy, enemy) {
+      
+      enemyy = Math.floor(enemyy/32);
+      enemyx = Math.floor(enemyx/32);
+      console.log('ENEMY X: ', enemyx);
+      console.log('ENEMY Y', enemyy);
+      pathfinder.setCallbackFunction(function (path) {
         path = path || [];
         // for (var i = 0, ilen = path.length; i < ilen; i++) {
         //   map.putTile(46, path[i].x, path[i].y);
         // }
-       
         let tweenChain = { x: [], y: [] }
         for (var i = 0; i < path.length; i++) {
           tweenChain.x.push(path[i].x * 32);
@@ -218,20 +218,18 @@ Game.LevelOutside.prototype = {
         enemy.tween.to({ x: tweenChain.x, y: tweenChain.y }, (150 * path.length), "Linear");
         enemy.tween.start();
       });
-      // pathfinder.preparePathCalculation([(enemy.x/32),(enemy.y/32)], [tilex,tiley]);
-      pathfinder.preparePathCalculation([2, 36], [tilex, tiley]);
-      this.pathfinder.calculatePath();
-
+      pathfinder.preparePathCalculation([enemyx, enemyy], [tilex, tiley]);
+      pathfinder.calculatePath();
     }
 
-    shotgunEnemiesTotal = 15;
+    shotgunEnemiesTotal = 50;
     shotgunEnemies = game.add.group();
     shotgunEnemies.enableBody = true;
     shotgunEnemies.physicsBodyType = Phaser.Physics.ARCADE;
     for (var i = 0; i < shotgunEnemiesTotal; i++) {
       var spawn = chooseSpawn(1, 3);
-      var randomX = Math.random() * 300;
-      var randomY = Math.random() * 300;
+      var randomX = Math.random() * 220;
+      var randomY = Math.random() * 70;
       var shotgunEnemy = shotgunEnemies.create(spawn.x + randomX, spawn.y + randomY, 'shotgun-enemy');
       shotgunEnemy.animations.add('shoot', [7, 15, 23], 7, true);
       shotgunEnemy.animations.add('move', [0, 4, 5, 6, 12, 13, 14, 19, 20, 21, 22], 0, true);
@@ -244,7 +242,8 @@ Game.LevelOutside.prototype = {
       shotgunEnemy.body.allowGravity = true;
       shotgunEnemy.scale.setTo(0.3);
       shotgunEnemy.body.velocity.x = 0,
-        shotgunEnemy.body.velocity.y = 0
+      shotgunEnemy.body.velocity.y = 0
+      findPathTo(87, 6, shotgunEnemy.x, shotgunEnemy.y, shotgunEnemy);
     }
     shotgunEnemies.setAll('health', 100);
 
@@ -322,9 +321,7 @@ Game.LevelOutside.prototype = {
   },
 
   update: function (game) {
-
     if (this.cutscene) return;
-
     let player = this.player;
     // let playerLight = this.playerLight;
     // let fogOfWar = this.fogOfWar;

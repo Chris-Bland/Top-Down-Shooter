@@ -17,7 +17,7 @@
          "name":"Collision",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":100,
          "x":0,
          "y":0
@@ -39,7 +39,7 @@
          "name":"BulletCollision",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":100,
          "x":0,
          "y":0
@@ -50,7 +50,7 @@
          "name":"Foreground",
          "opacity":1,
          "type":"tilelayer",
-         "visible":false,
+         "visible":true,
          "width":100,
          "x":0,
          "y":0
@@ -93,37 +93,26 @@
                  "y":162.447
                 }, 
                 {
-                 "height":116.649,
-                 "id":15,
-                 "name":"spawn1",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":215.624,
-                 "x":2919.76,
-                 "y":3036.41
-                }, 
-                {
-                 "height":38.883,
+                 "height":16.9118763339607,
                  "id":17,
                  "name":"spawn2",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":81.3008,
-                 "x":38.883,
+                 "width":12.248697049592,
+                 "x":107.935102950408,
                  "y":3128.31
                 }, 
                 {
-                 "height":116.649,
+                 "height":28.7645053358443,
                  "id":18,
                  "name":"spawn3",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":109.579,
-                 "x":268.646,
-                 "y":480.735
+                 "width":27.9719692404268,
+                 "x":350.253030759573,
+                 "y":568.619494664156
                 }, 
                 {
                  "height":42.6916,
@@ -1034,14 +1023,36 @@
                  "width":0,
                  "x":2561.67,
                  "y":193.064
+                }, 
+                {
+                 "height":25.1098556183301,
+                 "id":194,
+                 "name":"spawn1",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":25.1098556183301,
+                 "x":2699.3094789705,
+                 "y":2809.16509730069
+                }, 
+                {
+                 "height":0,
+                 "id":195,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":3075.95731324545,
+                 "y":2284.99686126805
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
- "nextobjectid":194,
+ "nextobjectid":196,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.2",
