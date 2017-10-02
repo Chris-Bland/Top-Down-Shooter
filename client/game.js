@@ -1,4 +1,4 @@
-var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, document.getElementById('game'));
+var game = new Phaser.Game(800,800);
 game.state.add('Boot', Boot);
 game.state.add('Preloader', Preloader);
 game.state.add('MainMenu', MainMenu);
