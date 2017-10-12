@@ -29,9 +29,14 @@ LevelOutside.prototype = {
             outsideText.prototype.create(this);
 
             outsideEvents.prototype.openingTween(this);
+
+
+
+
         },
 
         update: function () {
+           
 
             // console.log(this.game.input.activePointer.x);
             // console.log(this.game.input.activePointer.y);

@@ -60,6 +60,7 @@ outsideMap.prototype = {
     layForeground: function(State){
 
         let layerForeground = State.map.createLayer('Foreground');
+        State.map.layerForeground = layerForeground;
         layerForeground.resizeWorld();
 
     }

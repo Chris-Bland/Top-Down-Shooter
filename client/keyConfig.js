@@ -16,6 +16,15 @@ function keyConfig(State){
     };
     State.game.input.keyboard.addKey(Phaser.KeyCode.C).onDown.add(() => {
         State.map.collisionLayer.visible = !State.map.collisionLayer.visible;
+        State.map.layerForeground.visible = !State.map.layerForeground.visible;
+    });
+    State.game.input.keyboard.addKey(Phaser.KeyCode.B).onDown.add(() => {
+        State.map.bulletCollisionLayer.visible = !State.map.bulletCollisionLayer.visible;
+        State.map.layerForeground.visible = !State.map.layerForeground.visible;
+    });
+    State.game.input.keyboard.addKey(Phaser.KeyCode.V).onDown.add(() => {
+        State.map.aStarCollisionLayer.visible = !State.map.aStarCollisionLayer.visible;
+        State.map.layerForeground.visible = !State.map.layerForeground.visible;
     });
     State.showDebug = false;
     State.game.input.keyboard.addKey(Phaser.KeyCode.D).onDown.add(() => {
