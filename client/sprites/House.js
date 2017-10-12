@@ -1,9 +1,32 @@
-function House (State) {
 
-    //Catch the House location  :: let house = map.objects.meta.find(o => o.name == 'house');
-    ///Make the rectangle on it :: LevelOutside.house = new Phaser.Rectangle(house.x, house.y, house.width, house.height);
-    //Give it health            :: LevelOutside.house.health = 1000;
+function House () {}
+
+House.prototype = {
+
+    create: function(State){
+
+        State.house = State.map.houseRectangle;
+        State.house.maxHealth = 10000;
+        State.house.health = State.house.maxHealth;
+
+    },
+
+    update: function(State){
+
+
+        if(State.boss){
+            State.game.physics.arcade.collide(State.house, State.boss, function(){State.house.health -= 5;});
+        }
+        State.game.physics.arcade.collide(State.house, State.enemies, function(){State.house.health -= 1;});
+        State.game.physics.arcade.collide(State.house, State.shotgunEnemies, function(){State.house.health -= 3;});
+        State.game.physics.arcade.collide(State.house, State.pistolEnemies, function(){State.house.health -= 2;});
+        State.game.physics.arcade.collide(State.house, State.rifleEnemies, function(){State.house.health -= 4;});
+        
+
+        if(State.house.health < 1){
+            State.game.state.start('levelHouse');
+        }
+
+    }
 
 }
-
-//Set a houseUpdate function to start a cutscene stating the user lost and starts the main menu state

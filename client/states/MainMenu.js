@@ -1,13 +1,6 @@
 var MainMenu = function(){};
 
 MainMenu.prototype.create = function(){
-    background = game.add.sprite(0,0);
-    background.width = 800;
-    background.height = 800;
-    filter = game.add.filter('Fire', window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio);
-    filter.alpha = 0.0;
-    background.filters = [filter];
-
     this.createButton(game,"Play",game.world.centerX,game.world.centerY +32, 300, 100, function(){
         game.state.start('levelOutside');
     });
@@ -19,7 +12,6 @@ MainMenu.prototype.create = function(){
 };
 
 MainMenu.prototype.update = function(){
-    filter.update();
 };
 
 MainMenu.prototype.createButton = function(game,string,x,y,width,height,callback){
