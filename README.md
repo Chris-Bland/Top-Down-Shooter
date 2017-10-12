@@ -1,5 +1,10 @@
 # A Top Down Tower Defense Horror Survival Game with a Fog of War Element
 
+## To Play Alpha on your local device (hosted soon to come!)
+*NPM Install
+*NPM Start
+*Localhost:9000
+*Try to survive!
 
 ## Tech Stack:
 
