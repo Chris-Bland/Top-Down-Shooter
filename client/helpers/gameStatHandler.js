@@ -11,7 +11,7 @@ gameStatHandler.prototype = {
         this.playerLevel = 1;
         this.mercsAmount = 1;
         this.currency = 1;
-        this.towersAmount = 5;
+        this.towersAmount = 10;
 
     },
 

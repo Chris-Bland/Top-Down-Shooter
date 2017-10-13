@@ -19,10 +19,12 @@ LevelOutside.prototype = {
             House.prototype.create(this);
             Player.prototype.create(this);
             Merc.prototype.create(this);
-            Tower.prototype.create(this);
-            waveHandler.prototype.create(this);
+           
+           
 
             outsideMap.prototype.layForeground(this);
+            Tower.prototype.create(this);
+            waveHandler.prototype.create(this);
 
             keyConfig(this);
 

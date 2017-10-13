@@ -8,7 +8,7 @@ Flash.prototype = {
 
         //bullet creation based on type
         //damage set on type
-        return Bullet.prototype.create(State, 1, null, 10, 50);
+        return Bullet.prototype.create(State, 1, null, 50, 150);
 
     },
 
