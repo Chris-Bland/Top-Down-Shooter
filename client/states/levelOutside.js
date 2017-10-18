@@ -19,8 +19,6 @@ LevelOutside.prototype = {
             House.prototype.create(this);
             Player.prototype.create(this);
             Merc.prototype.create(this);
-           
-           
 
             outsideMap.prototype.layForeground(this);
             Tower.prototype.create(this);
@@ -32,19 +30,10 @@ LevelOutside.prototype = {
 
             outsideEvents.prototype.openingTween(this);
 
-
-
-
         },
 
         update: function () {
-           
-
-            // console.log(this.game.input.activePointer.x);
-            // console.log(this.game.input.activePointer.y);
-
             outsideText.prototype.update(this);
-
             //sprite updates
             House.prototype.update(this);
             Player.prototype.update(this);

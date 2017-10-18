@@ -18,17 +18,20 @@ Tower.prototype = {
                     tower.body.collideWorldBounds = true;
                     tower.shootTime = 0;
 
-                    if(State.player.playerlevel < 10){
+                    let level = State.player.playerlevel;
+    
+
+                    if(level <= 10){
                         tower.gun = Rifle.prototype;
                         tower.bullets = tower.gun.create(State, tower);
                     }
 
-                    else if(State.player.playerlevel < 20){
+                    else if(level > 10 || level <= 20){
                         tower.gun = Aoe.prototype;
                         tower.bullets = tower.gun.create(State, tower);
                     }
 
-                    else if(State.player.playerlevel < 30){
+                    else if(level >21 || level <= 30){
                         tower.gun = Sniper.prototype;
                         tower.bullets = tower.gun.create(State, tower);
                     }
