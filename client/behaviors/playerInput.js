@@ -26,6 +26,8 @@ behaviorsObj.prototype.playerInput = function(State){
             State.player.idle = pistolIdle(State);
             State.player.move = pistolMove(State);
             State.player.shoot = pistolShoot(State);
+            resetSelected(State);
+            State.selectedPistol.visible = true;
         };
         if (State.playerInteraction.rifle.isDown) {
             State.player.gun = State.player.rifle;
@@ -33,6 +35,8 @@ behaviorsObj.prototype.playerInput = function(State){
             State.player.idle = rifleIdle(State);
             State.player.move = rifleMove(State);
             State.player.shoot = rifleShoot(State);
+            resetSelected(State);
+            State.selectedRifle.visible = true;
         };
         if (State.playerInteraction.shotgun.isDown) {
             State.player.gun = State.player.shotgun;
@@ -40,6 +44,8 @@ behaviorsObj.prototype.playerInput = function(State){
             State.player.idle = shotgunIdle(State);
             State.player.move = shotgunMove(State);
             State.player.shoot = shotgunShoot(State);
+            resetSelected(State);
+            State.selectedShotgun.visible = true;
         };
         if (State.playerInteraction.flash.isDown) {
             State.player.gun = State.player.flash;
@@ -47,7 +53,10 @@ behaviorsObj.prototype.playerInput = function(State){
             State.player.idle = flashlightIdle(State);
             State.player.move = flashlightMove(State);
             State.player.shoot = flashlightAttack(State);
+            resetSelected(State);
+            State.selectedLaser.visible = true;
         };
+    
     
         //shoot on mouse click
         if (State.game.input.mousePointer.isDown) {
@@ -65,6 +74,12 @@ behaviorsObj.prototype.playerInput = function(State){
         //Send to menu
         if (State.playerInteraction.menu.isDown) State.game.state.start('MainMenu');
 
+        function resetSelected(State){
+            State.selectedLaser.visible = false;
+            State.selectedRifle.visible = false;
+            State.selectedShotgun.visible = false;
+            State.selectedPistol.visible = false;
+        };
         function pistolIdle(State){
 
             State.player.play('pistol-idle');
