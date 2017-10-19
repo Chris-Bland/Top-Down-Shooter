@@ -3,35 +3,55 @@ var outsideText = function (){};
 outsideText.prototype = {
 
     create: function(State){
+        // State.hud = State.game.add.sprite(0,0, 'hero-ui');
+        // State.hud.fixedToCamera = true;
+
 
         State.text = {};
-        State.text.healthText = State.game.add.text(0, 0, "health", { fontSize: '32px', fill: '#fff' });
+
+        State.text.healthText = State.game.add.text(140, 0, "health", { fontSize: '20px', fill: '#fff' });
         State.text.healthText.fixedToCamera = true;
-        State.text.levelText = State.game.add.text(0, 30, "level", { fontSize: '32px', fill: '#fff' });
+        State.text.healthText.anchor.setTo(0.5,0);
+        State.text.levelText = State.game.add.text(10, 30, "level", { fontSize: '20px', fill: '#fff' });
         State.text.levelText.fixedToCamera = true;
-        State.text.XPText = State.game.add.text(0, 60, "XP", { fontSize: '32px', fill: '#fff' });
+        State.text.XPText = State.game.add.text(140, 20, "XP", { fontSize: '20px', fill: '#fff' });
         State.text.XPText.fixedToCamera = true;
+        State.text.XPText.anchor.setTo(.5,0);
         State.text.waveText = State.game.add.text(1000, 0, "wave", { fontSize: '32px', fill: '#fff' });
         State.text.waveText.fixedToCamera = true;
         State.text.mercText = State.game.add.text(500, 30, "merc", { fontSize: '32px', fill: '#fff' });
         State.text.mercText.fixedToCamera = true;
-        State.text.currencyText = State.game.add.text(500, 0, "currency", { fontSize: '32px', fill: '#fff' });
+        State.text.currencyText = State.game.add.text(540, 0, "currency", { fontSize: '32px', fill: '#fff' });
         State.text.currencyText.fixedToCamera = true;
         State.text.bossText = State.game.add.text(1000, 30, "boss", { fontSize: '32px', fill: '#fff' });
         State.text.bossText.fixedToCamera = true;
         //Set text for house
-        //Add some color??
+
+        // State.hud = State.game.add.sprite(0,0, 'hero-ui');
+        // State.hud.fixedToCamera = true;
+
+        // State.weaponHud = State.game.add.sprite(500,630, 'weapon-ui');
+        // State.weaponHud.fixedToCamera = true;
+
+        // State.bit = State.game.add.sprite(500,0, 'currency-icon');
+        // State.bit.fixedToCamera = true;
+        // State.bit.scale.setTo(0.11);
+  
+
+
+
 
     },
 
     update: function(State){
 
-        State.text.healthText.text = 'Player Health: ' + State.player.health + "/" + State.player.maxHealth;
-        State.text.levelText.text = 'Player Level: ' + State.player.playerLevel;
-        State.text.XPText.text = 'Player XP: ' + State.player.playerXP + "/" + Math.pow(2, (State.player.playerLevel+1));
+        State.text.healthText.text = State.player.health + "/" + State.player.maxHealth;
+        
+        State.text.levelText.text = 'Lvl: ' + State.player.playerLevel;
+        State.text.XPText.text = State.player.playerXP + "/" + Math.pow(2, (State.player.playerLevel+1));
         State.text.waveText.text = 'Wave: ' + State.wave;
         State.text.mercText.text = 'Mercs: ' + (State.mercs.length - State.mercs.countDead()) + "/" + State.mercs.length;
-        State.text.currencyText.text = 'Currency: ' + State.player.currency;
+        State.text.currencyText.text =State.player.currency;
         if((this.wave * 10) + (this.wave * 5) + Math.floor(this.wave * .35) + Math.floor(this.wave * .2) + 1 == State.waveEnemies.length){
             State.text.bossText.text = 'Boss Health: ' + State.boss.health + "/" + State.boss.maxHealth;
         }else{

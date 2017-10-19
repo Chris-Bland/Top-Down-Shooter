@@ -34,6 +34,13 @@ Preloader.prototype.preload = function () {
     this.load.audio('shotgun', './client/assets/audio/shotgun.mp3');
     this.load.audio('laser', './client/assets/audio/laser.mp3');
     this.load.audio('boss-spawn', './client/assets/audio/bossSpawn.mp3');
+    
+
+    this.load.image('hero-ui', './client/assets/ui/hud.png');
+    this.load.image('weapon-ui', './client/assets/ui/weaponHud.png');
+    this.load.image('selected-ui', './client/assets/ui/selected.png');
+
+    this.load.image('currency-icon', './client/assets/ui/bit.png');
 
 
 
