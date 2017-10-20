@@ -3,10 +3,6 @@ var outsideText = function (){};
 outsideText.prototype = {
 
     create: function(State){
-        // State.hud = State.game.add.sprite(0,0, 'hero-ui');
-        // State.hud.fixedToCamera = true;
-
-
         State.text = {};
 
         State.text.healthText = State.game.add.text(140, 0, "health", { fontSize: '20px', fill: '#fff' });
@@ -27,26 +23,11 @@ outsideText.prototype = {
         State.text.bossText.fixedToCamera = true;
         //Set text for house
 
-        // State.hud = State.game.add.sprite(0,0, 'hero-ui');
-        // State.hud.fixedToCamera = true;
-
-        // State.weaponHud = State.game.add.sprite(500,630, 'weapon-ui');
-        // State.weaponHud.fixedToCamera = true;
-
-        // State.bit = State.game.add.sprite(500,0, 'currency-icon');
-        // State.bit.fixedToCamera = true;
-        // State.bit.scale.setTo(0.11);
-  
-
-
-
-
     },
 
     update: function(State){
 
         State.text.healthText.text = State.player.health + "/" + State.player.maxHealth;
-        
         State.text.levelText.text = 'Lvl: ' + State.player.playerLevel;
         State.text.XPText.text = State.player.playerXP + "/" + Math.pow(2, (State.player.playerLevel+1));
         State.text.waveText.text = 'Wave: ' + State.wave;

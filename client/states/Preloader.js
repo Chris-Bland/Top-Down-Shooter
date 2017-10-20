@@ -19,6 +19,7 @@ Preloader.prototype.preload = function () {
         './client/assets/animations/player.json'
     );
     this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');
+    this.load.image('tower', './client/assets/sprites/tower.png');    
     this.load.atlas('flashlight-enemy', './client/assets/sprites/flashlight-enemy.png', './client/assets/sprites/flashlight-enemy.json');
     this.load.atlas('shotgun-enemy', './client/assets/sprites/shotgun-enemy.png', './client/assets/sprites/shotgun-enemy.json');
 
@@ -39,6 +40,9 @@ Preloader.prototype.preload = function () {
     this.load.image('hero-ui', './client/assets/ui/hud.png');
     this.load.image('weapon-ui', './client/assets/ui/weaponHud.png');
     this.load.image('selected-ui', './client/assets/ui/selected.png');
+    this.load.image('boss-ui', './client/assets/ui/boss.png');  
+    this.load.image('boss-health-bar', './client/assets/ui/boss-health-ui.png');     
+    
 
     this.load.image('currency-icon', './client/assets/ui/bit.png');
 
