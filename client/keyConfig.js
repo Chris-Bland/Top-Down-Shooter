@@ -9,8 +9,8 @@ function keyConfig(State){
       right: State.game.input.keyboard.addKey(Phaser.Keyboard.D),
       shoot: State.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR),
       pistol: State.game.input.keyboard.addKey(Phaser.Keyboard.ONE),
-      rifle: State.game.input.keyboard.addKey(Phaser.Keyboard.TWO),
-      shotgun: State.game.input.keyboard.addKey(Phaser.Keyboard.THREE),
+      shotgun: State.game.input.keyboard.addKey(Phaser.Keyboard.TWO),
+      rifle: State.game.input.keyboard.addKey(Phaser.Keyboard.THREE),
       flash: State.game.input.keyboard.addKey(Phaser.Keyboard.FOUR),
       menu: State.game.input.keyboard.addKey(Phaser.Keyboard.M)
     };

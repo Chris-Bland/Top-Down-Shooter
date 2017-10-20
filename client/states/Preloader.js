@@ -31,25 +31,38 @@ Preloader.prototype.preload = function () {
 
     this.load.audio('pistol', './client/assets/audio/pistol.mp3');
     this.load.audio('rifle', './client/assets/audio/rifle.mp3');
-    this.load.audio('rifle-echo', './client/assets/audio/rifle-echo.mp3');
+    this.load.audio('rifle-echo', './client/assets/audio/rifle-short.mp3');
     this.load.audio('shotgun', './client/assets/audio/shotgun.mp3');
     this.load.audio('laser', './client/assets/audio/laser.mp3');
     this.load.audio('boss-spawn', './client/assets/audio/bossSpawn.mp3');
     
 
     this.load.image('hero-ui', './client/assets/ui/hud.png');
+    this.load.image('hero-ui-xp-tic', './client/assets/ui/xp-ui.png');     
+    this.load.image('hero-ui-health-tic', './client/assets/ui/health-ui.png');     
+
+    this.load.image('level-ui', './client/assets/ui/level-ui.png'); 
+
     this.load.image('weapon-ui', './client/assets/ui/weaponHud.png');
     this.load.image('selected-ui', './client/assets/ui/selected.png');
+
     this.load.image('boss-ui', './client/assets/ui/boss.png');  
     this.load.image('boss-health-bar', './client/assets/ui/boss-health-ui.png');     
+    this.load.image('boss-health-tic', './client/assets/ui/boss-ui-health.png');     
     
-
-    this.load.image('currency-icon', './client/assets/ui/bit.png');
+    this.load.image('wave-ui', './client/assets/ui/wave-ui.png');     
+    
+    this.load.image('merc-ui', './client/assets/ui/merc-ui.png');     
+    this.load.image('merc-ui-red', './client/assets/ui/merc-ui-red.png');     
+    this.load.image('merc-ui-green', './client/assets/ui/merc-ui-green.png');     
+    
+    this.load.image('currency-icon', './client/assets/ui/btc.png');
 
 
 
 };
 
 Preloader.prototype.create = function () {
-    game.state.start('MainMenu');
+    // game.state.start('MainMenu');
+    game.state.start('levelOutside');
 };

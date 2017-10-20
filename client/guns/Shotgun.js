@@ -22,6 +22,7 @@ Shotgun.prototype = {
             console.log(target.y);
             if (State.game.time.now > shooter.shootTime) {  
                 let bullet = shooter.bullets.getFirstExists(false);
+                State.shotgunAudio.stop();
                 State.shotgunAudio.play();
                 if (bullet) {
                     bullet.reset(shooter.x, shooter.y);
