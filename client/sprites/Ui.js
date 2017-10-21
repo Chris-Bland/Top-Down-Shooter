@@ -65,7 +65,7 @@ Ui.prototype = {
         State.mercUiGreen1 = State.game.add.sprite(96, 48, 'merc-ui-green');
         State.mercUiGreen1.fixedToCamera = true;
         State.mercUiGreen1.scale.setTo(1);
-        State.mercUiGreen1.visible = true;
+        State.mercUiGreen1.visible = false;
 
         State.mercUiGreen2 = State.game.add.sprite(118, 48, 'merc-ui-green');
         State.mercUiGreen2.fixedToCamera = true;
@@ -85,7 +85,7 @@ Ui.prototype = {
         State.mercUiRed2 = State.game.add.sprite(121, 49, 'merc-ui-red');
         State.mercUiRed2.fixedToCamera = true;
         State.mercUiRed2.scale.setTo(1);
-        State.mercUiRed2.visible = true;
+        State.mercUiRed2.visible = false;
 
         State.mercUiRed3 = State.game.add.sprite(143, 49, 'merc-ui-red');
         State.mercUiRed3.fixedToCamera = true;
@@ -119,6 +119,85 @@ Ui.prototype = {
             State.bossHealthBar.visible = false;
             State.bossUi.visible = false;
             State.bossHealthTic.visible = false;
+        }
+        
+        State.mercMax = 0;
+        if (State.mercs.length > State.mercMax){
+            State.mercMax = State.mercs.length
+        }
+        console.log('mercMax: ', State.mercMax);
+        switch (State.mercMax) {
+            case 1:
+
+                if (State.mercs.countDead() === 1){
+                    resetMercUi(State);
+                    State.mercUiRed1.visible = true;
+                    console.log('case 1 if');
+                }else {
+                    resetMercUi(State);
+                    State.mercUiGreen1.visible = true;
+                    console.log('case 1 else');
+                }
+                break;
+            case 2:
+            if(State.mercs.countDead() === 1){
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true; 
+                State.mercUiRed2.visible = true;
+                console.log('case 2 if');
+            } else if(State.mercs.countDead() === 2){
+                resetMercUi(State);
+                State.mercUiRed1.visible = true;
+                State.mercUiRed2.visible = true;
+                console.log('case 2 else if');
+            } else {
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true;
+                State.mercUiGreen2 = true;
+                console.log('case 2 else');
+            }
+                break;
+            case 3:
+            if(State.mercs.countDead() === 1){
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true; 
+                State.mercUiGreen2.visible = true;
+                State.mercUiRed3.visible = true;
+                console.log('case 3 if');
+
+            } else if(State.mercs.countDead() === 2){
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true;
+                State.mercUiRed2.visible = true;
+                State.mercUiRed3.visble= true;
+                console.log('case 3 else if1 ');
+            } else if(State.mercs.countDead() === 3){
+                resetMercUi(State);
+                State.mercUiRed1.visible = true;
+                State.mercUiRed2.visible = true;
+                State.mercUiRed3.visible = true;
+                console.log('case 3 else if 2');
+            } else {
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true;
+                State.mercUiGreen2.visible = true;
+                State.mercUiGreen3.visible = true;
+                console.log('case 3 else');
+            }
+          
+                break;
+            
+        }
+        function resetMercUi(State){
+            console.log('Reset');
+            State.mercUiGreen1.visible = false;
+            State.mercUiGreen2.visible = false;
+            State.mercUiGreen3.visible = false;
+
+            State.mercUiRed1.visible = false;
+            State.mercUiRed2.visible = false;
+            State.mercUiRed3.visible = false;
+
         }
     }
 
