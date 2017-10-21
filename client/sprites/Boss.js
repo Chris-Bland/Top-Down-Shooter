@@ -25,6 +25,7 @@ Boss.prototype = {
         State.bossSpawn = bossSpawn;
         State.bossSpawn.play();
         behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
+        State.bossAlive = true;
         
         if(State.wave%35 == 0){
             boss.gun = Laser.prototype;

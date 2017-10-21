@@ -40,6 +40,7 @@ LevelOutside.prototype = {
             Player.prototype.update(this);
             Merc.prototype.update(this);
             Tower.prototype.update(this);
+            Ui.prototype.update(this);
             waveHandler.prototype.update(this);
 
         }

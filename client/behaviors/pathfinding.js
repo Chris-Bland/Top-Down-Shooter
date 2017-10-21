@@ -1,8 +1,6 @@
 behaviorsObj.prototype.findPathTo = function (State, tilex, tiley, enemyx, enemyy, enemy) {
     enemyy = Math.floor(enemyy / 32);
     enemyx = Math.floor(enemyx / 32);
-    console.log('ENEMY X: ', enemyx);
-    console.log('ENEMY Y', enemyy);
     State.pathfinder.setCallbackFunction(function (path) {
         path = path || [];
         // uncomment for visual path. Kills performance

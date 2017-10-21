@@ -83,7 +83,6 @@ behaviorsObj.prototype.playerInput = function(State){
         function pistolIdle(State){
 
             State.player.play('pistol-idle');
-
         };
 
         function pistolMove(State){

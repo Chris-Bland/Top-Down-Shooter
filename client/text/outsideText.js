@@ -5,12 +5,12 @@ outsideText.prototype = {
     create: function(State){
         State.text = {};
 
-        State.text.healthText = State.game.add.text(140, 0, "health", { fontSize: '20px', fill: '#fff' });
+        State.text.healthText = State.game.add.text(125, 6, "health", { fontSize: '10px', fill: '#fff' });
         State.text.healthText.fixedToCamera = true;
         State.text.healthText.anchor.setTo(0.5,0);
         State.text.levelText = State.game.add.text(70,48, "level", { fontSize: '15px', fill: '#fff' });
         State.text.levelText.fixedToCamera = true;
-        State.text.XPText = State.game.add.text(140, 20, "XP", { fontSize: '20px', fill: '#fff' });
+        State.text.XPText = State.game.add.text(125, 26, "XP", { fontSize: '10px', fill: '#fff' });
         State.text.XPText.fixedToCamera = true;
         State.text.XPText.anchor.setTo(.5,0);
         State.text.waveText = State.game.add.text(12,75, "wave", { fontSize: '15px', fill: '#fff' });
