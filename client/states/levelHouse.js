@@ -9,6 +9,8 @@ LevelHouse.prototype = {
         Player.prototype.create(this);
 
         NPC.prototype.create(this);
+        this.mercs = gameStatHandler.prototype.mercsAmount;
+        Ui.prototype.create(this);
 
         insideMap.prototype.layForeground(this);
 
@@ -24,6 +26,7 @@ LevelHouse.prototype = {
        Player.prototype.updateHouse(this);
 
        insideText.prototype.update(this);
+       Ui.prototype.update(this);
 
        NPC.prototype.update(this);
 

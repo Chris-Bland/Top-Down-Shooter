@@ -6,6 +6,7 @@ Boss.prototype = {
         //B
         let spawnPoint = State.map.bossSpawn;
         let boss = State.waveEnemies.create(spawnPoint.x, spawnPoint.y, 'flashlight-enemy');
+        State.boss = boss;
         boss.MOVE_SPEED = State.player.Move_SPEED - 100;
         boss.tint = 0xff0000;
         boss.anchor.set(0.5);
@@ -16,6 +17,8 @@ Boss.prototype = {
         boss.play('idle');
         boss.maxHealth = 1000 * (State.wave/5);
         boss.health = boss.maxHealth;
+        State.boss.health = boss.health;
+        State.boss.maxHealth = boss.maxHealth;
         game.physics.arcade.enable(boss);
         boss.body.setSize(200, 300, 100, 50);
         boss.body.collideWorldBounds = true;
@@ -25,7 +28,7 @@ Boss.prototype = {
         State.bossSpawn = bossSpawn;
         State.bossSpawn.play();
         behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
-        State.bossAlive = true;
+
         
         if(State.wave%35 == 0){
             boss.gun = Laser.prototype;
@@ -55,6 +58,7 @@ Boss.prototype = {
             boss.gun = Pistol.prototype;
             boss.bullets = boss.gun.create(State);
         }
+        State.bossAlive = true;
 
        
     }
