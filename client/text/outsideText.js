@@ -34,11 +34,6 @@ outsideText.prototype = {
         // State.text.mercText.text = 'Mercs: ' + (State.mercs.length - State.mercs.countDead()) + "/" + State.mercs.length;
         State.text.mercText.text = 'Mercs';        
         State.text.currencyText.text =State.player.currency;
-        if((this.wave * 10) + (this.wave * 5) + Math.floor(this.wave * .35) + Math.floor(this.wave * .2) + 1 == State.waveEnemies.length){
-            State.text.bossText.text = 'Boss Health: ' + State.boss.health + "/" + State.boss.maxHealth;
-        }else{
-            State.text.bossText.text = '';
-        }
         //Update text for house
 
     }

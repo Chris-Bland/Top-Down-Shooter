@@ -4,7 +4,7 @@ NPC.prototype = {
 
     create: function(State){
 
-        let npc = game.add.sprite( State.map.entrance.x, State.map.entrance.y - 200, 'flashlight-enemy');
+        let npc = game.add.sprite(600, 320, 'flashlight-enemy');
         npc.tint = 0xffff00;
         npc.anchor.set(0.5);
         npc.scale.set(0.2);
@@ -15,34 +15,43 @@ NPC.prototype = {
         npc.body.collideWorldBounds = true;
     
         State.npc = npc;
+        State.buyNpcRectangle = new Phaser.Rectangle(State.npc.x-40, State.npc.y-40, State.npc.width+40, State.npc.height+40);
+        
+        State.store = State.game.add.sprite(600, 320, 'store');
+        State.store.fixedToCamera = true;
+        State.store.scale.setTo(1);
+        State.store.visible = false;
 
     },
 
     update: function(State){
 
         State.npc.rotation = State.game.physics.arcade.angleToXY(State.npc, State.player.x, State.player.y);
-        State.game.physics.arcade.overlap(State.npc, State.player, this.buyStuff());
-
+        // State.game.physics.arcade.overlap(State.npc, State.player, );
+        if (Phaser.Rectangle.containsPoint(State.buyNpcRectangle, State.player.position)) {
+            this.buyStuff(State)
+        } else {State.store.visible = false;}
     },
 
-    buyStuff: function(npc, player){
+    buyStuff: function(State,npc, player){
+        State.store.visible = true;
 
-        this.createButton(game,"Mercs: 5000 currency",game.world.centerX,game.world.centerY +32, 300, 100, function(){
-            if(gameStatHandler.prototype.currency >= 5000){
-                gameStatHandler.prototype.mercsAmount += 1;
-                gameStatHandler.prototype.currency -= 5000;
-            }
-        });
-        this.createButton(game,"Towers: 2500 currency",game.world.centerX,game.world.centerY +110, 300, 100, function(){
-            if(gameStatHandler.prototype.currency >= 2500){
-                gameStatHandler.prototype.towersAmount += 1;
-                gameStatHandler.prototype.currency -= 2500;
-            }
-        });
-        this.createButton(game,"Back to the fight!!!",game.world.centerX,game.world.centerY +182, 300, 100, function(){
-            gameStatHandler.prototype.wave += 1;
-            game.state.start('levelOutside');
-        });
+        // this.createButton(game,"Mercs: 5000 currency",game.world.centerX,game.world.centerY +32, 300, 100, function(){
+        //     if(gameStatHandler.prototype.currency >= 5000){
+        //         gameStatHandler.prototype.mercsAmount += 1;
+        //         gameStatHandler.prototype.currency -= 5000;
+        //     }
+        // });
+        // this.createButton(game,"Towers: 2500 currency",game.world.centerX,game.world.centerY +110, 300, 100, function(){
+        //     if(gameStatHandler.prototype.currency >= 2500){
+        //         gameStatHandler.prototype.towersAmount += 1;
+        //         gameStatHandler.prototype.currency -= 2500;
+        //     }
+        // });
+        // this.createButton(game,"Back to the fight!!!",game.world.centerX,game.world.centerY +182, 300, 100, function(){
+        //     gameStatHandler.prototype.wave += 1;
+        //     game.state.start('levelOutside');
+        // });
 
     },
 
@@ -58,3 +67,5 @@ NPC.prototype = {
     }
 
 };
+
+

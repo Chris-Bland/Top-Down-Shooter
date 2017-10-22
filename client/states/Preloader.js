@@ -58,6 +58,8 @@ Preloader.prototype.preload = function () {
     
     this.load.image('currency-icon', './client/assets/ui/btc.png');
 
+    this.load.image('store', './client/assets/ui/store.png');
+
 
 
 };
