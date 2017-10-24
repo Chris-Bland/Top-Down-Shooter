@@ -9,9 +9,9 @@ gameStatHandler.prototype = {
         this.wave = 1;
         this.playerXP = 1;
         this.playerLevel = 1;
-        this.mercsAmount = 1;
+        this.mercsAmount = 0;
         this.currency = 1;
-        this.towersAmount = 10;
+        this.towersAmount = 0;
 
     },
 

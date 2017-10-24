@@ -18,10 +18,23 @@ Preloader.prototype.preload = function () {
         './client/assets/animations/player.png',
         './client/assets/animations/player.json'
     );
-    this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');
-    this.load.image('tower', './client/assets/sprites/tower.png');    
+
+    this.load.atlasJSONHash(
+        'npc',
+        './client/assets/sprites/zombieSS.png',
+        './client/assets/sprites/zombieSS.json'
+    );
+
+    this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');  
     this.load.atlas('flashlight-enemy', './client/assets/sprites/flashlight-enemy.png', './client/assets/sprites/flashlight-enemy.json');
     this.load.atlas('shotgun-enemy', './client/assets/sprites/shotgun-enemy.png', './client/assets/sprites/shotgun-enemy.json');
+  
+
+    this.load.image('tower', './client/assets/sprites/tower.png');  
+
+    this.load.image('towerSS', './client/assets/sprites/towerSS.png');  
+    this.load.image('helioSS', './client/assets/sprites/helioSS.png');  
+    
 
 
     this.load.image('button', './client/assets/sprites/button.png');
@@ -59,6 +72,7 @@ Preloader.prototype.preload = function () {
     this.load.image('currency-icon', './client/assets/ui/btc.png');
 
     this.load.image('store', './client/assets/ui/store.png');
+    this.load.image('work-bench', './client/assets/sprites/workBench.png');
 
 
 

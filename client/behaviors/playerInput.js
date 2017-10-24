@@ -28,6 +28,7 @@ behaviorsObj.prototype.playerInput = function(State){
             State.player.shoot = pistolShoot(State);
             resetSelected(State);
             State.selectedPistol.visible = true;
+
         };
         if (State.playerInteraction.rifle.isDown) {
             State.player.gun = State.player.rifle;
@@ -46,6 +47,7 @@ behaviorsObj.prototype.playerInput = function(State){
             State.player.shoot = shotgunShoot(State);
             resetSelected(State);
             State.selectedShotgun.visible = true;
+
         };
         if (State.playerInteraction.flash.isDown) {
             State.player.gun = State.player.flash;

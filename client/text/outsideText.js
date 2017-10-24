@@ -19,8 +19,7 @@ outsideText.prototype = {
         State.text.mercText.fixedToCamera = true;
         State.text.currencyText = State.game.add.text(540, 5, "currency", { fontSize: '32px', fill: '#fff' });
         State.text.currencyText.fixedToCamera = true;
-        State.text.bossText = State.game.add.text(1000, 30, "boss", { fontSize: '32px', fill: '#fff' });
-        State.text.bossText.fixedToCamera = true;
+       
         //Set text for house
 
     },

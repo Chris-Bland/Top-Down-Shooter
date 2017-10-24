@@ -48,7 +48,7 @@ Player.prototype = {
         State.player.riflebullets = State.player.rifle.create(State);
         State.player.shotgun = Shotgun.prototype;
         State.player.shotgunbullets = State.player.shotgun.create(State);
-        State.player.flash = Flash.prototype;
+        State.player.flash = Laser.prototype;
         State.player.flashbullets = State.player.flash.create(State);
 
         State.player.gun = State.player.pistol;
