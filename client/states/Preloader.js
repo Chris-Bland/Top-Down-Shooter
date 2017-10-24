@@ -25,16 +25,22 @@ Preloader.prototype.preload = function () {
         './client/assets/sprites/zombieSS.json'
     );
 
+    this.load.atlasJSONHash(
+        'tower',
+        './client/assets/sprites/towerSS.png',
+        './client/assets/sprites/towerSS.json'
+    );
+
+    this.load.atlasJSONHash(
+        'helio',
+        './client/assets/sprites/helioSS.png',
+        './client/assets/sprites/helioSS.json'
+    );
+
     this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');  
     this.load.atlas('flashlight-enemy', './client/assets/sprites/flashlight-enemy.png', './client/assets/sprites/flashlight-enemy.json');
     this.load.atlas('shotgun-enemy', './client/assets/sprites/shotgun-enemy.png', './client/assets/sprites/shotgun-enemy.json');
-  
 
-    this.load.image('tower', './client/assets/sprites/tower.png');  
-
-    this.load.image('towerSS', './client/assets/sprites/towerSS.png');  
-    this.load.image('helioSS', './client/assets/sprites/helioSS.png');  
-    
 
 
     this.load.image('button', './client/assets/sprites/button.png');
