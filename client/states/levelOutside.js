@@ -6,7 +6,6 @@ LevelOutside.prototype = {
         create: function () {
 
             
-
             outsideMap.prototype.create(this);
 
             if(gameStatHandler.prototype.newGame){

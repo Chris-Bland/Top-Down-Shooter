@@ -14,7 +14,7 @@ Enemy.prototype = {
         // enemy.play('idle');
         enemy.animations.add('idle', Phaser.Animation.generateFrameNames('skeleton-idle_', 1, 16, '.png', 2), 16, true, false);
         enemy.animations.add('move', Phaser.Animation.generateFrameNames('skeleton-move_', 1, 16, '.png', 2), 16, true, false);
-        enemy.animations.add('attack', Phaser.Animation.generateFrameNames('skeleton-attack_', 1, 8, '.png', 2), 8, true, false);
+        enemy.animations.add('melee', Phaser.Animation.generateFrameNames('skeleton-attack_', 1, 8, '.png', 2), 8, true, false);
         enemy.play('idle');
         enemy.anchor.setTo(0.5, 0.5);
         game.physics.enable(enemy, Phaser.Physics.ARCADE);

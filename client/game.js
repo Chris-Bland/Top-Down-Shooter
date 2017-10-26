@@ -1,9 +1,14 @@
 var game = new Phaser.Game(1200,700);
 game.state.add('Boot', Boot);
 game.state.add('Preloader', Preloader);
-game.state.add('MainMenu', MainMenu);
 game.state.add('levelOutside', LevelOutside);
 game.state.add('levelHouse', LevelHouse);
+game.state.add('GameMenu', GameMenu);
+game.state.add('Controls', Controls);
+game.state.add('Credits', Credits);
+game.state.add('BossUi', BossUi);
+game.state.add('InsideUi', InsideUi);
+game.state.add('OutsideUi', OutsideUi);
 game.state.start('Boot');
 
 

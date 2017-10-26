@@ -15,15 +15,14 @@ Shotgun.prototype = {
     range: 1.7,
 
     shoot: function(State, shooter, target){
-        let shotgunAudio = State.add.audio('shotgun');
-        State.shotgunAudio = shotgunAudio;
+   
             let shotRatio = State.game.physics.arcade.distanceToXY(shooter, target.x, target.y)/2;
             console.log(target.x);
             console.log(target.y);
             if (State.game.time.now > shooter.shootTime) {  
                 let bullet = shooter.bullets.getFirstExists(false);
-                State.shotgunAudio.stop();
-                State.shotgunAudio.play();
+                // shotgunAudio.stop();
+                shotgunAudio.play();
                 if (bullet) {
                     bullet.reset(shooter.x, shooter.y);
                     bullet.body.velocity.x = 1000;

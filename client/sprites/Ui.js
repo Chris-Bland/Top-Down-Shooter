@@ -149,7 +149,7 @@ Ui.prototype = {
             } else {
                 resetMercUi(State);
                 State.mercUiGreen1.visible = true;
-                State.mercUiGreen2 = true;
+                State.mercUiGreen2.visible = true;
             }
                 break;
             case 3:

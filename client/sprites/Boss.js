@@ -15,7 +15,7 @@ Boss.prototype = {
         // boss.animations.add('idle', [0, 1, 2, 3, 5, 6, 7, 8, 14, 19, 20], 20, true);
         // boss.animations.add('move', [4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 18, true);
         // boss.play('idle');
-        boss.animations.add('idle', Phaser.Animation.generateFrameNames('helio-', 1, 1, '.png', 2), 1, true, false);
+        boss.animations.add('move', Phaser.Animation.generateFrameNames('helio-', 1, 1, '.png', 2), 1, true, false);
         boss.animations.add('attack', Phaser.Animation.generateFrameNames('helio-', 1, 8, '.png', 2), 1, true, false);
         boss.animations._anims.attack.speed = 20;
         boss.play('attack');
@@ -31,7 +31,7 @@ Boss.prototype = {
         let bossSpawn = State.add.audio('boss-spawn');
         State.bossSpawn = bossSpawn;
         State.bossSpawn.play();
-        behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
+        // behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
         boss.rotation = State.game.physics.arcade.angleToXY(boss, State.player.x, State.player.y);
 
 

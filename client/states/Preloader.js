@@ -37,7 +37,7 @@ Preloader.prototype.preload = function () {
         './client/assets/sprites/helioSS.json'
     );
 
-    this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');  
+    this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');
     this.load.atlas('flashlight-enemy', './client/assets/sprites/flashlight-enemy.png', './client/assets/sprites/flashlight-enemy.json');
     this.load.atlas('shotgun-enemy', './client/assets/sprites/shotgun-enemy.png', './client/assets/sprites/shotgun-enemy.json');
 
@@ -45,6 +45,7 @@ Preloader.prototype.preload = function () {
 
     this.load.image('button', './client/assets/sprites/button.png');
     this.load.image('menu-image', './client/assets/sprites/menu-image.png');
+    this.load.image('menu-bg', './client/assets/ui/menu-bg-new.jpg');
     this.load.image('bullet', './client/assets/sprites/bullet.png');
     this.load.image('fog-of-war', blackURI);
 
@@ -54,37 +55,63 @@ Preloader.prototype.preload = function () {
     this.load.audio('shotgun', './client/assets/audio/shotgun.mp3');
     this.load.audio('laser', './client/assets/audio/laser.mp3');
     this.load.audio('boss-spawn', './client/assets/audio/bossSpawn.mp3');
-    
+
 
     this.load.image('hero-ui', './client/assets/ui/hud.png');
-    this.load.image('hero-ui-xp-tic', './client/assets/ui/xp-ui.png');     
-    this.load.image('hero-ui-health-tic', './client/assets/ui/health-ui.png');     
+    this.load.image('hero-ui-xp-tic', './client/assets/ui/xp-ui.png');
+    this.load.image('hero-ui-health-tic', './client/assets/ui/health-ui.png');
 
-    this.load.image('level-ui', './client/assets/ui/level-ui.png'); 
+    this.load.image('level-ui', './client/assets/ui/level-ui.png');
 
     this.load.image('weapon-ui', './client/assets/ui/weaponHud.png');
     this.load.image('selected-ui', './client/assets/ui/selected.png');
 
-    this.load.image('boss-ui', './client/assets/ui/boss.png');  
-    this.load.image('boss-health-bar', './client/assets/ui/boss-health-ui.png');     
-    this.load.image('boss-health-tic', './client/assets/ui/boss-ui-health.png');     
-    
-    this.load.image('wave-ui', './client/assets/ui/wave-ui.png');     
-    
-    this.load.image('merc-ui', './client/assets/ui/merc-ui.png');     
-    this.load.image('merc-ui-red', './client/assets/ui/merc-ui-red.png');     
-    this.load.image('merc-ui-green', './client/assets/ui/merc-ui-green.png');     
-    
+    this.load.image('boss-ui', './client/assets/ui/boss.png');
+    this.load.image('boss-health-bar', './client/assets/ui/boss-health-ui.png');
+    this.load.image('boss-health-tic', './client/assets/ui/boss-ui-health.png');
+
+    this.load.image('wave-ui', './client/assets/ui/wave-ui.png');
+
+    this.load.image('merc-ui', './client/assets/ui/merc-ui.png');
+    this.load.image('merc-ui-red', './client/assets/ui/merc-ui-red.png');
+    this.load.image('merc-ui-green', './client/assets/ui/merc-ui-green.png');
+
     this.load.image('currency-icon', './client/assets/ui/btc.png');
 
     this.load.image('store', './client/assets/ui/store.png');
     this.load.image('work-bench', './client/assets/sprites/workBench.png');
+
+    game.load.audio('dangerous', './client/assets/audio/music.mp3');
+
+    this.load.image('boss-slide', './client/assets/ui/bossSlide.png');
+    this.load.image('outside-ui-slide', './client/assets/ui/outsideUi.png');
+    this.load.image('inside-ui-slide', './client/assets/ui/insideUi.png');
+    this.load.image('controls-slide', './client/assets/ui/controls.png');
+
+    this.load.image('credits-bg', './client/assets/animations/mountains.png');
+
+    this.load.image('stars', './client/assets/animations/stars.jpg');
+    this.load.image('ship-1', './client/assets/animations/ship1.png');
+    this.load.image('ship-2', './client/assets/animations/ship2.png');
+    this.load.image('ship-3', './client/assets/animations/ship3.png');
+    this.load.image('planet-1', './client/assets/animations/planet1.png');
+    this.load.image('planet-2', './client/assets/animations/planet2.png');
+    this.load.image('planet-3', './client/assets/animations/planet3.png');
+    this.load.image('hero-ship', './client/assets/animations/heroShip.png');
+    this.load.image('big-ship', './client/assets/animations/bigShip.png');
 
 
 
 };
 
 Preloader.prototype.create = function () {
-    // game.state.start('MainMenu');
-    game.state.start('levelOutside');
+    laserAudio = game.add.audio('laser');
+    rifleAudio = game.add.audio('rifle-echo');
+    pistolAudio = game.add.audio('pistol');
+    shotgunAudio = game.add.audio('shotgun');
+    music = game.add.audio('dangerous');
+    music.loop = true;
+    music.volume = .5;
+    music.play();
+    game.state.start('GameMenu');
 };

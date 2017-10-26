@@ -15,8 +15,7 @@ Flash.prototype = {
     range: 1.3,
 
     shoot: function(State, shooter, target){
-        let laserAudio = State.add.audio('laser');
-        State.laserAudio = laserAudio;
+        
             if (State.game.time.now > shooter.shootTime) {
                 let bullet = shooter.bullets.getFirstExists(false);
                 if (bullet) {
@@ -26,8 +25,8 @@ Flash.prototype = {
                     if(target == State.game.input.activePointer){bullet.rotation = State.game.physics.arcade.moveToPointer(bullet, 1000, State.game.input.activePointer);}
                     else{bullet.rotation = State.game.physics.arcade.moveToXY(bullet, target.x, target.y, 1000);} 
                     bullet.lifespan = this.range * 160;
-                    State.laserAudio.stop();
-                    State.laserAudio.play();
+                    laserAudio.stop();
+                    laserAudio.play();
                 }
             }
     }
