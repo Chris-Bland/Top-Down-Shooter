@@ -46,8 +46,8 @@ Player.prototype = {
         State.player.pistolbullets = State.player.pistol.create(State);
         State.player.rifle = Rifle.prototype;
         State.player.riflebullets = State.player.rifle.create(State);
-        State.player.shotgun = Shotgun.prototype;
-        State.player.shotgunbullets = State.player.shotgun.create(State);
+        State.player.rocket = Rocket.prototype;
+        State.player.rocketbullets = State.player.rocket.create(State);
         State.player.flash = Laser.prototype;
         State.player.flashbullets = State.player.flash.create(State);
 
@@ -71,6 +71,7 @@ Player.prototype = {
         behaviorsObj.prototype.bodyCollide(State, State.player);
         behaviorsObj.prototype.bulletCollide(State, State.player.bullets);
         behaviorsObj.prototype.playerInput(State);
+        updateUpgrades(State);
 
     }
 

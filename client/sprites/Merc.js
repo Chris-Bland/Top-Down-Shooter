@@ -40,8 +40,8 @@ Merc.prototype = {
             behaviorsObj.prototype.bodyOverlap(State, merc, [State.waveEnemies]);
             behaviorsObj.prototype.bulletCollide(State, merc.bullets);
             behaviorsObj.prototype.bulletOverlap(State, merc.bullets, [State.waveEnemies]);
-            behaviorsObj.prototype.shoot(State, merc, State.boss, [State.waveEnemies]);
             behaviorsObj.prototype.mercMove(State, merc);
+            behaviorsObj.prototype.shoot(State, merc, State.boss, [State.waveEnemies]);
 
         });
 

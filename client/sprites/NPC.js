@@ -7,7 +7,7 @@ NPC.prototype = {
         State.workBench.scale.setTo(0.09);
         State.workBench.angle = -90;
 
-        let npc = game.add.sprite(600, 330, 'npc');
+        var npc = game.add.sprite(600, 330, 'npc');
         npc.tint = 0xffff00;
         npc.anchor.set(0.5);
         npc.scale.set(0.2);
@@ -27,7 +27,7 @@ NPC.prototype = {
         State.store.visible = false;
     },
     update: function (State) {
-        let npc = State.npc;
+        var npc = State.npc;
         if (Phaser.Rectangle.containsPoint(State.buyNpcRectangle, State.player.position)) {
             this.buyStuff(State)
             npc.play('idle');
@@ -45,23 +45,24 @@ NPC.prototype = {
         State.npc.rotation = State.game.physics.arcade.angleToXY(State.npc, State.player.x, State.player.y);
 
         this.createButton(game,"",game.world.centerX+43, game.world.centerY +28, 50, 52, function(){
-            if(gameStatHandler.prototype.currency >= 500){
-                gameStatHandler.prototype.mercsAmount += 1;
-                
+            if(gameStatHandler.prototype.currency >= 500 && gameStatHandler.prototype.towersAmount < 72){
+                gameStatHandler.prototype.towersAmount += 1;
                 gameStatHandler.prototype.currency -= 500;
             }
         });
         this.createButton(game,"",game.world.centerX +98,game.world.centerY +28, 50, 52, function(){
-            if(gameStatHandler.prototype.currency >= 250){
-                gameStatHandler.prototype.towersAmount += 1;
+            if(gameStatHandler.prototype.currency >= 250 && gameStatHandler.prototype.mercsAmount < 3){
+                gameStatHandler.prototype.mercsAmount += 1;
+
                 gameStatHandler.prototype.currency -= 250;
             }
         });
         this.createButton(game,"",game.world.centerX + 153,game.world.centerY +28, 50, 52, function(){
             if(gameStatHandler.prototype.currency >= 100){
+                gameStatHandler.prototype.healthPoints += 1;
                 State.player.maxHealth += 50;
                 State.player.health = State.player.maxHealth;
-                gameStatHandler.prototype.currency -= 250;
+                gameStatHandler.prototype.currency -= 100;
             }
         });
         this.createButton(game,"",game.world.centerX + 43,game.world.centerY +83, 50, 52, function(){

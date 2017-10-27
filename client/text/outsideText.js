@@ -19,6 +19,8 @@ outsideText.prototype = {
         State.text.mercText.fixedToCamera = true;
         State.text.currencyText = State.game.add.text(540, 5, "currency", { fontSize: '32px', fill: '#fff' });
         State.text.currencyText.fixedToCamera = true;
+        State.text.houseText = State.game.add.text(1000, 5, "house", { fontSize: '32px', fill: '#fff' });
+        State.text.houseText.fixedToCamera = true;
        
         //Set text for house
 
@@ -33,6 +35,7 @@ outsideText.prototype = {
         // State.text.mercText.text = 'Mercs: ' + (State.mercs.length - State.mercs.countDead()) + "/" + State.mercs.length;
         State.text.mercText.text = 'Mercs';        
         State.text.currencyText.text =State.player.currency;
+        State.text.houseText.text = State.house.health + "/" + State.house.maxHealth;
         //Update text for house
 
     }

@@ -2,13 +2,9 @@ var Aoe = function() {};
 
 Aoe.prototype = {
 
-    create: function(State, gunHolder){
-        //A
-        //create if statement based on gunholder for the gun bullet tint
+    create: function(State, gunHolderTint){
 
-        //bullet creation based on type
-        //damage set on type
-        return Bullet.prototype.create(State, 0.4, null, 25, 10);
+        return Bullet.prototype.create(State, 0.4, gunHolderTint, 25, 10);
 
     },
     

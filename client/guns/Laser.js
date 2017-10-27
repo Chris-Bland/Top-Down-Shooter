@@ -2,13 +2,8 @@ var Laser = function() {};
 
 Laser.prototype = {
 
-    create: function(State, gunHolder){
-
-        //create if statement based on gunholder for the gun bullet tint
-
-        //bullet creation based on type
-        //damage set on type
-        return Bullet.prototype.create(State, 0.5, null, 500, 2);
+    create: function(State, gunHolderTint){
+        return Bullet.prototype.create(State, 0.5, gunHolderTint, 500, 2);
 
     },
     
