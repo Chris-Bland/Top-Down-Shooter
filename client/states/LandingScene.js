@@ -10,8 +10,7 @@ LandingScene.prototype = {
         game.physics.p2.enable(heroShip);
         heroShip.body.velocity.x = 0;
         heroShip.body.velocity.x = 0;
-        game.physics.arcade.moveToXY(heroShip, game.world.centerX/2, game.world.centerY, 50);
-        // ship1.fixedToCamera = true;
+        game.add.tween(heroShip).from({ y: 600 }, 5000, Phaser.Easing.Bounce.In, true);
 
         GameMenu.prototype.addMenuOption('Menu', 10, 640, function () {
             game.state.start("GameMenu");
@@ -44,7 +43,6 @@ LandingScene.prototype = {
         troop2.alpha = 0;
         // troop3.alpha = 0;
         troop4.alpha = 0;
-  
         beam = game.add.sprite(1560,700,'beam');
         beam.alpha = 0;
         bigShip = game.add.sprite(1400,-100, 'big-ship');
@@ -61,6 +59,7 @@ LandingScene.prototype = {
             });
 
         game.time.events.add((8500+5700), function(){
+            bossSpawn.volume = .6;
             bossSpawn.play();
             game.camera.shake(0.005, 500);
             game.add.tween(beam).to( { alpha: .5 }, 1500, Phaser.Easing.Bounce.In, true);
