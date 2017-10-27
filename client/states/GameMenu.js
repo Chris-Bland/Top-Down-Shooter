@@ -44,6 +44,8 @@ GameMenu.prototype = {
       this.addMenuOption('Credits', 50, (this.optionCount * 80) + 350, function () {
         game.state.start("Credits");
       });
+
+   
   },
 
 addMenuOption: function(text, x, y, callback) {

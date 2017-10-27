@@ -25,3 +25,10 @@ RocketBullet.prototype = {
     }
 
 };
+
+
+
+// let rocket = game.add.sprite( game.camera.width / 2, game.camera.height / 2, 'rocket');
+// rocket.scale.set(.5);
+// rocket.animations.add('rocket-shoot', Phaser.Animation.generateFrameNames('rocket', 1, 13, '.png', 2), 13, true, false);
+// rocket.play('rocket-shoot');
