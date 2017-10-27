@@ -3,7 +3,7 @@ Credits.prototype = {
    
 
     create: function(){
-        starfield = game.add.tileSprite(0, 0, 1200, 700, 'stars');
+        starfield = game.add.tileSprite(0, 0, 1920, 1080, 'stars');
         GameMenu.prototype.addMenuOption('Back', 10 ,640, function () {
             game.state.start("GameMenu");
         });
@@ -22,7 +22,7 @@ Credits.prototype = {
         planet2 = game.add.sprite(1300,100, 'planet-2');
         planet2.fixedToCamera = false;
 
-        planet3 = game.add.sprite(1800,game.camera.height/2, 'planet-3');
+        planet3 = game.add.sprite(1300,game.camera.height/2, 'planet-3');
         planet3.fixedToCamera = false;
 
         heroShip = game.add.sprite(game.camera.width / 2 -300,300, 'hero-ship');
@@ -59,7 +59,7 @@ Credits.prototype = {
         game.add.tween(heroShip).to( { x: 1800 }, 6000, Phaser.Easing.Bounce.Out, true);
     },
     nextState: function(){
-        game.state.start('GameMenu');
+        game.state.start('LandingScene');
     },
     update: function(){
             starfield.tilePosition.x -= 10;

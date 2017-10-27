@@ -88,7 +88,7 @@ Preloader.prototype.preload = function () {
     this.load.image('inside-ui-slide', './client/assets/ui/insideUi.png');
     this.load.image('controls-slide', './client/assets/ui/controls.png');
 
-    this.load.image('credits-bg', './client/assets/animations/mountains.png');
+    this.load.image('mountains', './client/assets/animations/mountains.png');
 
     this.load.image('stars', './client/assets/animations/stars.jpg');
     this.load.image('ship-1', './client/assets/animations/ship1.png');
@@ -99,6 +99,8 @@ Preloader.prototype.preload = function () {
     this.load.image('planet-3', './client/assets/animations/planet3.png');
     this.load.image('hero-ship', './client/assets/animations/heroShip.png');
     this.load.image('big-ship', './client/assets/animations/bigShip.png');
+
+    this.load.image('smoke', './client/assets/animations/smoke-puff.png');
 
 
 

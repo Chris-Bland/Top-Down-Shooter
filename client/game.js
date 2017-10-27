@@ -9,6 +9,7 @@ game.state.add('Credits', Credits);
 game.state.add('BossUi', BossUi);
 game.state.add('InsideUi', InsideUi);
 game.state.add('OutsideUi', OutsideUi);
+game.state.add('LandingScene', LandingScene);
 game.state.start('Boot');
 
 
