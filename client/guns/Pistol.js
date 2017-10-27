@@ -2,13 +2,8 @@ var Pistol = function() {};
 
 Pistol.prototype = {
 
-    create: function(State, gunHolder){
-
-        //create if statement based on gunholder for the gun bullet tint
-
-        //bullet creation based on type
-        //damage set on type
-        return Bullet.prototype.create(State, 0.5, null, 50, 10);
+    create: function(State, gunHolderTint){
+        return Bullet.prototype.create(State, 0.5, gunHolderTint, 50, 10);
 
 
     },

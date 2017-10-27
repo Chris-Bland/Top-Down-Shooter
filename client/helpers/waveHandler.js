@@ -17,7 +17,7 @@ waveHandler.prototype = {
         }
         else{
 
-            beenInHouse = false;
+            this.beenInHouse = false;
             State.waveEnemies = null;
             State.waveEnemies = State.game.add.group();
             Enemy.prototype.create(State);

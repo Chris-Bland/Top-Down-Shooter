@@ -24,4 +24,4 @@ Bullet.prototype = {
 
     }
 
-}
+};
