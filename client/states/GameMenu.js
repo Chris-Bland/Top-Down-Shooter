@@ -45,6 +45,11 @@ GameMenu.prototype = {
       this.addMenuOption('Credits', 50, (this.optionCount * 80) + 350, function () {
         game.state.start("Credits");
       });
+      let rocket = game.add.sprite( game.camera.width / 2, game.camera.height / 2, 'rocket');
+      rocket.scale.set(5);
+      rocket.animations.add('rocket-shoot', Phaser.Animation.generateFrameNames('rocket', 1, 13, '.png', 2), 13, true, false);
+      rocket.play('rocket-shoot');
+      console.log('rocket: ', rocket);
   },
 
 addMenuOption: function(text, x, y, callback) {

@@ -112,6 +112,13 @@ Preloader.prototype.preload = function () {
     this.load.image('troop2', './client/assets/animations/troop2.png');
     this.load.image('troop3', './client/assets/animations/troop3.png');
     this.load.image('troop4', './client/assets/animations/troop4.png');
+
+    this.load.atlasJSONHash(
+        'rocket',
+        './client/assets/animations/rocket.png',
+        './client/assets/animations/rocket.json'
+    );
+
 };
 
 Preloader.prototype.create = function () {
