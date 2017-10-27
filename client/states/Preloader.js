@@ -102,7 +102,16 @@ Preloader.prototype.preload = function () {
 
     this.load.image('smoke', './client/assets/animations/smoke-puff.png');
 
+    this.load.image('chris', './client/assets/animations/chris.jpg');
+    this.load.image('austin', './client/assets/animations/austin.jpg');
+    this.load.image('phaser', './client/assets/animations/phaser.png');
+    
+    this.load.image('beam', './client/assets/animations/beam.png');
 
+    this.load.image('troop1', './client/assets/animations/troop1.png');
+    this.load.image('troop2', './client/assets/animations/troop2.png');
+    this.load.image('troop3', './client/assets/animations/troop3.png');
+    this.load.image('troop4', './client/assets/animations/troop4.png');
 
 };
 
@@ -111,9 +120,10 @@ Preloader.prototype.create = function () {
     rifleAudio = game.add.audio('rifle-echo');
     pistolAudio = game.add.audio('pistol');
     shotgunAudio = game.add.audio('shotgun');
+    bossSpawn = game.add.audio('boss-spawn');
     music = game.add.audio('dangerous');
     music.loop = true;
     music.volume = .5;
     music.play();
-    game.state.start('GameMenu');
+    game.state.start('Credits');
 };

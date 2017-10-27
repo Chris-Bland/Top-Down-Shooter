@@ -28,9 +28,7 @@ Boss.prototype = {
         boss.body.collideWorldBounds = true;
         boss.shootTime = 0;
         boss.hitPoints = 5 * (State.wave / 5);
-        let bossSpawn = State.add.audio('boss-spawn');
-        State.bossSpawn = bossSpawn;
-        State.bossSpawn.play();
+        bossSpawn.play();
         // behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
         boss.rotation = State.game.physics.arcade.angleToXY(boss, State.player.x, State.player.y);
 
