@@ -10,10 +10,11 @@ insideMap.prototype = {
         let layer = State.map.createLayer('Base');
         layer.resizeWorld();
         let collisionLayer = State.map.createLayer('Collision');
-        State.collisionLayer = collisionLayer;
+        State.map.collisionLayer = collisionLayer;
         collisionLayer.visible = false;
-        State.map.setCollisionByExclusion([], true, State.collisionLayer);
+        State.map.setCollisionByExclusion([], true, State.map.collisionLayer);
         collisionLayer.resizeWorld();
+        console.log('collisionLayer: ', collisionLayer);
 
         State.map.exit = State.map.objects.meta.find(o => o.name == 'exit');
         State.map.exitRect = new Phaser.Rectangle(State.map.exit.x, State.map.exit.y, State.map.exit.width, State.map.exit.height);
@@ -23,7 +24,6 @@ insideMap.prototype = {
     },
 
     layForeground: function(State){
-
         State.map.createLayer('Foreground');
 
     }

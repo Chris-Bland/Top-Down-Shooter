@@ -112,7 +112,6 @@ Preloader.prototype.preload = function () {
     this.load.image('troop2', './client/assets/animations/troop2.png');
     this.load.image('troop3', './client/assets/animations/troop3.png');
     this.load.image('troop4', './client/assets/animations/troop4.png');
-
 };
 
 Preloader.prototype.create = function () {

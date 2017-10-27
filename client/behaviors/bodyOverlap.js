@@ -5,6 +5,5 @@ behaviorsObj.prototype.bodyOverlap = function(State, body, targets){
                 game.camera.shake(0.005, 500);
                 individual.damage(body.hitPoints);
             });
-        }
-        
+        }       
 }

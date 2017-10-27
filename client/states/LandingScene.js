@@ -80,9 +80,7 @@ LandingScene.prototype = {
         if (heroShip.world.y >781 && heroShip.world.y < 785 ){
             heroShip.body.velocity.y = 0;
         };
-
         emitter.customSort(this.scaleSort, this);
-
     },
 
     scaleSort: function (a, b) {
