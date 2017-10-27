@@ -81,7 +81,7 @@ Preloader.prototype.preload = function () {
     this.load.image('store', './client/assets/ui/store.png');
     this.load.image('work-bench', './client/assets/sprites/workBench.png');
 
-    game.load.audio('dangerous', './client/assets/audio/music.mp3');
+    game.load.audio('music', './client/assets/audio/music.mp3');
 
     this.load.image('boss-slide', './client/assets/ui/bossSlide.png');
     this.load.image('outside-ui-slide', './client/assets/ui/outsideUi.png');
@@ -119,11 +119,6 @@ Preloader.prototype.preload = function () {
         './client/assets/animations/rocket.json'
     );
 
-    let rocket = game.add.sprite( game.camera.width / 2, game.camera.height / 2, 'rocket');
-    rocket.scale.set(.5);
-    rocket.animations.add('rocket-shoot', Phaser.Animation.generateFrameNames('rocket', 1, 13, '.png', 2), 13, true, false);
-    rocket.play('rocket-shoot');
-    
 };
 
 Preloader.prototype.create = function () {
@@ -132,7 +127,8 @@ Preloader.prototype.create = function () {
     pistolAudio = game.add.audio('pistol');
     shotgunAudio = game.add.audio('shotgun');
     bossSpawn = game.add.audio('boss-spawn');
-    music = game.add.audio('dangerous');
+
+    music = game.add.audio('music');
     music.loop = true;
     music.volume = .5;
     music.play();
