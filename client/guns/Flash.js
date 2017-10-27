@@ -2,13 +2,8 @@ var Flash = function() {};
 
 Flash.prototype = {
 
-    create: function(State, gunHolder){
-
-        //create if statement based on gunholder for the gun bullet tint
-
-        //bullet creation based on type
-        //damage set on type
-        return Bullet.prototype.create(State, 1, null, 50, 150);
+    create: function(State, gunHolderTint){
+        return Bullet.prototype.create(State, 1, gunHolderTint, 50, 150);
 
     },
 

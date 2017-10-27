@@ -2,13 +2,8 @@ var Sniper = function() {};
 
 Sniper.prototype = {
 
-    create: function(State, gunHolder){
-
-        //create if statement based on gunholder for the gun bullet tint
-
-        //bullet creation based on type
-        //damage set on type
-        return Bullet.prototype.create(State, 0.3, null, 10, 60);
+    create: function(State, gunHolderTint){
+        return Bullet.prototype.create(State, 0.3, gunHolderTint, 10, 60);
 
     },
     

@@ -17,7 +17,7 @@ Tower.prototype = {
             tower.body.collideWorldBounds = true;
             tower.shootTime = 0;
 
-            let level = State.player.playerlevel;
+            let level = State.player.playerLevel;
 
 
             if (level <= 10) {
