@@ -1036,15 +1036,15 @@
                  "y":2809.16509730069
                 }, 
                 {
-                 "height":0,
-                 "id":195,
-                 "name":"",
+                 "height":22,
+                 "id":201,
+                 "name":"dungeonExit",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":3075.95731324545,
-                 "y":2284.99686126805
+                 "width":53,
+                 "x":69,
+                 "y":3039
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1052,7 +1052,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":196,
+ "nextobjectid":202,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.0.2",
@@ -1061,7 +1061,7 @@
         {
          "columns":100,
          "firstgid":1,
-         "image":"maps\/large-map.png",
+         "image":"..\/..\/..\/..\/ASSETSMASTER\/assets\/TMX\/BETA-MAP\/large-map.png",
          "imageheight":3200,
          "imagewidth":3200,
          "margin":0,

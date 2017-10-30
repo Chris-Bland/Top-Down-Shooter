@@ -13,6 +13,9 @@ Preloader.prototype.preload = function () {
     this.load.tilemap('inside', './client/assets/maps/inside.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('inside-tileset', './client/assets/maps/outside-tileset.png');
 
+    // this.load.tilemap('dungeon', './client/assets/maps/dungeon.json', null, Phaser.Tilemap.TILED_JSON);
+    // this.load.image('dungeon-tileset', './client/assets/maps/dungeon-tileset.png');
+
     this.load.atlasJSONHash(
         'player',
         './client/assets/animations/player.png',
@@ -40,8 +43,6 @@ Preloader.prototype.preload = function () {
     this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');
     this.load.atlas('flashlight-enemy', './client/assets/sprites/flashlight-enemy.png', './client/assets/sprites/flashlight-enemy.json');
     this.load.atlas('shotgun-enemy', './client/assets/sprites/shotgun-enemy.png', './client/assets/sprites/shotgun-enemy.json');
-
-
 
     this.load.image('button', './client/assets/sprites/button.png');
     this.load.image('menu-image', './client/assets/sprites/menu-image.png');
@@ -132,5 +133,5 @@ Preloader.prototype.create = function () {
     music.loop = true;
     music.volume = .5;
     music.play();
-    game.state.start('Credits');
+    game.state.start('levelOutside');
 };

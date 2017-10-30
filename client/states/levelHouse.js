@@ -5,17 +5,10 @@ LevelHouse.prototype = {
     create: function () {
         
         insideMap.prototype.create(this);
-
         Player.prototype.create(this);
-
         NPC.prototype.create(this);
         this.mercs = gameStatHandler.prototype.mercsAmount;
-     
-
         insideMap.prototype.layForeground(this);
-
-
-
         keyConfig(this);
 
         insideEvents.prototype.openingTween(this);

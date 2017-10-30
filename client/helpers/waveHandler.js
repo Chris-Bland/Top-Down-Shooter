@@ -78,7 +78,7 @@ waveHandler.prototype = {
                 RifleEnemy.prototype.create(State);
             }
             else if((State.wave * 5) + (State.wave * 2) + Math.floor(State.wave * .2) + Math.floor(State.wave * .1) == State.waveEnemies.length && State.wave % 5 == 0){
-               
+               outsideEvents.prototype.bossSpawnTween(State);
                 Boss.prototype.create(State);
             }
         }

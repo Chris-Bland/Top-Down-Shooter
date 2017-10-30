@@ -3,7 +3,7 @@ function Boss() { }
 Boss.prototype = {
 
     create: function (State) {
-        //B
+        
         let spawnPoint = State.map.bossSpawn;
         let boss = State.waveEnemies.create(spawnPoint.x, spawnPoint.y, 'helio');
         State.boss = boss;
@@ -11,6 +11,7 @@ Boss.prototype = {
         // boss.tint = 0xff0000;
         boss.anchor.set(0.5);
         boss.scale.set(1);
+
         // boss.animations.add('melee', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], 35, true);
         // boss.animations.add('idle', [0, 1, 2, 3, 5, 6, 7, 8, 14, 19, 20], 20, true);
         // boss.animations.add('move', [4, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18], 18, true);
@@ -23,6 +24,7 @@ Boss.prototype = {
         boss.health = boss.maxHealth;
         State.boss.health = boss.health;
         State.boss.maxHealth = boss.maxHealth;
+        State.boss.alpha = 0;
         game.physics.arcade.enable(boss);
         boss.body.setSize(200, 300, 100, 50);
         boss.body.collideWorldBounds = true;
@@ -32,7 +34,7 @@ Boss.prototype = {
         // behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
         boss.rotation = State.game.physics.arcade.angleToXY(boss, State.player.x, State.player.y);
 
-
+    
         if (State.wave % 35 == 0) {
             boss.gun = Laser.prototype;
             boss.bullets = boss.gun.create(State);
@@ -62,8 +64,6 @@ Boss.prototype = {
             boss.bullets = boss.gun.create(State);
         }
         State.bossAlive = true;
-
-
     }
 
 };
