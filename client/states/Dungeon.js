@@ -26,7 +26,6 @@ Dungeon.prototype = {
         dungeonText.prototype.update(this);
         this.boss.angle += 1;
         this.boss.gun.shootDungeon(this, this.boss);
-
         if (Phaser.Rectangle.containsPoint(this.map.exitRect, this.player.position)) {
             waveHandler.prototype.beenInHouse = true;
             this.game.state.start('levelOutside');

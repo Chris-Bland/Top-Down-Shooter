@@ -3,9 +3,7 @@ var dungeonText = function (){};
 dungeonText.prototype = {
 
     create: function(State){
-
         State.text = {};
-
         State.text.healthText = State.game.add.text(125, 6, "health", { fontSize: '10px', fill: '#fff' });
         State.text.healthText.fixedToCamera = true;
         State.text.healthText.anchor.setTo(0.5,0);
@@ -22,8 +20,6 @@ dungeonText.prototype = {
         State.text.healthText.text = State.player.health + "/" + State.player.maxHealth;
         State.text.levelText.text =  State.player.playerLevel;
         State.text.XPText.text = State.player.playerXP + "/" + Math.pow(2, (State.player.playerLevel+1));
-        State.text.currencyText.text = 10;
-
+        State.text.currencyText.text = gameStatHandler.prototype.currency;
     }
-
 };
