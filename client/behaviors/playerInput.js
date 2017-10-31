@@ -40,8 +40,8 @@ behaviorsObj.prototype.playerInput = function(State){
             State.selectedRifle.visible = true;
         };
         if (State.playerInteraction.shotgun.isDown) {
-            State.player.gun = State.player.shotgun;
-            State.player.bullets = State.player.shotgunbullets;
+            State.player.gun = State.player.rocket;
+            State.player.bullets = State.player.rocketbullets;
             State.player.idle = shotgunIdle(State);
             State.player.move = shotgunMove(State);
             State.player.shoot = shotgunShoot(State);
