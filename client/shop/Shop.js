@@ -23,7 +23,7 @@ shop.prototype = {
                 gameStatHandler.prototype.currency -= 2000;
             }
         });
-        this.createButton(State,game, "health-shop", "Increase your Hero's Max Health by 50",(State.game.camera.width / 2) + 105, (State.game.camera.height / 4) - 12, 68, 68, "100", function () {
+        this.createButton(State,game, "health-shop", "Increase your Hero's Max Health by 100",(State.game.camera.width / 2) + 105, (State.game.camera.height / 4) - 12, 68, 68, "100", function () {
             if (gameStatHandler.prototype.currency >= 100) {
                 gameStatHandler.prototype.healthPoints += 1;
                 State.player.maxHealth += 50;
@@ -31,7 +31,7 @@ shop.prototype = {
                 gameStatHandler.prototype.currency -= 100;
             }
         });
-        this.createButton(State, game, "laser-shop", "Replace your Flash with a Lazer! Pew Pew",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 100, 68, 68, "3000", function () {
+        this.createButton(State, game, "laser-shop", "Unlock the Lazer! Pew Pew",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 100, 68, 68, "3000", function () {
             if (gameStatHandler.prototype.currency >= 3000) {
                 State.player.flash = Laser.prototype;
                 State.player.flashbullets = State.player.flash.create(State);
@@ -90,12 +90,13 @@ shop.prototype = {
         State.buttons.visible = false;
 
 
-        var descriptiveText = game.add.text((State.game.camera.width/2) -200, (State.game.camera.height / 2)+150, description, { font: "20px Arial", fill: "#fff", align: "center" });
+        var descriptiveText = game.add.text((State.game.camera.width/2), (State.game.camera.height / 2)+150, description, { font: "20px Arial", fill: "#fff", align: "center" });
         descriptiveText.fixedToCamera = true;
+        descriptiveText.anchor.setTo(.5);
         descriptiveText.visible = false;
 
         var onOver = function (target) {
-           button.scale.setTo(1.1);
+           button.scale.setTo(1.25);
            descriptiveText.visible = true;
           };
           var onOut = function (target) {
