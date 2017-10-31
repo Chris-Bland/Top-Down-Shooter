@@ -13,6 +13,7 @@ gameStatHandler.prototype = {
         this.mercsAmount = 0;
         this.currency = 1;
         this.towersAmount = 5;
+        this.dungeonKey = false;
 
     },
 

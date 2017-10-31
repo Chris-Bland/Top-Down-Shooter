@@ -37,6 +37,11 @@ outsideMap.prototype = {
 
         State.map.exit = State.map.objects.meta.find(o => o.name == 'exit');
         State.map.exitRectangle = new Phaser.Rectangle(State.map.exit.x, State.map.exit.y, State.map.exit.width, State.map.exit.height);
+
+        State.map.dungeonExit = State.map.objects.meta.find(o => o.name == 'exit');
+        State.map.dungeonExitRectangle = new Phaser.Rectangle(69, 3039, 53, 22);
+
+
         State.map.entrance = State.map.objects.meta.find(o => o.name == 'entrance');
         State.map.start = State.map.objects.meta.find(o => o.name == 'start');
 

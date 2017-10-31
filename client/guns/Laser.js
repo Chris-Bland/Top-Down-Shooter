@@ -23,6 +23,20 @@ Laser.prototype = {
           
                 }
             }
-    }
+    },
+    shootDungeon: function(State, shooter){
+        
+              if (State.game.time.now > shooter.shootTime) {  
+                  let bullet = shooter.bullets.getFirstExists(false);
+                  if (bullet) {
+                    bullet.reset(shooter.x, shooter.y + 8);
+                    bullet.body.velocity.x = 100;
+    
+                    bullet.rotation = game.physics.arcade.moveToObject(bullet, State.player, 500);
+                    bullet.lifespan = 1000;
+            
+                  }
+              }
+      }
 
 };

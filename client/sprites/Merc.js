@@ -3,7 +3,7 @@ var Merc = function() {};
 Merc.prototype = {
 
     create: function(State){
-
+        console.log('mercs state: ', State);
         let mercs = game.add.group();
         let mercsTotal = gameStatHandler.prototype.mercsAmount;
         for(let i = 0; i < mercsTotal; i++){

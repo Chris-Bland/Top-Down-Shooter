@@ -23,9 +23,9 @@ GameMenu.prototype = {
 
   create: function () {
 
-    if (music.name !== "dangerous" && playMusic) {
+    if (music.name !== "music" && playMusic) {
       music.stop();
-      music = game.add.audio('dangerous');
+      music = game.add.audio('music');
       music.loop = true;
       music.play();
     }
@@ -45,7 +45,6 @@ GameMenu.prototype = {
         game.state.start("Credits");
       });
 
-   
   },
 
 addMenuOption: function(text, x, y, callback) {

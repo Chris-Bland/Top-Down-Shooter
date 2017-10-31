@@ -13,6 +13,9 @@ Preloader.prototype.preload = function () {
     this.load.tilemap('inside', './client/assets/maps/inside.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('inside-tileset', './client/assets/maps/outside-tileset.png');
 
+    this.load.tilemap('dungeon', './client/assets/maps/dungeon.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.image('dungeon-tileset', './client/assets/maps/dungeon-tileset.png');
+
     this.load.atlasJSONHash(
         'player',
         './client/assets/animations/player.png',
@@ -40,8 +43,6 @@ Preloader.prototype.preload = function () {
     this.load.atlas('merc', './client/assets/animations/player-rifle.png', './client/assets/animations/player-rifle.json');
     this.load.atlas('flashlight-enemy', './client/assets/sprites/flashlight-enemy.png', './client/assets/sprites/flashlight-enemy.json');
     this.load.atlas('shotgun-enemy', './client/assets/sprites/shotgun-enemy.png', './client/assets/sprites/shotgun-enemy.json');
-
-
 
     this.load.image('button', './client/assets/sprites/button.png');
     this.load.image('menu-image', './client/assets/sprites/menu-image.png');
@@ -78,10 +79,10 @@ Preloader.prototype.preload = function () {
 
     this.load.image('currency-icon', './client/assets/ui/btc.png');
 
-    this.load.image('store', './client/assets/ui/store.png');
+    // this.load.image('store', './client/assets/ui/store.png');
     this.load.image('work-bench', './client/assets/sprites/workBench.png');
 
-    game.load.audio('dangerous', './client/assets/audio/music.mp3');
+    game.load.audio('music', './client/assets/audio/music.mp3');
 
     this.load.image('boss-slide', './client/assets/ui/bossSlide.png');
     this.load.image('outside-ui-slide', './client/assets/ui/outsideUi.png');
@@ -118,7 +119,17 @@ Preloader.prototype.preload = function () {
         './client/assets/animations/rocket.png',
         './client/assets/animations/rocket.json'
     );
-    
+
+    this.load.image('store', './client/assets/shop/store.png');
+    this.load.image('beer-shop', './client/assets/shop/beerShop.png');
+    this.load.image('dungeon-shop', './client/assets/shop/dungeonShop.png');
+    this.load.image('heal-shop', './client/assets/shop/healShop.png');
+    this.load.image('health-shop', './client/assets/shop/healthShop.png');
+    this.load.image('laser-shop', './client/assets/shop/laserShop.png');
+    this.load.image('melee-shop', './client/assets/shop/meleeShop.png');
+    this.load.image('merc-shop', './client/assets/shop/mercShop.png');
+    this.load.image('speed-shop', './client/assets/shop/speedShop.png');
+    this.load.image('tower-shop', './client/assets/shop/towerShop.png');
 };
 
 Preloader.prototype.create = function () {
@@ -127,9 +138,10 @@ Preloader.prototype.create = function () {
     pistolAudio = game.add.audio('pistol');
     shotgunAudio = game.add.audio('shotgun');
     bossSpawn = game.add.audio('boss-spawn');
-    music = game.add.audio('dangerous');
+
+    music = game.add.audio('music');
     music.loop = true;
     music.volume = .5;
     music.play();
-    game.state.start('Credits');
+    game.state.start('levelOutside');
 };
