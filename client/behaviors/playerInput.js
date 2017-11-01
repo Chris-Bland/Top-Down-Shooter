@@ -20,9 +20,9 @@ behaviorsObj.prototype.playerInput = function(State){
         State.player.rotation = State.game.physics.arcade.angleToPointer(State.player);
 
         //add keys to switch the gun
-        if (State.playerInteraction.pistol.isDown) {
-            State.player.gun = State.player.pistol;
-            State.player.bullets = State.player.pistolbullets;
+        if (State.playerInteraction.gun1.isDown) {
+            State.player.gun = State.player.gun1;
+            State.player.bullets = State.player.gun1bullets;
             State.player.idle = pistolIdle(State);
             State.player.move = pistolMove(State);
             State.player.shoot = pistolShoot(State);
@@ -30,28 +30,28 @@ behaviorsObj.prototype.playerInput = function(State){
             State.selectedPistol.visible = true;
 
         };
-        if (State.playerInteraction.rifle.isDown) {
-            State.player.gun = State.player.rifle;
-            State.player.bullets = State.player.riflebullets;
-            State.player.idle = rifleIdle(State);
-            State.player.move = rifleMove(State);
-            State.player.shoot = rifleShoot(State);
-            resetSelected(State);
-            State.selectedRifle.visible = true;
-        };
-        if (State.playerInteraction.shotgun.isDown) {
-            State.player.gun = State.player.rocket;
-            State.player.bullets = State.player.rocketbullets;
+        if (State.playerInteraction.gun2.isDown) {
+            State.player.gun = State.player.gun2;
+            State.player.bullets = State.player.gun2bullets;
             State.player.idle = shotgunIdle(State);
             State.player.move = shotgunMove(State);
             State.player.shoot = shotgunShoot(State);
             resetSelected(State);
             State.selectedShotgun.visible = true;
+        };
+        if (State.playerInteraction.gun3.isDown) {
+            State.player.gun = State.player.gun3;
+            State.player.bullets = State.player.gun3bullets;
+            State.player.idle = rifleIdle(State);
+            State.player.move = rifleMove(State);
+            State.player.shoot = rifleShoot(State);
+            resetSelected(State);
+            State.selectedRifle.visible = true;
 
         };
-        if (State.playerInteraction.flash.isDown) {
-            State.player.gun = State.player.flash;
-            State.player.bullets = State.player.flashbullets;
+        if (State.playerInteraction.gun4.isDown) {
+            State.player.gun = State.player.gun4;
+            State.player.bullets = State.player.gun4bullets;
             State.player.idle = flashlightIdle(State);
             State.player.move = flashlightMove(State);
             State.player.shoot = flashlightAttack(State);

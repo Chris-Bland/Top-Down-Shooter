@@ -10,9 +10,14 @@ gameStatHandler.prototype = {
         this.playerXP = 1;
         this.playerLevel = 1;
         this.healthPoints = 0;
+        this.speedPoints = 0;
+        this.damagePoints = 0;
         this.mercsAmount = 0;
+        this.mercTanksAmount = 1;
+        this.mercHealersAmount = 0;
         this.currency = 1;
-        this.towersAmount = 5;
+        this.towersAmount = 0;
+        this.laser = false;
         this.dungeonKey = false;
 
     },

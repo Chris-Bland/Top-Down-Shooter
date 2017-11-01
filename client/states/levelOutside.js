@@ -18,6 +18,8 @@ LevelOutside.prototype = {
             House.prototype.create(this);
             Player.prototype.create(this);
             Merc.prototype.create(this);
+            MercTank.prototype.create(this);
+            MercHealer.prototype.create(this);
        
 
             outsideMap.prototype.layForeground(this);
@@ -39,8 +41,10 @@ LevelOutside.prototype = {
             House.prototype.update(this);
             Player.prototype.update(this);
             Merc.prototype.update(this);
+            MercTank.prototype.update(this);
+            MercHealer.prototype.update(this);
             Tower.prototype.update(this);
-            Ui.prototype.update(this);
+            Ui.prototype.updateOutside(this);
             waveHandler.prototype.update(this);
 
             if (Phaser.Rectangle.containsPoint(this.map.dungeonExitRectangle, this.player.position) && gameStatHandler.prototype.dungeonKey === true) {

@@ -33,39 +33,38 @@ shop.prototype = {
         });
         this.createButton(State, game, "laser-shop", "Replace your Flash with a Lazer! Pew Pew",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 100, 68, 68, "3000", function () {
             if (gameStatHandler.prototype.currency >= 3000) {
-                State.player.flash = Laser.prototype;
-                State.player.flashbullets = State.player.flash.create(State);
+                gameStatHandler.prototype.laser = true;
                 gameStatHandler.prototype.currency -= 3000;
             }
 
         });
         this.createButton(State, game, "melee-shop", "Purchase a Melee Mercenary", (State.game.camera.width / 2) + 5, (State.game.camera.height / 4) + 100, 68, 68, "5000", function () {
-            if (gameStatHandler.prototype.currency >= 5000 && gameStatHandler.prototype.mercsAmount <3) {
-                gameStateHandler.prototype.mercsAmount +=1
-                gameStatHandler.prototype.currency -= 3000;
+            if (gameStatHandler.prototype.currency >= 5000 && gameStatHandler.prototype.mercsAmount + gameStatHandler.prototype.mercTanksAmount + gameStatHandler.prototype.mercHealersAmount < 3 ) {
+                gameStatHandler.prototype.mercTanksAmount +=1;
+                gameStatHandler.prototype.currency -= 5000;
             }
         });
         this.createButton(State,  game, "merc-shop", "Purchase an All Around Mercenary",(State.game.camera.width / 2) + 110, (State.game.camera.height / 4) + 100, 68, 68, "2000", function () {
-            if (gameStatHandler.prototype.currency >= 2000 && gameStatHandler.prototype.mercsAmount <3) {
-                    gameStateHandler.prototype.mercsAmount +=1
+            if (gameStatHandler.prototype.currency >= 2000 && gameStatHandler.prototype.mercsAmount + gameStatHandler.prototype.mercTanksAmount + gameStatHandler.prototype.mercHealersAmount < 3 ) {
+                gameStatHandler.prototype.mercsAmount +=1;
                 gameStatHandler.prototype.currency -= 2000;
             }
         });
         this.createButton(State, game, "heal-shop", "Purchase a Healing Mercenary",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 230, 68, 68, "4500", function () {
-            if (gameStatHandler.prototype.currency >= 4500&& gameStatHandler.prototype.mercsAmount <3) {
-                gameStateHandler.prototype.mercsAmount +=1
+            if (gameStatHandler.prototype.currency >= 4500 && gameStatHandler.prototype.mercsAmount + gameStatHandler.prototype.mercTanksAmount + gameStatHandler.prototype.mercHealersAmount < 3 ) {
+                gameStatHandler.prototype.mercHealersAmount +=1;
                 gameStatHandler.prototype.currency -= 4500;
             }
         });
         this.createButton(State, game, "beer-shop", "Boost your hero's bullet damage",(State.game.camera.width / 2) + 5, (State.game.camera.height / 4) + 230, 68, 68, "500", function () {
             if (gameStatHandler.prototype.currency >= 500) {
-
+                gameStatHandler.prototype.damagePoints += 1;
                 gameStatHandler.prototype.currency -= 500;
             }
         });
         this.createButton(State, game, "speed-shop", "Boost your hero's walk speed",(State.game.camera.width / 2) + 110, (State.game.camera.height / 4) + 230, 68, 68, "500", function () {
             if (gameStatHandler.prototype.currency >= 500) {
-                State.player.MOVE_SPEED += 50;
+                gameStatHandler.prototype.speedPoints += 1;
                 gameStatHandler.prototype.currency -= 500;
             }
         });

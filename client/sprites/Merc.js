@@ -3,13 +3,12 @@ var Merc = function() {};
 Merc.prototype = {
 
     create: function(State){
-        console.log('mercs state: ', State);
-        let mercs = game.add.group();
-        let mercsTotal = gameStatHandler.prototype.mercsAmount;
-        for(let i = 0; i < mercsTotal; i++){
-            let merc = mercs.create(2977 + i, 1060 + i, 'merc');
+        var mercs = game.add.group();
+        var mercsTotal = gameStatHandler.prototype.mercsAmount;
+        for(var i = 0; i < mercsTotal; i++){
+            var merc = mercs.create(2977 + i, 1060 + i, 'merc');
             merc.tint = 0x00ff00;
-            merc.MOVE_SPEED = 500;
+            merc.MOVE_SPEED = 500 + State.player.playerLevel * 5;
             merc.anchor.set(0.5);
             merc.scale.set(0.2);
             merc.animations.add('idle', [0, 1, 2, 3, 5, 6, 7, 8, 14, 19, 20], 20, true);
@@ -22,7 +21,7 @@ Merc.prototype = {
             merc.body.collideWorldBounds = true;
             merc.hitPoints = 10;
             merc.gun = Rifle.prototype;
-            merc.bullets = merc.gun.create(State, merc);
+            merc.bullets = merc.gun.create(State, 0x00ff00);
             merc.shootTime = 0;
         }
     

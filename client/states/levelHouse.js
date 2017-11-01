@@ -8,6 +8,8 @@ LevelHouse.prototype = {
         Player.prototype.create(this);
         NPC.prototype.create(this);
         this.mercs = gameStatHandler.prototype.mercsAmount;
+        this.mercTanks = gameStatHandler.prototype.mercTanksAmount;
+        this.mercHealers = gameStatHandler.prototype.mercHealersAmount;
         insideMap.prototype.layForeground(this);
         shop.prototype.create(this);
         keyConfig(this);
@@ -23,7 +25,7 @@ LevelHouse.prototype = {
        Player.prototype.updateHouse(this);
 
        insideText.prototype.update(this);
-       Ui.prototype.update(this);
+       Ui.prototype.updateHouse(this);
 
        NPC.prototype.update(this);
 

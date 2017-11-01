@@ -7,6 +7,8 @@ Dungeon.prototype = {
         dungeonMap.prototype.create(this);
         Player.prototype.create(this);
         Merc.prototype.create(this);
+        MercTank.prototype.create(this);
+        MercHealer.prototype.create(this);
         this.dungeonBoss(this);
 
         dungeonMap.prototype.layForeground(this);
@@ -22,7 +24,7 @@ Dungeon.prototype = {
         Player.prototype.update(this);
         Merc.prototype.update(this);
 
-        Ui.prototype.update(this);
+        Ui.prototype.updateOutside(this);
         dungeonText.prototype.update(this);
         this.boss.angle += 1;
         this.boss.gun.shootDungeon(this, this.boss);
