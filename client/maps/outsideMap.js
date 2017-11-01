@@ -8,22 +8,22 @@ outsideMap.prototype = {
         State.map.addTilesetImage('large-map', 'large-map');
 
 
-        let layer = State.map.createLayer('Base');
+        var layer = State.map.createLayer('Base');
         layer.resizeWorld();
 
-        let collisionLayer = State.map.createLayer('Collision');
+        var collisionLayer = State.map.createLayer('Collision');
         State.map.collisionLayer = collisionLayer;
         collisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.collisionLayer);
         collisionLayer.resizeWorld();
 
-        let bulletCollisionLayer = State.map.createLayer('BulletCollision');
+        var bulletCollisionLayer = State.map.createLayer('BulletCollision');
         State.map.bulletCollisionLayer = bulletCollisionLayer;
         bulletCollisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.bulletCollisionLayer);
         bulletCollisionLayer.resizeWorld();
 
-        let aStarCollisionLayer = State.map.createLayer('ACollision');
+        var aStarCollisionLayer = State.map.createLayer('ACollision');
         State.map.aStarCollisionLayer = aStarCollisionLayer;
         aStarCollisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.aStarCollisionLayer);
@@ -52,8 +52,8 @@ outsideMap.prototype = {
         State.map.spawnPoints.push(spawn1, spawn2);
 
         State.map.towerPoints = [];
-        for(let i = 1; i<75; i++){
-            let spotName = "tower" + i;
+        for(var i = 1; i<75; i++){
+            var spotName = "tower" + i;
             State.map.towerPoints.push(State.map.objects.meta.find(o => o.name == spotName));
         }
 
@@ -64,7 +64,7 @@ outsideMap.prototype = {
 
     layForeground: function(State){
 
-        let layerForeground = State.map.createLayer('Foreground');
+        var layerForeground = State.map.createLayer('Foreground');
         State.map.layerForeground = layerForeground;
         layerForeground.resizeWorld();
 

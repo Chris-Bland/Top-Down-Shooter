@@ -12,13 +12,13 @@ shop.prototype = {
         State.texts = game.add.group();
 
         this.createButton(State,game, "tower-shop", "Purchase a Tower", (State.game.camera.width / 2) - 105, (State.game.camera.height / 4) - 12, 68, 68, "500", function () {
-            if (gameStatHandler.prototype.currency >= 500 && gameStatHandler.prototype.towersAmount < 72) {
+            if (gameStatHandler.prototype.currency >= 500 && gameStatHandler.prototype.towersAmount < 50) {
                 gameStatHandler.prototype.towersAmount += 1;
                 gameStatHandler.prototype.currency -= 500;
             }
         });
         this.createButton(State, game, "dungeon-shop", "Unlock the Dungeon!",(State.game.camera.width / 2), (State.game.camera.height / 4) - 12, 68, 68, "2000", function () {
-            if (gameStatHandler.prototype.currency >= 2000 ) {
+            if (gameStatHandler.prototype.currency >= 2000 && gameStatHandler.prototype.dungeonKey == false) {
                 gameStatHandler.prototype.dungeonKey = true;
                 gameStatHandler.prototype.currency -= 2000;
             }
@@ -32,7 +32,7 @@ shop.prototype = {
             }
         });
         this.createButton(State, game, "laser-shop", "Unlock the Lazer! Pew Pew",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 100, 68, 68, "3000", function () {
-            if (gameStatHandler.prototype.currency >= 3000) {
+            if (gameStatHandler.prototype.currency >= 3000 && gameStatHandler.prototype.laser == false) {
                 gameStatHandler.prototype.laser = true;
                 gameStatHandler.prototype.currency -= 3000;
             }

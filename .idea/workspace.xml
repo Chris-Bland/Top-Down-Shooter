@@ -2,37 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6fab995-6221-468e-9ff6-3cafb6a34be1" name="Default" comment="Merge branch 'master' of https://github.com/FacesDev/Top-Down-Shooter&#10;&#10;# Conflicts:&#10;#&#9;client/helpers/gameStatHandler.js&#10;#&#9;client/states/Preloader.js">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/behaviors/beamOverlap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/behaviors/healShoot.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/behaviors/tankMelee.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/guns/Beam.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/sprites/MercHealer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/sprites/MercTank.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/behaviors/enemyMove.js" afterPath="$PROJECT_DIR$/client/behaviors/enemyMove.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/behaviors/playerInput.js" afterPath="$PROJECT_DIR$/client/behaviors/playerInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/guns/Aoe.js" afterPath="$PROJECT_DIR$/client/guns/Aoe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/guns/Rocket.js" afterPath="$PROJECT_DIR$/client/guns/Rocket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/guns/Shotgun.js" afterPath="$PROJECT_DIR$/client/guns/Shotgun.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/helpers/gameStatHandler.js" afterPath="$PROJECT_DIR$/client/helpers/gameStatHandler.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/helpers/statHandler.js" afterPath="$PROJECT_DIR$/client/helpers/statHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/keyConfig.js" afterPath="$PROJECT_DIR$/client/keyConfig.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/maps/dungeonMap.js" afterPath="$PROJECT_DIR$/client/maps/dungeonMap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/maps/outsideMap.js" afterPath="$PROJECT_DIR$/client/maps/outsideMap.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/shop/Shop.js" afterPath="$PROJECT_DIR$/client/shop/Shop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Boss.js" afterPath="$PROJECT_DIR$/client/sprites/Boss.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Bullet.js" afterPath="$PROJECT_DIR$/client/sprites/Bullet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Enemy.js" afterPath="$PROJECT_DIR$/client/sprites/Enemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Merc.js" afterPath="$PROJECT_DIR$/client/sprites/Merc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/PistolEnemy.js" afterPath="$PROJECT_DIR$/client/sprites/PistolEnemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Player.js" afterPath="$PROJECT_DIR$/client/sprites/Player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/RifleEnemy.js" afterPath="$PROJECT_DIR$/client/sprites/RifleEnemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/RocketBullet.js" afterPath="$PROJECT_DIR$/client/sprites/RocketBullet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/ShotgunEnemy.js" afterPath="$PROJECT_DIR$/client/sprites/ShotgunEnemy.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Tower.js" afterPath="$PROJECT_DIR$/client/sprites/Tower.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Ui.js" afterPath="$PROJECT_DIR$/client/sprites/Ui.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/states/Dungeon.js" afterPath="$PROJECT_DIR$/client/states/Dungeon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/states/levelHouse.js" afterPath="$PROJECT_DIR$/client/states/levelHouse.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/states/levelOutside.js" afterPath="$PROJECT_DIR$/client/states/levelOutside.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,11 +24,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="waveHandler.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/helpers/waveHandler.js">
+      <file leaf-file-name="Shop.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/shop/Shop.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="66" column="56" lean-forward="false" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
+            <state relative-caret-position="1420">
+              <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+              <folding>
+                <marker date="1509568437000" expanded="true" signature="77:1390" ph="{...}" />
+                <marker date="1509568437000" expanded="true" signature="5714:5771" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tower.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/sprites/Tower.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spawnHandler.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/helpers/spawnHandler.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -76,20 +77,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/helpers/waveHandler.js" />
         <option value="$PROJECT_DIR$/client/states/Preloader.js" />
         <option value="$PROJECT_DIR$/client/behaviors/enemyMove.js" />
         <option value="$PROJECT_DIR$/client/guns/Shotgun.js" />
         <option value="$PROJECT_DIR$/client/keyConfig.js" />
-        <option value="$PROJECT_DIR$/client/behaviors/playerInput.js" />
         <option value="$PROJECT_DIR$/client/guns/Rocket.js" />
         <option value="$PROJECT_DIR$/client/sprites/Boss.js" />
         <option value="$PROJECT_DIR$/client/sprites/Player.js" />
-        <option value="$PROJECT_DIR$/client/sprites/Enemy.js" />
         <option value="$PROJECT_DIR$/client/sprites/PistolEnemy.js" />
         <option value="$PROJECT_DIR$/client/sprites/RifleEnemy.js" />
         <option value="$PROJECT_DIR$/client/sprites/ShotgunEnemy.js" />
-        <option value="$PROJECT_DIR$/client/sprites/Tower.js" />
         <option value="$PROJECT_DIR$/client/guns/Aoe.js" />
         <option value="$PROJECT_DIR$/client/behaviors/beamCollide.js" />
         <option value="$PROJECT_DIR$/client/behaviors/shoot.js" />
@@ -104,12 +101,19 @@
         <option value="$PROJECT_DIR$/client/states/levelOutside.js" />
         <option value="$PROJECT_DIR$/client/sprites/Ui.js" />
         <option value="$PROJECT_DIR$/client/states/levelHouse.js" />
-        <option value="$PROJECT_DIR$/client/states/Dungeon.js" />
-        <option value="$PROJECT_DIR$/client/shop/Shop.js" />
-        <option value="$PROJECT_DIR$/client/helpers/gameStatHandler.js" />
         <option value="$PROJECT_DIR$/client/sprites/MercTank.js" />
         <option value="$PROJECT_DIR$/client/behaviors/tankMelee.js" />
+        <option value="$PROJECT_DIR$/client/helpers/waveHandler.js" />
+        <option value="$PROJECT_DIR$/client/behaviors/bodyOverlap.js" />
+        <option value="$PROJECT_DIR$/client/sprites/Enemy.js" />
+        <option value="$PROJECT_DIR$/client/sprites/Tower.js" />
+        <option value="$PROJECT_DIR$/client/states/Dungeon.js" />
+        <option value="$PROJECT_DIR$/client/maps/outsideMap.js" />
+        <option value="$PROJECT_DIR$/client/maps/dungeonMap.js" />
         <option value="$PROJECT_DIR$/client/helpers/statHandler.js" />
+        <option value="$PROJECT_DIR$/client/helpers/gameStatHandler.js" />
+        <option value="$PROJECT_DIR$/client/behaviors/playerInput.js" />
+        <option value="$PROJECT_DIR$/client/shop/Shop.js" />
       </list>
     </option>
   </component>
@@ -177,6 +181,12 @@
               <item name="shoturMVP" type="b2602c69:ProjectViewProjectNode" />
               <item name="shoturMVP" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="maps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shoturMVP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shoturMVP" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="shop" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -184,6 +194,12 @@
               <item name="shoturMVP" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="sprites" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shoturMVP" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shoturMVP" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="states" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -227,12 +243,13 @@
       <workItem from="1509252061579" duration="616000" />
       <workItem from="1509426563280" duration="7459000" />
       <workItem from="1509460776576" duration="12571000" />
-      <workItem from="1509552432579" duration="2993000" />
+      <workItem from="1509552432579" duration="12092000" />
+      <workItem from="1509574993124" duration="513000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27649000" />
+    <option name="totallyTimeSpent" value="37261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-54" y="-768" width="1366" height="768" extended-state="0" />
@@ -244,7 +261,7 @@
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35971224" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23165467" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -268,7 +285,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/client/sprites/Ui.js</url>
           <line>125</line>
-          <properties />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -277,34 +293,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/guns/Flash.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/guns/Rifle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/guns/Sniper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/guns/Shotgun.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="98" lean-forward="false" selection-start-line="13" selection-start-column="98" selection-end-line="13" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/keyConfig.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -312,18 +300,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/behaviors/playerInput.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/states/Preloader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1519">
           <caret line="131" column="72" lean-forward="false" selection-start-line="131" selection-start-column="72" selection-end-line="131" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -331,20 +311,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/sprites/Boss.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/sprites/Enemy.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -370,13 +336,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/sprites/Tower.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-237">
-          <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/sprites/ShotgunEnemy.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -398,20 +357,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/behaviors/bodyOverlap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/phaser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31849">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -448,7 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
           <caret line="68" column="72" lean-forward="true" selection-start-line="68" selection-start-column="72" selection-end-line="68" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -518,7 +466,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
           <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -552,26 +499,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/states/levelOutside.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="19" column="40" lean-forward="true" selection-start-line="19" selection-start-column="40" selection-end-line="21" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/states/levelHouse.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
           <caret line="27" column="38" lean-forward="true" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/states/Dungeon.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="42" lean-forward="false" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
           <folding />
         </state>
       </provider>
@@ -588,23 +519,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="10" column="64" lean-forward="false" selection-start-line="10" selection-start-column="64" selection-end-line="10" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/sprites/MercTank.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/shop/Shop.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="55" column="55" lean-forward="false" selection-start-line="55" selection-start-column="55" selection-end-line="55" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -612,31 +526,126 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="62" column="43" lean-forward="true" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/helpers/waveHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="979">
+          <caret line="66" column="59" lean-forward="false" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/sprites/MercTank.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/behaviors/bodyOverlap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="1" lean-forward="false" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/sprites/Boss.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/sprites/Enemy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/states/Dungeon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/helpers/audioEQ.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/maps/dungeonMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="6" lean-forward="true" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/maps/outsideMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/behaviors/playerInput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="66" column="14" lean-forward="false" selection-start-line="66" selection-start-column="14" selection-end-line="66" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/helpers/gameStatHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/helpers/statHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        <state relative-caret-position="526">
+          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/helpers/gameStatHandler.js">
+    <entry file="file://$PROJECT_DIR$/client/states/levelOutside.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="15" column="32" lean-forward="false" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        <state relative-caret-position="84">
+          <caret line="16" column="41" lean-forward="true" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/helpers/spawnHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/helpers/waveHandler.js">
+    <entry file="file://$PROJECT_DIR$/client/sprites/Tower.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="66" column="56" lean-forward="false" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
+        <state relative-caret-position="345">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/shop/Shop.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1420">
+          <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
+          <folding>
+            <marker date="1509568437000" expanded="true" signature="77:1390" ph="{...}" />
+            <marker date="1509568437000" expanded="true" signature="5714:5771" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>

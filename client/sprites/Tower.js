@@ -22,13 +22,8 @@ Tower.prototype = {
 
 
             if (level <= 10) {
-<<<<<<< HEAD
                 tower.gun = Pistol.prototype;
                 tower.bullets = tower.gun.create(State, tower);
-=======
-                tower.gun = Rifle.prototype;
-                tower.bullets = tower.gun.create(State, 0xff0000);
->>>>>>> ba38a75da4dbcd739c1038cf1edd6ac888ce0708
             }
 
             else if (level > 10 || level <= 20) {
