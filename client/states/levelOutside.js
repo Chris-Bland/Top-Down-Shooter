@@ -47,7 +47,7 @@ LevelOutside.prototype = {
             Ui.prototype.updateOutside(this);
             waveHandler.prototype.update(this);
 
-            if (Phaser.Rectangle.containsPoint(this.map.dungeonExitRectangle, this.player.position) && gameStatHandler.prototype.dungeonKey === true) {
+            if (Phaser.Rectangle.containsPoint(this.map.dungeonExitRectangle, this.player.position) ) {
                 this.game.state.start('Dungeon');
             }
         }
@@ -55,3 +55,4 @@ LevelOutside.prototype = {
 };
 
 
+// && gameStatHandler.prototype.dungeonKey === true

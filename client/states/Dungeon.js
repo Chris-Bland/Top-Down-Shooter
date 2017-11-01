@@ -9,20 +9,22 @@ Dungeon.prototype = {
         Merc.prototype.create(this);
         MercTank.prototype.create(this);
         MercHealer.prototype.create(this);
+
         this.dungeonBoss(this);
 
         dungeonMap.prototype.layForeground(this);
         keyConfig(this);
 
         dungeonEvents.prototype.openingTween(this);
-        Ui.prototype.create(this);
+        // Ui.prototype.create(this);
         dungeonText.prototype.create(this);
         this.isDungeon = true;
     },
 
     update: function () {
         Player.prototype.update(this);
-        Merc.prototype.update(this);
+        // Merc.prototype.update(this);
+
 
         Ui.prototype.updateOutside(this);
         dungeonText.prototype.update(this);
@@ -66,6 +68,12 @@ Dungeon.prototype = {
     //     boss.rotation = State.game.physics.arcade.angleToXY(boss, State.player.x, State.player.y);
         State.boss.gun = Laser.prototype;
         State.boss.bullets = State.boss.gun.create(State);
+        tween = game.add.tween(State.boss);
+        tween.to({ x: [500, 500, 100, 100], y: [250, 150, 150, 250] }, 3000, "Linear");
+        tween.yoyo(true, 3000);
+        tween.start();
+    
+     
 
     //    State.boss = boss;
 
