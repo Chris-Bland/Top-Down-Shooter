@@ -2,37 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6fab995-6221-468e-9ff6-3cafb6a34be1" name="Default" comment="Merge branch 'master' of https://github.com/FacesDev/Top-Down-Shooter&#10;&#10;# Conflicts:&#10;#&#9;client/helpers/gameStatHandler.js&#10;#&#9;client/states/Preloader.js">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/behaviors/beamOverlap.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/behaviors/healShoot.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/behaviors/tankMelee.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/guns/Beam.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/sprites/MercHealer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/sprites/MercTank.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/behaviors/enemyMove.js" afterPath="$PROJECT_DIR$/client/behaviors/enemyMove.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/behaviors/playerInput.js" afterPath="$PROJECT_DIR$/client/behaviors/playerInput.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/guns/Aoe.js" afterPath="$PROJECT_DIR$/client/guns/Aoe.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/guns/Rocket.js" afterPath="$PROJECT_DIR$/client/guns/Rocket.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/guns/Shotgun.js" afterPath="$PROJECT_DIR$/client/guns/Shotgun.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/helpers/gameStatHandler.js" afterPath="$PROJECT_DIR$/client/helpers/gameStatHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/helpers/statHandler.js" afterPath="$PROJECT_DIR$/client/helpers/statHandler.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/keyConfig.js" afterPath="$PROJECT_DIR$/client/keyConfig.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/shop/Shop.js" afterPath="$PROJECT_DIR$/client/shop/Shop.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Boss.js" afterPath="$PROJECT_DIR$/client/sprites/Boss.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Bullet.js" afterPath="$PROJECT_DIR$/client/sprites/Bullet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Enemy.js" afterPath="$PROJECT_DIR$/client/sprites/Enemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Merc.js" afterPath="$PROJECT_DIR$/client/sprites/Merc.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/PistolEnemy.js" afterPath="$PROJECT_DIR$/client/sprites/PistolEnemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Player.js" afterPath="$PROJECT_DIR$/client/sprites/Player.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/RifleEnemy.js" afterPath="$PROJECT_DIR$/client/sprites/RifleEnemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/RocketBullet.js" afterPath="$PROJECT_DIR$/client/sprites/RocketBullet.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/ShotgunEnemy.js" afterPath="$PROJECT_DIR$/client/sprites/ShotgunEnemy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Tower.js" afterPath="$PROJECT_DIR$/client/sprites/Tower.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/sprites/Ui.js" afterPath="$PROJECT_DIR$/client/sprites/Ui.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/states/Dungeon.js" afterPath="$PROJECT_DIR$/client/states/Dungeon.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/states/levelHouse.js" afterPath="$PROJECT_DIR$/client/states/levelHouse.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/states/levelOutside.js" afterPath="$PROJECT_DIR$/client/states/levelOutside.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/helpers/waveHandler.js" afterPath="$PROJECT_DIR$/client/helpers/waveHandler.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -49,8 +20,8 @@
       <file leaf-file-name="waveHandler.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/helpers/waveHandler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="66" column="56" lean-forward="false" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
+            <state relative-caret-position="346">
+              <caret line="66" column="61" lean-forward="false" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -76,7 +47,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/helpers/waveHandler.js" />
         <option value="$PROJECT_DIR$/client/states/Preloader.js" />
         <option value="$PROJECT_DIR$/client/behaviors/enemyMove.js" />
         <option value="$PROJECT_DIR$/client/guns/Shotgun.js" />
@@ -110,6 +80,7 @@
         <option value="$PROJECT_DIR$/client/sprites/MercTank.js" />
         <option value="$PROJECT_DIR$/client/behaviors/tankMelee.js" />
         <option value="$PROJECT_DIR$/client/helpers/statHandler.js" />
+        <option value="$PROJECT_DIR$/client/helpers/waveHandler.js" />
       </list>
     </option>
   </component>
@@ -227,12 +198,12 @@
       <workItem from="1509252061579" duration="616000" />
       <workItem from="1509426563280" duration="7459000" />
       <workItem from="1509460776576" duration="12571000" />
-      <workItem from="1509552432579" duration="2993000" />
+      <workItem from="1509552432579" duration="3821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27649000" />
+    <option name="totallyTimeSpent" value="28477000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-54" y="-768" width="1366" height="768" extended-state="0" />
@@ -634,8 +605,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/helpers/waveHandler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="66" column="56" lean-forward="false" selection-start-line="66" selection-start-column="56" selection-end-line="66" selection-end-column="56" />
+        <state relative-caret-position="346">
+          <caret line="66" column="61" lean-forward="false" selection-start-line="66" selection-start-column="61" selection-end-line="66" selection-end-column="61" />
           <folding />
         </state>
       </provider>

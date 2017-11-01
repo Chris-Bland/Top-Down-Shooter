@@ -64,7 +64,7 @@ waveHandler.prototype = {
     increment: function(State) {
 
         if(State.game.time.now > this.incrementTime){
-            this.incrementTime = State.game.time.now + 100;
+            this.incrementTime = State.game.time.now + (100 / ( State.wave / 10 ) );
             if(State.wave * 5 > State.waveEnemies.length){
                 Enemy.prototype.create(State);
             }
