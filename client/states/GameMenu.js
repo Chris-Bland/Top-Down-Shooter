@@ -11,7 +11,7 @@ GameMenu.prototype = {
   },
 
   init: function () {
-    this.titleText = game.make.text(game.camera.width / 2, 150, "Title", {
+    this.titleText = game.make.text(game.camera.width / 2, 150, "Game Title", {
       font: 'bold 70pt TheMinion',
       fill: '#FDFFB5',
       align: 'center'
@@ -65,6 +65,7 @@ addMenuOption: function(text, x, y, callback) {
     };
     txt.useHandCursor = true;
     txt.inputEnabled = true;
+    txt.fixedToCamera = true;
     txt.events.onInputUp.add(callback, this);
     txt.events.onInputOver.add(onOver, this);
     txt.events.onInputOut.add(onOut, this);

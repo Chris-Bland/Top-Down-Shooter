@@ -19,6 +19,14 @@ Sniper.prototype = {
                     if(target == State.game.input.activePointer){bullet.rotation = State.game.physics.arcade.moveToPointer(bullet, 1000, State.game.input.activePointer);}
                     else{bullet.rotation = State.game.physics.arcade.moveToXY(bullet, target.x, target.y, 1000);} 
                     bullet.lifespan = this.range * 160;
+                    if(shooter != State.player){
+                        if (shooter != 'tower'){
+                            rifleAudioNpc.play();
+                        }
+                         rifleAudioTower.play();
+                    }else {
+                        rifleAudioPlayer.play();
+                    }
                 }
             }
     }

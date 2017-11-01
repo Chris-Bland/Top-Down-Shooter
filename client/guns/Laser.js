@@ -1,42 +1,48 @@
-var Laser = function() {};
+var Laser = function () { };
 
 Laser.prototype = {
 
-    create: function(State, gunHolderTint){
+    create: function (State, gunHolderTint) {
         return Bullet.prototype.create(State, 0.5, gunHolderTint, 500, 2);
 
     },
-    
+
     range: 4,
 
-    shoot: function(State, shooter, target){
-      
-            if (State.game.time.now > shooter.shootTime) {  
-                let bullet = shooter.bullets.getFirstExists(false);
-                if (bullet) {
-                    bullet.reset(shooter.x, shooter.y);
-                    bullet.body.velocity.x = 1000;
-                    shooter.shootTime = State.game.time.now + 10; //fire rate determinate
-                    if(target == State.game.input.activePointer){bullet.rotation = State.game.physics.arcade.moveToPointer(bullet, 1000, State.game.input.activePointer);}
-                    else{bullet.rotation = State.game.physics.arcade.moveToXY(bullet, target.x, target.y, 1000);} 
-                    bullet.lifespan = this.range * 160;
-          
+    shoot: function (State, shooter, target) {
+
+        if (State.game.time.now > shooter.shootTime) {
+            let bullet = shooter.bullets.getFirstExists(false);
+            if (bullet) {
+                bullet.reset(shooter.x, shooter.y);
+                bullet.body.velocity.x = 1000;
+                shooter.shootTime = State.game.time.now + 10; //fire rate determinate
+                if (target == State.game.input.activePointer) { bullet.rotation = State.game.physics.arcade.moveToPointer(bullet, 1000, State.game.input.activePointer); }
+                else { bullet.rotation = State.game.physics.arcade.moveToXY(bullet, target.x, target.y, 1000); }
+                bullet.lifespan = this.range * 160;
+
+                if (shooter != State.player) {
+                    laserAudioNpc.play();
+                } else {
+                    laserAudioPlayer.play();
                 }
+
             }
+        }
     },
-    shootDungeon: function(State, shooter){
-        
-              if (State.game.time.now > shooter.shootTime) {  
-                  let bullet = shooter.bullets.getFirstExists(false);
-                  if (bullet) {
-                    bullet.reset(shooter.x, shooter.y + 8);
-                    bullet.body.velocity.x = 100;
-    
-                    bullet.rotation = game.physics.arcade.moveToObject(bullet, State.player, 500);
-                    bullet.lifespan = 1000;
-            
-                  }
-              }
-      }
+    shootDungeon: function (State, shooter) {
+
+        if (State.game.time.now > shooter.shootTime) {
+            let bullet = shooter.bullets.getFirstExists(false);
+            if (bullet) {
+                bullet.reset(shooter.x, shooter.y + 8);
+                bullet.body.velocity.x = 100;
+
+                bullet.rotation = game.physics.arcade.moveToObject(bullet, State.player, 500);
+                bullet.lifespan = 1000;
+
+            }
+        }
+    }
 
 };

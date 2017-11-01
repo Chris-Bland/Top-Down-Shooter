@@ -53,7 +53,7 @@ Preloader.prototype.preload = function () {
     this.load.audio('pistol', './client/assets/audio/pistol.mp3');
     this.load.audio('rifle', './client/assets/audio/rifle.mp3');
     this.load.audio('rifle-echo', './client/assets/audio/rifle-short.mp3');
-    this.load.audio('shotgun', './client/assets/audio/shotgun.mp3');
+    this.load.audio('rocket', './client/assets/audio/rocket.mp3');
     this.load.audio('laser', './client/assets/audio/laser.mp3');
     this.load.audio('boss-spawn', './client/assets/audio/bossSpawn.mp3');
 
@@ -79,7 +79,6 @@ Preloader.prototype.preload = function () {
 
     this.load.image('currency-icon', './client/assets/ui/btc.png');
 
-    // this.load.image('store', './client/assets/ui/store.png');
     this.load.image('work-bench', './client/assets/sprites/workBench.png');
 
     game.load.audio('music', './client/assets/audio/music.mp3');
@@ -119,7 +118,7 @@ Preloader.prototype.preload = function () {
         './client/assets/animations/rocket.png',
         './client/assets/animations/rocket.json'
     );
-
+    
     this.load.image('store', './client/assets/shop/store.png');
     this.load.image('beer-shop', './client/assets/shop/beerShop.png');
     this.load.image('dungeon-shop', './client/assets/shop/dungeonShop.png');
@@ -133,15 +132,45 @@ Preloader.prototype.preload = function () {
 };
 
 Preloader.prototype.create = function () {
-    laserAudio = game.add.audio('laser');
-    rifleAudio = game.add.audio('rifle-echo');
-    pistolAudio = game.add.audio('pistol');
-    shotgunAudio = game.add.audio('shotgun');
+
+
+    laserAudioPlayer = game.add.audio('laser');
+    laserAudioNpc = game.add.audio('laser');
+    rifleAudioPlayer = game.add.audio('rifle-echo');
+    rifleAudioNpc = game.add.audio('rifle-echo');
+    rifleAudioTower = game.add.audio('rifle');
+    pistolAudioPlayer = game.add.audio('pistol');
+    pistolAudioNpc = game.add.audio('pistol');
+    rocketAudioPlayer = game.add.audio('rocket');
+    rocketAudioNpc= game.add.audio('rocket')
+
+    laserAudioPlayer.volume = .6;
+    laserAudioPlayer.fadeOut = true;
+    laserAudioNpc.volume = .08;
+    laserAudioNpc.fadeOut = true;
+    rifleAudioPlayer.volumePlayer = .15;
+    rifleAudioPlayer.fadeOutPlayer = true;
+    rifleAudioNpc.volume = .08;
+    rifleAudioNpc.fadeOut = true;
+    rifleAudioTower.volume = .06;
+    rifleAudioTower.fadeOut = true;
+    pistolAudioPlayer.volume = .6;
+    pistolAudioPlayer.fadeOut = true;
+    pistolAudioNpc.volume = .08;
+    pistolAudioNpc.fadeOut = true;
+    rocketAudioPlayer.volume = .6;
+    rocketAudioPlayer.fadeOut = true;
+    rocketAudioNpc.volume = .08;
+    rocketAudioNpc.fadeOut = true;
+
     bossSpawn = game.add.audio('boss-spawn');
 
     music = game.add.audio('music');
     music.loop = true;
     music.volume = .5;
+    music.fadeOut = true;
     music.play();
-    game.state.start('levelOutside');
+
+
+    game.state.start('Credits');
 };

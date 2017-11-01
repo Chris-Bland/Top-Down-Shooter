@@ -5,7 +5,9 @@ Credits.prototype = {
         // GameMenu.prototype.addMenuOption('Menu', 10, 640, function () {
         //     game.state.start("GameMenu");
         // });
-
+        GameMenu.prototype.addMenuOption('Menu', 10, 640, function () {
+            game.state.start("GameMenu");
+        });
  
 
         ship1 = game.add.sprite(-200, 260, 'ship-1');

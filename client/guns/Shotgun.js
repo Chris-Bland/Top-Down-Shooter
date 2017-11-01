@@ -17,7 +17,7 @@ Shotgun.prototype = {
             if (State.game.time.now > shooter.shootTime) {  
                 let bullet = shooter.bullets.getFirstExists(false);
                 // shotgunAudio.stop();
-                shotgunAudio.play();
+                rocketAudioNpc.play();
                 if (bullet) {
                     bullet.reset(shooter.x, shooter.y);
                     bullet.body.velocity.x = 1000;

@@ -14,7 +14,6 @@ LevelOutside.prototype = {
             }
 
             this.wave = gameStatHandler.prototype.wave;
-
             House.prototype.create(this);
             Player.prototype.create(this);
             Merc.prototype.create(this);
@@ -33,9 +32,8 @@ LevelOutside.prototype = {
         },
 
         update: function () {
-   
+           
             outsideText.prototype.update(this);
-            //sprite updates
             House.prototype.update(this);
             Player.prototype.update(this);
             Merc.prototype.update(this);

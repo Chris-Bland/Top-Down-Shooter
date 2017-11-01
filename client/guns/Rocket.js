@@ -22,8 +22,12 @@ Rocket.prototype = {
                 if(target == State.game.input.activePointer){bullet.rotation = State.game.physics.arcade.moveToPointer(bullet, 1000, State.game.input.activePointer);}
                 else{bullet.rotation = State.game.physics.arcade.moveToXY(bullet, target.x, target.y, 1000);}
                 bullet.lifespan = this.range * 160;
-                // pistolAudio.stop();
-                pistolAudio.play();
+                if (shooter != State.player) {
+                    rocketAudioNpc.play();
+                } else {
+                    rocketAudioPlayer.play();
+                }
+
             }
         }
     }

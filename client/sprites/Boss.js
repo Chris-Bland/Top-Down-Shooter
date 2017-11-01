@@ -11,9 +11,9 @@ Boss.prototype = {
         boss.anchor.set(0.5);
         boss.scale.set(1);
         boss.animations.add('move', Phaser.Animation.generateFrameNames('helio-', 1, 1, '.png', 2), 1, true, false);
-        boss.animations.add('attack', Phaser.Animation.generateFrameNames('helio-', 1, 8, '.png', 2), 1, true, false);
-        boss.animations._anims.attack.speed = 20;
-        boss.play('attack');
+        boss.animations.add('shoot', Phaser.Animation.generateFrameNames('helio-', 1, 8, '.png', 2), 1, true, false);
+        boss.animations._anims.shoot.speed = 20;
+        boss.play('move');
         boss.maxHealth = 1000 * (State.wave / 5);
         boss.health = boss.maxHealth;
         State.boss.health = boss.health;
