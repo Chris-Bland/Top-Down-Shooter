@@ -98,7 +98,7 @@ Ui.prototype = {
         State.waveUi.visible = true;
     },
 
-    update: function (State) {
+    updateOutside: function (State) {
         State.heroHealthTic.width = (State.player.health/State.player.maxHealth) * 81;
         State.heroXpTic.width = (State.player.playerXP/Math.pow(2, (State.player.playerLevel+1))) * 81;
 
@@ -123,13 +123,13 @@ Ui.prototype = {
         
         State.mercMax = 0;
       
-        if (State.mercs.length > State.mercMax){
-            State.mercMax = State.mercs.length
+        if (State.mercs.length + State.mercTanks.length + State.mercHealers.length > State.mercMax){
+            State.mercMax = State.mercs.length + State.mercTanks.length + State.mercHealers.length
         }
         switch (State.mercMax) {
             case 1:
 
-                if (State.mercs.countDead() === 1){
+                if (State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
                     resetMercUi(State);
                     State.mercUiRed1.visible = true;
                 }else {
@@ -138,11 +138,11 @@ Ui.prototype = {
                 }
                 break;
             case 2:
-            if(State.mercs.countDead() === 1){
+            if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
                 resetMercUi(State);
                 State.mercUiGreen1.visible = true; 
                 State.mercUiRed2.visible = true;
-            } else if(State.mercs.countDead() === 2){
+            } else if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 2){
                 resetMercUi(State);
                 State.mercUiRed1.visible = true;
                 State.mercUiRed2.visible = true;
@@ -153,18 +153,18 @@ Ui.prototype = {
             }
                 break;
             case 3:
-            if(State.mercs.countDead() === 1){
+            if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
                 resetMercUi(State);
                 State.mercUiGreen1.visible = true; 
                 State.mercUiGreen2.visible = true;
                 State.mercUiRed3.visible = true;
 
-            } else if(State.mercs.countDead() === 2){
+            } else if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 2){
                 resetMercUi(State);
                 State.mercUiGreen1.visible = true;
                 State.mercUiRed2.visible = true;
                 State.mercUiRed3.visble= true;
-            } else if(State.mercs.countDead() === 3){
+            } else if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 3){
                 resetMercUi(State);
                 State.mercUiRed1.visible = true;
                 State.mercUiRed2.visible = true;
@@ -189,6 +189,11 @@ Ui.prototype = {
             State.mercUiRed3.visible = false;
 
         }
+    },
+
+    updateHouse: function (State) {
+        State.heroHealthTic.width = (State.player.health / State.player.maxHealth) * 81;
+        State.heroXpTic.width = (State.player.playerXP / Math.pow(2, (State.player.playerLevel + 1))) * 81;
     }
 
 };

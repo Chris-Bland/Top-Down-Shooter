@@ -4,7 +4,7 @@ Player.prototype = {
 
     create: function(State){
 
-        let player = State.game.add.sprite( 100, 240, 'player');
+        var player = State.game.add.sprite( 100, 240, 'player');
         player.MOVE_SPEED = 500;
         player.anchor.set(0.5);
         player.scale.set(0.2);
@@ -26,8 +26,6 @@ Player.prototype = {
         player.animations.add('shotgun-shoot', Phaser.Animation.generateFrameNames('shotgun/shoot/', 1, 3, '.png', 2), 3, true, false);
 
         player.play('pistol-idle');
-        player.maxHealth = 100;
-        player.health = player.maxHealth;
         State.game.physics.arcade.enable(player);
         player.body.setSize(100, 150, 100, 50);
         State.game.camera.follow(player);
@@ -38,21 +36,30 @@ Player.prototype = {
         player.shootTime = 0;
         player.currency = gameStatHandler.prototype.currency;
         player.currencyStart = player.currency;
+        player.maxHealth = 100;
+        player.health = 100 + (10 * player.playerLevel) + (gameStatHandler.prototype.healthPoints * 50);
     
         State.player = player;
         
         //make dot notation for each gun type
-        State.player.pistol = Pistol.prototype;
-        State.player.pistolbullets = State.player.pistol.create(State);
-        State.player.rifle = Rifle.prototype;
-        State.player.riflebullets = State.player.rifle.create(State);
-        State.player.rocket = Rocket.prototype;
-        State.player.rocketbullets = State.player.rocket.create(State);
-        State.player.flash = Flash.prototype;
-        State.player.flashbullets = State.player.flash.create(State);
+        State.player.gun1 = Pistol.prototype;
+        State.player.gun1bullets = State.player.gun1.create(State);
+        State.player.gun2 = Rocket.prototype;
+        State.player.gun2bullets = State.player.gun2.create(State);
+        State.player.gun3 = Rifle.prototype;
+        State.player.gun3bullets = State.player.gun3.create(State);
+        if(gameStatHandler.prototype.laser){
+            State.player.gun4 = Laser.prototype;
+            State.player.gun4bullets = State.player.gun4.create(State);
+        }
+        else{
+            State.player.gun4 = Flash.prototype;
+            State.player.gun4bullets = State.player.gun4.create(State);
+        }
 
-        State.player.gun = State.player.pistol;
-        State.player.bullets = State.player.pistolbullets;
+
+        State.player.gun = State.player.gun1;
+        State.player.bullets = State.player.gun1bullets;
 
     },
 

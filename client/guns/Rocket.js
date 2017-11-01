@@ -5,7 +5,6 @@ Rocket.prototype = {
     create: function(State, gunHolderTint){
         return RocketBullet.prototype.create(State, 0.75, gunHolderTint, 50, 100);
 
-
     },
 
 

@@ -4,10 +4,10 @@ Boss.prototype = {
 
     create: function (State) {
         
-        let spawnPoint = State.map.bossSpawn;
-        let boss = State.waveEnemies.create(spawnPoint.x, spawnPoint.y, 'helio');
+        var spawnPoint = State.map.bossSpawn;
+        var boss = State.waveEnemies.create(spawnPoint.x, spawnPoint.y, 'helio');
         State.boss = boss;
-        boss.MOVE_SPEED = State.player.Move_SPEED - 100;
+        boss.MOVE_SPEED = State.player.MOVE_SPEED - 100;
         boss.anchor.set(0.5);
         boss.scale.set(1);
         boss.animations.add('move', Phaser.Animation.generateFrameNames('helio-', 1, 1, '.png', 2), 1, true, false);
@@ -31,31 +31,31 @@ Boss.prototype = {
     
         if (State.wave % 35 == 0) {
             boss.gun = Laser.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         else if (State.wave % 30 == 0) {
             boss.gun = Laser.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         else if (State.wave % 25 == 0) {
             boss.gun = Sniper.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         else if (State.wave % 20 == 0) {
             boss.gun = Rifle.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         else if (State.wave % 15 == 0) {
             boss.gun = Shotgun.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         else if (State.wave % 10 == 0) {
             boss.gun = Aoe.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         else if (State.wave % 5 == 0) {
             boss.gun = Pistol.prototype;
-            boss.bullets = boss.gun.create(State);
+            boss.bullets = boss.gun.create(State, 0x800080);
         }
         State.bossAlive = true;
     }
