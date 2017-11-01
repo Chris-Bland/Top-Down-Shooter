@@ -50,6 +50,8 @@ Preloader.prototype.preload = function () {
     this.load.image('bullet', './client/assets/sprites/bullet.png');
     this.load.image('fog-of-war', blackURI);
 
+    this.load.image('logo', './client/assets/ui/gameLogo.png')
+
     this.load.audio('pistol', './client/assets/audio/pistol.mp3');
     this.load.audio('rifle', './client/assets/audio/rifle.mp3');
     this.load.audio('rifle-echo', './client/assets/audio/rifle-short.mp3');
@@ -66,6 +68,9 @@ Preloader.prototype.preload = function () {
 
     this.load.image('weapon-ui', './client/assets/ui/weaponHud.png');
     this.load.image('selected-ui', './client/assets/ui/selected.png');
+
+    this.load.image('house-health-bar', './client/assets/ui/house-health.png');
+    this.load.image('house-health-tic', './client/assets/ui/house-health-tic.png');
 
     this.load.image('boss-ui', './client/assets/ui/boss.png');
     this.load.image('boss-health-bar', './client/assets/ui/boss-health-ui.png');
@@ -172,5 +177,5 @@ Preloader.prototype.create = function () {
     music.play();
 
 
-    game.state.start('Credits');
+    game.state.start('levelOutside');
 };

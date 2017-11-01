@@ -17,9 +17,24 @@ Ui.prototype = {
         State.weaponHud.fixedToCamera = true;
         State.weaponHud.anchor.setTo(.5, 0);
 
-        State.bit = State.game.add.sprite(500, 3, 'currency-icon');
+        State.bit = State.game.add.sprite((State.game.camera.width / 2)-100, 40, 'currency-icon');
         State.bit.fixedToCamera = true;
-        State.bit.scale.setTo(0.03);
+        State.bit.scale.setTo(0.02);
+
+        State.key = State.game.add.sprite((State.game.camera.width / 2)+20, 40, 'dungeon-shop');
+        State.key.fixedToCamera = true;
+        State.key.scale.setTo(0.4);
+
+        State.keyGreen = State.game.add.sprite((State.game.camera.width / 2)+55, 45, 'merc-ui-green');
+        State.keyGreen.fixedToCamera = true;
+        State.keyGreen.scale.setTo(1);
+        State.keyGreen.visible = true;
+
+        State.keyRed = State.game.add.sprite((State.game.camera.width / 2)+57, 46, 'merc-ui-red');
+        State.keyRed.fixedToCamera = true;
+        State.keyRed.scale.setTo(1);
+        State.keyRed.visible = true;
+        
 
         State.selectedPistol = State.game.add.sprite(439, 632, 'selected-ui');
         State.selectedPistol.fixedToCamera = true;
@@ -96,11 +111,29 @@ Ui.prototype = {
         State.waveUi.fixedToCamera = true;
         State.waveUi.scale.setTo(1);
         State.waveUi.visible = true;
+
+        State.houseHealthTic = State.game.add.sprite((game.camera.width/2)-169,25, 'house-health-tic');
+        State.houseHealthTic.fixedToCamera = true;
+        State.houseHealthTic.scale.setTo(.2);
+        State.houseHealthTic.anchor.setTo(0,.5);
+        State.houseHealthTic.visible = true;
+
+        State.houseHealth = State.game.add.sprite(game.camera.width/2,30, 'house-health-bar');
+        State.houseHealth.fixedToCamera = true;
+        State.houseHealth.anchor.setTo(.5)
+        State.houseHealth.scale.setTo(.2);
+        State.houseHealth.visible = true;
+
+        
+
+
+
     },
 
     updateOutside: function (State) {
         State.heroHealthTic.width = (State.player.health/State.player.maxHealth) * 81;
         State.heroXpTic.width = (State.player.playerXP/Math.pow(2, (State.player.playerLevel+1))) * 81;
+        State.houseHealthTic.width = (State.house.health/State.house.maxHealth) * 339.8;
 
         if ((State.wave % 5) === 0) {
             if(State.shaken ===false){
@@ -177,6 +210,14 @@ Ui.prototype = {
             }
           
                 break;
+
+                if(State.dungeonKey === false){
+                    State.keyRed.visible = true;
+                    State.keyGreen.visible = false;
+                } else {
+                    State.keyRed.visible = false;
+                    State.keyGreen.visible = true;
+                }
             
         }
         function resetMercUi(State){
@@ -192,6 +233,13 @@ Ui.prototype = {
     },
 
     updateHouse: function (State) {
+        if (State.key === 'levelOutside'){
+            State.houseHealthTic.visible = true;
+            State.houseHealth.visible = true;
+        } else {
+            State.houseHealthTic.visible = false;
+            State.houseHealth.visible = false;
+        }
         State.heroHealthTic.width = (State.player.health / State.player.maxHealth) * 81;
         State.heroXpTic.width = (State.player.playerXP / Math.pow(2, (State.player.playerLevel + 1))) * 81;
     }

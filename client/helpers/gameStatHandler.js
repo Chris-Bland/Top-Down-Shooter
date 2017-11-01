@@ -16,7 +16,7 @@ gameStatHandler.prototype = {
         this.mercTanksAmount = 1;
         this.mercHealersAmount = 0;
         this.currency = 1;
-        this.towersAmount = 0;
+        this.towersAmount = 5;
         this.laser = false;
         this.dungeonKey = false;
 

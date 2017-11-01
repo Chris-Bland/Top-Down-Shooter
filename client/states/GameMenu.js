@@ -1,28 +1,14 @@
 var GameMenu = function() {};
 
 GameMenu.prototype = {
-
   menuConfig: {
     startY: 260,
     startX: 30
   },
-  preload: function () {
-    this.optionCount = 1;
-  },
-
-  init: function () {
-    this.titleText = game.make.text(game.camera.width / 2, 150, "Game Title", {
-      font: 'bold 70pt TheMinion',
-      fill: '#FDFFB5',
-      align: 'center'
-    });
-    this.titleText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
-    this.titleText.anchor.set(0.5);
-    this.optionCount = 1;
-  },
 
   create: function () {
-
+    this.optionCount = 1;
+ 
     if (music.name !== "music" && playMusic) {
       music.stop();
       music = game.add.audio('music');
@@ -33,7 +19,9 @@ GameMenu.prototype = {
     background = game.add.sprite(0, 0, 'menu-bg');
     background.width = 1200;
     background.height = 700;
-    game.add.existing(this.titleText);
+    logo = game.add.sprite(600,180, 'logo');
+    logo.anchor.setTo(.5);
+    logo.scale.setTo(1);
 
     this.addMenuOption('Start', 50, (this.optionCount * 80) + 350, function () {
         game.state.start("levelOutside");

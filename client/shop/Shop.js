@@ -118,6 +118,6 @@ shop.prototype = {
         State.buttons.visible = false;
         State.texts.visible = false;
         State.store.visible = false;
-    }
+    },
 
 };
