@@ -12,8 +12,6 @@ Shotgun.prototype = {
     shoot: function(State, shooter, target){
    
             let shotRatio = State.game.physics.arcade.distanceToXY(shooter, target.x, target.y)/2;
-            console.log(target.x);
-            console.log(target.y);
             if (State.game.time.now > shooter.shootTime) {  
                 let bullet = shooter.bullets.getFirstExists(false);
                 // shotgunAudio.stop();

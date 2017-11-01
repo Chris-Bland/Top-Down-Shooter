@@ -25,10 +25,10 @@ function statHandler(State){
         function updateXP(State) {
             if (State.isDungeon === true){
                 
-                            } else {
-                                var XPBoost = (State.waveEnemies.countDead() * 2 * State.wave);
-                                State.player.playerXP = State.player.playerXPStart + XPBoost;
-                            };
+            } else {
+                var XPBoost = (State.waveEnemies.countDead() * 2 * State.wave);
+                State.player.playerXP = State.player.playerXPStart + XPBoost;
+            };
           
         }
         
@@ -60,7 +60,7 @@ function statHandler(State){
         
         function updateUpgrades(State) {
             if(State.player.playerLevel > 1) {
-                State.player.MOVE_SPEED = 500 + State.player.playerLevel * 5;
+                State.player.MOVE_SPEED = 500 + State.player.playerLevel * 5 + gameStatHandler.prototype.speedPoints * 5;
                 State.mercs.MOVE_SPEED = State.player.MOVE_SPEED;
                 State.player.maxHealth = 100 + (10 * State.player.playerLevel) + (gameStatHandler.prototype.healthPoints * 50);
             }
