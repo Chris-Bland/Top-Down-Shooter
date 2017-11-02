@@ -25,7 +25,7 @@ Boss.prototype = {
         boss.shootTime = 0;
         boss.hitPoints = 5 * (State.wave / 5);
         bossSpawn.play();
-        // behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
+        //behaviorsObj.prototype.findPathTo(State, 87, 6, boss.x, boss.y, boss)
         boss.rotation = State.game.physics.arcade.angleToXY(boss, State.player.x, State.player.y);
 
     

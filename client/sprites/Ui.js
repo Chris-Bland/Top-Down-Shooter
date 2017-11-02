@@ -135,6 +135,14 @@ Ui.prototype = {
         State.heroXpTic.width = (State.player.playerXP/Math.pow(2, (State.player.playerLevel+1))) * 81;
         State.houseHealthTic.width = (State.house.health/State.house.maxHealth) * 339.8;
 
+        if(State.dungeonKey === false){
+            State.keyRed.visible = true;
+            State.keyGreen.visible = false;
+        } else {
+            State.keyRed.visible = false;
+            State.keyGreen.visible = true;
+        }
+
         if ((State.wave % 5) === 0) {
             if(State.shaken ===false){
                 game.camera.shake(0.005, 500);
@@ -211,13 +219,7 @@ Ui.prototype = {
           
                 break;
 
-                if(State.dungeonKey === false){
-                    State.keyRed.visible = true;
-                    State.keyGreen.visible = false;
-                } else {
-                    State.keyRed.visible = false;
-                    State.keyGreen.visible = true;
-                }
+
             
         }
         function resetMercUi(State){
@@ -242,6 +244,14 @@ Ui.prototype = {
         }
         State.heroHealthTic.width = (State.player.health / State.player.maxHealth) * 81;
         State.heroXpTic.width = (State.player.playerXP / Math.pow(2, (State.player.playerLevel + 1))) * 81;
+
+        if(State.dungeonKey === false){
+            State.keyRed.visible = true;
+            State.keyGreen.visible = false;
+        } else {
+            State.keyRed.visible = false;
+            State.keyGreen.visible = true;
+        }
     },
     updateDungeon: function (State) {
         State.heroHealthTic.width = (State.player.health/State.player.maxHealth) * 81;
