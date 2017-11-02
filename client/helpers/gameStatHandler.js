@@ -18,7 +18,7 @@ gameStatHandler.prototype = {
         this.currency = 1;
         this.towersAmount = 5;
         this.laser = false;
-        this.dungeonKey = false;
+        this.dungeonKey = true;
 
     },
 

@@ -87,6 +87,7 @@ Preloader.prototype.preload = function () {
     this.load.image('work-bench', './client/assets/sprites/workBench.png');
 
     game.load.audio('music', './client/assets/audio/music.mp3');
+    game.load.audio('dungeon-music', './client/assets/audio/dungeon-music.mp3');
 
     this.load.image('boss-slide', './client/assets/ui/bossSlide.png');
     this.load.image('outside-ui-slide', './client/assets/ui/outsideUi.png');
@@ -173,10 +174,17 @@ Preloader.prototype.create = function () {
 
     bossSpawn = game.add.audio('boss-spawn');
 
+    dungeonMusic = game.add.audio('dungeon-music');
+    dungeonMusic.loop = true;
+    dungeonMusic.volume = .5;
+    dungeonMusic.fadeOut = true;
+    dungeonMusic.fadeIn = true;
+
     music = game.add.audio('music');
     music.loop = true;
     music.volume = .5;
     music.fadeOut = true;
+    music.fadeIn= true;
     music.play();
 
 

@@ -242,6 +242,90 @@ Ui.prototype = {
         }
         State.heroHealthTic.width = (State.player.health / State.player.maxHealth) * 81;
         State.heroXpTic.width = (State.player.playerXP / Math.pow(2, (State.player.playerLevel + 1))) * 81;
-    }
+    },
+    updateDungeon: function (State) {
+        State.heroHealthTic.width = (State.player.health/State.player.maxHealth) * 81;
+        State.heroXpTic.width = (State.player.playerXP/Math.pow(2, (State.player.playerLevel+1))) * 81;
+
+
+       
+        
+        State.mercMax = 0;
+      
+        if (State.mercs.length + State.mercTanks.length + State.mercHealers.length > State.mercMax){
+            State.mercMax = State.mercs.length + State.mercTanks.length + State.mercHealers.length
+        }
+        switch (State.mercMax) {
+            case 1:
+
+                if (State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
+                    resetMercUi(State);
+                    State.mercUiRed1.visible = true;
+                }else {
+                    resetMercUi(State);
+                    State.mercUiGreen1.visible = true;
+                }
+                break;
+            case 2:
+            if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true; 
+                State.mercUiRed2.visible = true;
+            } else if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 2){
+                resetMercUi(State);
+                State.mercUiRed1.visible = true;
+                State.mercUiRed2.visible = true;
+            } else {
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true;
+                State.mercUiGreen2.visible = true;
+            }
+                break;
+            case 3:
+            if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true; 
+                State.mercUiGreen2.visible = true;
+                State.mercUiRed3.visible = true;
+
+            } else if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 2){
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true;
+                State.mercUiRed2.visible = true;
+                State.mercUiRed3.visble= true;
+            } else if(State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 3){
+                resetMercUi(State);
+                State.mercUiRed1.visible = true;
+                State.mercUiRed2.visible = true;
+                State.mercUiRed3.visible = true;
+            } else {
+                resetMercUi(State);
+                State.mercUiGreen1.visible = true;
+                State.mercUiGreen2.visible = true;
+                State.mercUiGreen3.visible = true;
+            }
+          
+                break;
+
+                if(State.dungeonKey === false){
+                    State.keyRed.visible = true;
+                    State.keyGreen.visible = false;
+                } else {
+                    State.keyRed.visible = false;
+                    State.keyGreen.visible = true;
+                }
+            
+        }
+        function resetMercUi(State){
+            State.mercUiGreen1.visible = false;
+            State.mercUiGreen2.visible = false;
+            State.mercUiGreen3.visible = false;
+
+            State.mercUiRed1.visible = false;
+            State.mercUiRed2.visible = false;
+            State.mercUiRed3.visible = false;
+
+        }
+    },
 
 };

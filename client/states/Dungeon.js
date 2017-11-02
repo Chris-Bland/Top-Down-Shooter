@@ -4,6 +4,8 @@ Dungeon.prototype = {
 
     create: function () {
         this.wave = 5;
+        music.stop();
+        dungeonMusic.play();
         dungeonMap.prototype.create(this);
         Player.prototype.create(this);
         Merc.prototype.create(this);
@@ -26,7 +28,7 @@ Dungeon.prototype = {
         // Merc.prototype.update(this);
 
 
-        Ui.prototype.updateOutside(this);
+        Ui.prototype.updateDungeon(this);
         dungeonText.prototype.update(this);
         this.boss.angle += 15;
         this.boss.gun.shootDungeon(this, this.boss);
