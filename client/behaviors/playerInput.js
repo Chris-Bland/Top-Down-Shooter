@@ -64,10 +64,6 @@ behaviorsObj.prototype.playerInput = function(State){
         if (State.game.input.mousePointer.isDown) {
             State.player.shoot;
             State.player.gun.shoot(State, State.player, State.game.input.activePointer);
-            State.tweens.pause();
-            if (State.tweens.pause === true){
-                State.tweens._paused = false;
-            } else {State.tweens.paused = true;}
         }
     
         //update player sprite sheet

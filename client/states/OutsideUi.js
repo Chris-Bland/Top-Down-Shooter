@@ -9,27 +9,26 @@ OutsideUi.prototype = {
         outsideUiSlide.scale.setTo(.33);
         outsideUiSlide.anchor.setTo(.5,0);
 
-        this.createButton(this, game, 'question-mark', 'boss', 103, 145, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'wave', 103, 85, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'playerui level', 120,55 , 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'health', 160, 25, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'xp', 210, 40, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'merc', 185, 85, 25, 25, '', function () {});
+        this.createButton(this, game, 'question-mark', 'Boss Health Bar', 103, 145, 25, 25, 150 ,145, function () {});
+        this.createButton(this, game, 'question-mark', 'Wave Counter', 103, 85, 25, 25,  150,145, function () {});
+        this.createButton(this, game, 'question-mark', 'Player Level', 120,55 , 25, 25,  150,145, function () {});
+        this.createButton(this, game, 'question-mark', 'Player Health Bar', 160, 25, 25, 25, 150,145, function () {});
+        this.createButton(this, game, 'question-mark', 'Player Experience Bar', 210, 40, 25, 25,  150,145, function () {});
+        this.createButton(this, game, 'question-mark', 'Mercenary Counter', 185, 85, 25, 25,  150,145, function () {});
 
 
-        this.createButton(this, game, 'question-mark', 'house health', game.camera.width/2, 30, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'key', (game.camera.width/2)+85, 55, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'currency', (game.camera.width/2)-115, 55, 25, 25, '', function () {});
-        
-        this.createButton(this, game, 'question-mark', 'house', (game.camera.width/2)+160, 150, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'tower', (game.camera.width/2)-20, 300, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'player', (game.camera.width/2)+160, 350, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'merc', (game.camera.width/2)+190, 390, 25, 25, '', function () {});
+        this.createButton(this, game, 'question-mark', 'Fortress Health Bar', game.camera.width/2, 30, 25, 25, (game.camera.width/2)+75,225, function () {});
+        this.createButton(this, game, 'question-mark', 'Dungeon Key Counter', (game.camera.width/2)+85, 55, 25, 25, (game.camera.width/2)+75,225, function () {});
+        this.createButton(this, game, 'question-mark', 'Currency Counter', (game.camera.width/2)-115, 55, 25, 25, (game.camera.width/2)+75,225, function () {});
+        this.createButton(this, game, 'question-mark', 'The Fortress!', (game.camera.width/2)+175, 150, 25, 25, (game.camera.width/2)+75,225, function () {});
+        this.createButton(this, game, 'question-mark', 'Auto Target Tower', (game.camera.width/2)-60, 200, 25, 25, (game.camera.width/2)+75,225, function () {});
+        this.createButton(this, game, 'question-mark', 'That is you!', (game.camera.width/2)+100, 330, 25, 25, (game.camera.width/2)+75,225, function () {});
+        this.createButton(this, game, 'question-mark', 'Your Mercenary', (game.camera.width/2)+190, 390, 25, 25, (game.camera.width/2)+75,225, function () {});
 
-        this.createButton(this, game, 'question-mark', 'pistol', (game.camera.width/2)-115, 555, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'rocket', (game.camera.width/2)-65, 555, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'rifle', (game.camera.width/2), 555, 25, 25, '', function () {});
-        this.createButton(this, game, 'question-mark', 'laser', (game.camera.width/2)+55, 555, 25, 25, '', function () {});
+        this.createButton(this, game, 'question-mark', 'Pistol: Pop Pop', (game.camera.width/2)-115, 555, 25, 25, (game.camera.width/2)-130,500, function () {});
+        this.createButton(this, game, 'question-mark', 'Rocket: BOOOM', (game.camera.width/2)-60, 555, 25, 25, (game.camera.width/2)-130,500, function () {});
+        this.createButton(this, game, 'question-mark', 'Rifle Brrrap Brrrap', (game.camera.width/2), 555, 25, 25, (game.camera.width/2)-130,500, function () {});
+        this.createButton(this, game, 'question-mark', 'Laser: Pew Pew', (game.camera.width/2)+55, 555, 25, 25, (game.camera.width/2)-130,500, function () {});
         
 
         GameMenu.prototype.addMenuOption('Back', 10 ,640, function () {
@@ -40,7 +39,7 @@ OutsideUi.prototype = {
         });
     },
 
-    createButton: function (State, game, sprite, description, x, y, width, height, string, callback) {
+    createButton: function (State, game, sprite, description, x, y, width, height, textx, texty, callback) {
         
              
              var button = game.add.button(x, y, sprite, callback, game, 2, 1, 0);
@@ -50,9 +49,9 @@ OutsideUi.prototype = {
              button.fixedToCamera = true;
         
      
-             var descriptiveText = game.add.text(button.x+80, button.y, description, { font: "20px Arial", fill: "#fff", align: "center" });
+             var descriptiveText = game.add.text(textx, texty, description, { font: "35px Arial", fill: "#FEFFD5", align: "center" });
              descriptiveText.fixedToCamera = true;
-             descriptiveText.anchor.setTo(.5);
+            //  descriptiveText.anchor.setTo(.5);
              descriptiveText.visible = false;
      
              var onOver = function (target) {
@@ -70,9 +69,9 @@ OutsideUi.prototype = {
                button.events.onInputOver.add(onOver, this);
                button.events.onInputOut.add(onOut, this);
      
-             var text = game.add.text(button.x + 5, button.y + 63, string, { font: "20px Arial", fill: "#fff", align: "center" });
-             text.anchor.setTo(0.5, 0.5);
-             text.fixedToCamera = true;
+            //  var text = game.add.text(textx, texty, string, { font: "20px Arial", fill: "#fff", align: "center" });
+            //  text.anchor.setTo(0.5, 0.5);
+            //  text.fixedToCamera = true;
 
             },
 

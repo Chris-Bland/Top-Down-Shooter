@@ -136,6 +136,7 @@ Preloader.prototype.preload = function () {
     this.load.image('tower-shop', './client/assets/shop/towerShop.png');
 
     this.load.image('question-mark', './client/assets/ui/questionMark.png');
+    this.load.image('rocket-single', './client/assets/animations/rocketSingle.png');
 };
 
 Preloader.prototype.create = function () {
