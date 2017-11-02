@@ -17,7 +17,7 @@
          "name":"Collision",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":100,
          "x":0,
          "y":0
@@ -28,7 +28,7 @@
          "name":"ACollision",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":100,
          "x":0,
          "y":0
@@ -39,7 +39,7 @@
          "name":"BulletCollision",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":100,
          "x":0,
          "y":0
@@ -587,7 +587,7 @@
         {
          "columns":100,
          "firstgid":1,
-         "image":"maps\/large-map.png",
+         "image":"..\/..\/..\/..\/ASSETSMASTER\/assets\/TMX\/BETA-MAP\/large-map.png",
          "imageheight":3200,
          "imagewidth":3200,
          "margin":0,

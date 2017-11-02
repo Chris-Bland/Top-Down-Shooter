@@ -78,8 +78,6 @@ shop.prototype = {
     },
 
     createButton: function (State, game, sprite, description, x, y, width, height, string, callback) {
-   
-        
         let button = game.add.button(x, y, sprite, callback, game, 2, 1, 0);
         button.anchor.setTo(0.5, 0.5);
         button.width = width;
