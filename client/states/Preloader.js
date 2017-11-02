@@ -188,5 +188,5 @@ Preloader.prototype.create = function () {
     music.play();
 
 
-    game.state.start('OutsideUi');
+    game.state.start('Credits');
 };
