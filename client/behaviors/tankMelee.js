@@ -5,10 +5,10 @@ behaviorsObj.prototype.tankMeleeMove = function(State, tank, target, targets){
     tank.rotation = State.game.physics.arcade.angleToXY(tank, State.player.x, State.player.y);
 
 
-    var found = false;
-    var targetNear = false;
-    var attacking = false;
-    var enemyFocus = null;
+    let found = false;
+    let targetNear = false;
+    let attacking = false;
+    let enemyFocus = null;
 
     if(target && target.alive && tank.alive && State.game.physics.arcade.distanceBetween(tank, target) <= 1){
         tank.rotation = State.game.physics.arcade.angleToXY(tank, target.position.x, target.position.y);
@@ -24,7 +24,7 @@ behaviorsObj.prototype.tankMeleeMove = function(State, tank, target, targets){
     }
 
     if(targets && !found){ //&& not past the maximum distance from player
-        for(var targetsIndex in targets){
+        for(let targetsIndex in targets){
 
             targets[targetsIndex].forEachAlive(
                 function(individual){

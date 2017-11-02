@@ -29,7 +29,7 @@ outsideMap.prototype = {
         State.map.setCollisionByExclusion([], true, State.map.aStarCollisionLayer);
         aStarCollisionLayer.resizeWorld();
 
-        State.walkableTiles = [6669]
+        State.walkableTiles = [6669];
         State.pathfinder = State.game.plugins.add(Phaser.Plugin.PathFinderPlugin);
     
         State.pathfinder.setGrid(State.map.layers[2].data, State.walkableTiles);

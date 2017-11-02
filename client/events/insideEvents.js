@@ -1,4 +1,4 @@
-insideEvents = function () { };
+var insideEvents = function () { };
 
 insideEvents.prototype = {
 

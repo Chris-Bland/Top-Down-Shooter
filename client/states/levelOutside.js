@@ -14,7 +14,6 @@ LevelOutside.prototype = {
             }
 
             this.wave = gameStatHandler.prototype.wave;
-            House.prototype.create(this);
             Player.prototype.create(this);
             Merc.prototype.create(this);
             MercTank.prototype.create(this);
@@ -30,6 +29,7 @@ LevelOutside.prototype = {
             outsideText.prototype.create(this);
         
             outsideEvents.prototype.openingTween(this);
+            House.prototype.create(this);
 
         },
 

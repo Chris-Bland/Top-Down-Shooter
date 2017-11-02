@@ -6,14 +6,14 @@ gameStatHandler.prototype = {
 
     create: function() {
 
-        this.wave = 5;
+        this.wave = 1;
         this.playerXP = 1;
         this.playerLevel = 1;
         this.healthPoints = 0;
         this.speedPoints = 0;
         this.damagePoints = 0;
         this.mercsAmount = 0;
-        this.mercTanksAmount = 1;
+        this.mercTanksAmount = 0;
         this.mercHealersAmount = 0;
         this.currency = 1;
         this.towersAmount = 5;

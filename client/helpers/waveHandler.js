@@ -50,7 +50,6 @@ waveHandler.prototype = {
     
                 behaviorsObj.prototype.bodyCollide(State, enemy);
                 behaviorsObj.prototype.bodyOverlap(State, enemy, [State.player, State.mercs]);
-                behaviorsObj.prototype.enemyMove(State, enemy);
                 if(enemy.gun){
                     behaviorsObj.prototype.bulletCollide(State, enemy.bullets);
                     behaviorsObj.prototype.bulletOverlap(State, enemy.bullets, [State.player, State.mercs]);

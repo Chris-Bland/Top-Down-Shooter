@@ -12,7 +12,7 @@ Aoe.prototype = {
 
     shoot: function(State, shooter, target){
             if (State.game.time.now > shooter.shootTime) {  
-                var bullet = shooter.bullets.getFirstExists(false);
+                let bullet = shooter.bullets.getFirstExists(false);
                 if (bullet) {
                     bullet.reset(shooter.x, shooter.y);
                     bullet.body.velocity.x = 1000;

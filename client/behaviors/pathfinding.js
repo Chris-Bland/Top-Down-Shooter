@@ -8,7 +8,7 @@ behaviorsObj.prototype.findPathTo = function (State, tilex, tiley, enemyx, enemy
         //   map.putTile(46, path[i].x, path[i].y);
         // }
         let tweenChain = { x: [], y: [] }
-        for (var i = 0; i < path.length; i++) {
+        for (let i = 0; i < path.length; i++) {
             tweenChain.x.push(path[i].x * 32);
             tweenChain.y.push(path[i].y * 32);
         }
