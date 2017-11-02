@@ -4,7 +4,7 @@ Controls.prototype = {
 
     create: function () {
 
-        controlsSlide = game.add.sprite(game.camera.width / 2, 20, 'controls-slide');
+        let controlsSlide = game.add.sprite(game.camera.width / 2, 20, 'controls-slide');
         controlsSlide.fixedToCamera = true;
         controlsSlide.scale.setTo(.45);
         controlsSlide.anchor.setTo(.5,0);

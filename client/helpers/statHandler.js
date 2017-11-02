@@ -14,7 +14,7 @@ function updateCurrency(State) {
     if (State.isDungeon === true){
 
     } else {
-        var currencyBoost = (State.waveEnemies.countDead() * 5 * State.wave);
+        let currencyBoost = (State.waveEnemies.countDead() * 5 * State.wave);
         State.player.currency = State.player.currencyStart + currencyBoost;
     };
 
@@ -26,7 +26,7 @@ function updateXP(State) {
     if (State.isDungeon === true){
 
     } else {
-        var XPBoost = (State.waveEnemies.countDead() * 2 * State.wave);
+        let XPBoost = (State.waveEnemies.countDead() * 2 * State.wave);
         State.player.playerXP = State.player.playerXPStart + XPBoost;
     };
 
@@ -39,7 +39,13 @@ function updateHealth(State){
 
         if (State.player.health <= 0) {
             gameStatHandler.prototype.save(State);
-            State.wave = (State.wave) - (State.wave % 5) + 1;
+            State.wave = (State.wave) - (State.wave % 5);
+            if(State.wave % 5 == 0 && State.wave > 1){
+                State.wave -= 5;
+            }
+            if(State.wave == 0){
+                State.wave = 1;
+            }
             gameStatHandler.prototype.wave = State.wave;
             State.game.state.start('levelHouse');
         }

@@ -16,7 +16,7 @@ insideText.prototype = {
         State.text.XPText.anchor.setTo(.5,0);
 
        
-        State.text.currencyText = State.game.add.text(540, 5, "currency", { fontSize: '32px', fill: '#fff' });
+        State.text.currencyText = State.game.add.text(540, 42, "currency", { fontSize: '20px', fill: '#fff' });
         State.text.currencyText.fixedToCamera = true;
 
         State.text.towerText = State.game.add.text(12,75, "wave", { fontSize: '15px', fill: '#fff' });
@@ -31,7 +31,7 @@ insideText.prototype = {
         State.text.levelText.text =  State.player.playerLevel;
         State.text.XPText.text = State.player.playerXP + "/" + Math.pow(2, (State.player.playerLevel+1));
         State.text.currencyText.text = gameStatHandler.prototype.currency;
-        State.text.towerText.text = 'Towers: ' + gameStatHandler.prototype.towersAmount;
+        State.text.towerText.text = 'TTC: ' + gameStatHandler.prototype.towersAmount;
         //Update text for house
 
     }

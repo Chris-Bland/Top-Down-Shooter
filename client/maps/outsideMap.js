@@ -8,28 +8,28 @@ outsideMap.prototype = {
         State.map.addTilesetImage('large-map', 'large-map');
 
 
-        var layer = State.map.createLayer('Base');
+        let layer = State.map.createLayer('Base');
         layer.resizeWorld();
 
-        var collisionLayer = State.map.createLayer('Collision');
+        let collisionLayer = State.map.createLayer('Collision');
         State.map.collisionLayer = collisionLayer;
         collisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.collisionLayer);
         collisionLayer.resizeWorld();
 
-        var bulletCollisionLayer = State.map.createLayer('BulletCollision');
+        let bulletCollisionLayer = State.map.createLayer('BulletCollision');
         State.map.bulletCollisionLayer = bulletCollisionLayer;
         bulletCollisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.bulletCollisionLayer);
         bulletCollisionLayer.resizeWorld();
 
-        var aStarCollisionLayer = State.map.createLayer('ACollision');
+        let aStarCollisionLayer = State.map.createLayer('ACollision');
         State.map.aStarCollisionLayer = aStarCollisionLayer;
         aStarCollisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.aStarCollisionLayer);
         aStarCollisionLayer.resizeWorld();
 
-        State.walkableTiles = [6669]
+        State.walkableTiles = [6669];
         State.pathfinder = State.game.plugins.add(Phaser.Plugin.PathFinderPlugin);
     
         State.pathfinder.setGrid(State.map.layers[2].data, State.walkableTiles);
@@ -52,8 +52,8 @@ outsideMap.prototype = {
         State.map.spawnPoints.push(spawn1, spawn2);
 
         State.map.towerPoints = [];
-        for(var i = 1; i<75; i++){
-            var spotName = "tower" + i;
+        for(let i = 1; i<75; i++){
+            let spotName = "tower" + i;
             State.map.towerPoints.push(State.map.objects.meta.find(o => o.name == spotName));
         }
 
@@ -64,7 +64,7 @@ outsideMap.prototype = {
 
     layForeground: function(State){
 
-        var layerForeground = State.map.createLayer('Foreground');
+        let layerForeground = State.map.createLayer('Foreground');
         State.map.layerForeground = layerForeground;
         layerForeground.resizeWorld();
 

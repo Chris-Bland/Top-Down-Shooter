@@ -1,4 +1,5 @@
 var LandingScene = function () { };
+var grow = false;
 LandingScene.prototype = {
 
     create: function () {
@@ -15,7 +16,6 @@ LandingScene.prototype = {
         GameMenu.prototype.addMenuOption('Menu', 10, 640, function () {
             game.state.start("GameMenu");
         });
-       
         game.camera.follow(heroShip);
 
         emitter = game.add.emitter(game.world.centerX/2, 0, 600);
@@ -47,8 +47,9 @@ LandingScene.prototype = {
         beam.alpha = 0;
         bigShip = game.add.sprite(1400,-100, 'big-ship');
 
-    
-       
+        logo = game.add.sprite(1400,600, 'logo');
+        logo.anchor.setTo(.5);
+        logo.scale.setTo(.0);
 
          game.time.events.add(8500, function(){
              game.camera.follow(bigShip)
@@ -71,10 +72,14 @@ LandingScene.prototype = {
             troop2.alpha = 1;
             // troop3.alpha = 1;
             troop4.alpha = 1;
-            game.time.events.add((8000), function(){ game.state.start('GameMenu');});
-        })
-        
 
+            game.time.events.add((7000), function(){ 
+                var tweenLogo = game.add.tween(logo.scale).to({ x: 10, y: 10}, 4500, Phaser.Easing.Linear.None, true);
+                tweenLogo.onComplete.add(() => {
+                         game.state.start('GameMenu');
+                });
+            });
+        })
     },
     update: function () {
         if (heroShip.world.y >781 && heroShip.world.y < 785 ){

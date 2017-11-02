@@ -22,7 +22,9 @@ Dungeon.prototype = {
 
     update: function () {
         Player.prototype.update(this);
-        // Merc.prototype.update(this);
+        Merc.prototype.update(this);
+        MercTank.prototype.update(this);
+        MercHealer.prototype.update(this);
         Ui.prototype.updateOutside(this);
         dungeonText.prototype.update(this);
         this.boss.angle += 15;
