@@ -134,6 +134,8 @@ Preloader.prototype.preload = function () {
     this.load.image('merc-shop', './client/assets/shop/mercShop.png');
     this.load.image('speed-shop', './client/assets/shop/speedShop.png');
     this.load.image('tower-shop', './client/assets/shop/towerShop.png');
+
+    this.load.image('question-mark', './client/assets/ui/questionMark.png');
 };
 
 Preloader.prototype.create = function () {
@@ -177,5 +179,5 @@ Preloader.prototype.create = function () {
     music.play();
 
 
-    game.state.start('levelOutside');
+    game.state.start('OutsideUi');
 };
