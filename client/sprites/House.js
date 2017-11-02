@@ -25,7 +25,6 @@ House.prototype = {
 
         State.waveEnemies.forEachAlive(function(individual){
             State.game.physics.arcade.overlap(State.house, individual, function (house, individual) {
-                console.log('hear');
                 house.health -= 1;
             });
         });

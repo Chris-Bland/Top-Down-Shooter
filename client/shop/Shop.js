@@ -18,7 +18,7 @@ shop.prototype = {
             }
         });
         this.createButton(State, game, "dungeon-shop", "Unlock the Dungeon!",(State.game.camera.width / 2), (State.game.camera.height / 4) - 12, 68, 68, "2000", function () {
-            if (gameStatHandler.prototype.currency >= 2000 && gameStatHandler.prototype.dungeonKey == false) {
+            if (gameStatHandler.prototype.currency >= 2000 && !gameStatHandler.prototype.dungeonKey) {
                 gameStatHandler.prototype.dungeonKey = true;
                 gameStatHandler.prototype.currency -= 2000;
             }
@@ -32,7 +32,7 @@ shop.prototype = {
             }
         });
         this.createButton(State, game, "laser-shop", "Unlock the Lazer! Pew Pew",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 100, 68, 68, "3000", function () {
-            if (gameStatHandler.prototype.currency >= 3000 && gameStatHandler.prototype.laser == false) {
+            if (gameStatHandler.prototype.currency >= 3000 && !gameStatHandler.prototype.laser) {
                 gameStatHandler.prototype.laser = true;
                 gameStatHandler.prototype.currency -= 3000;
             }
@@ -101,7 +101,6 @@ shop.prototype = {
             descriptiveText.visible = false;
         };
 
-        button.events.onInputUp.add(callback, this);
         button.events.onInputOver.add(onOver, this);
         button.events.onInputOut.add(onOut, this);
 
