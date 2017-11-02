@@ -11,19 +11,19 @@ shop.prototype = {
         State.buttons = game.add.group();
         State.texts = game.add.group();
 
-        this.createButton(State,game, "tower-shop", "Purchase a Tower", (State.game.camera.width / 2) - 105, (State.game.camera.height / 4) - 12, 68, 68, "500", function () {
-            if (gameStatHandler.prototype.currency >= 500 && gameStatHandler.prototype.towersAmount < 72) {
+        this.createButton(State, game, "tower-shop", "Purchase a Tower", (State.game.camera.width / 2) - 105, (State.game.camera.height / 4) - 12, 68, 68, "500", function () {
+            if (gameStatHandler.prototype.currency >= 500 && gameStatHandler.prototype.towersAmount < 50) {
                 gameStatHandler.prototype.towersAmount += 1;
                 gameStatHandler.prototype.currency -= 500;
             }
         });
         this.createButton(State, game, "dungeon-shop", "Unlock the Dungeon!",(State.game.camera.width / 2), (State.game.camera.height / 4) - 12, 68, 68, "2000", function () {
-            if (gameStatHandler.prototype.currency >= 2000 ) {
+            if (gameStatHandler.prototype.currency >= 2000 && gameStatHandler.prototype.dungeonKey == false) {
                 gameStatHandler.prototype.dungeonKey = true;
                 gameStatHandler.prototype.currency -= 2000;
             }
         });
-        this.createButton(State,game, "health-shop", "Increase your Hero's Max Health by 100",(State.game.camera.width / 2) + 105, (State.game.camera.height / 4) - 12, 68, 68, "100", function () {
+        this.createButton(State, game, "health-shop", "Increase your Hero's Max Health by 100",(State.game.camera.width / 2) + 105, (State.game.camera.height / 4) - 12, 68, 68, "100", function () {
             if (gameStatHandler.prototype.currency >= 100) {
                 gameStatHandler.prototype.healthPoints += 1;
                 State.player.maxHealth += 50;
@@ -32,7 +32,7 @@ shop.prototype = {
             }
         });
         this.createButton(State, game, "laser-shop", "Unlock the Lazer! Pew Pew",(State.game.camera.width / 2) - 105, (State.game.camera.height / 4) + 100, 68, 68, "3000", function () {
-            if (gameStatHandler.prototype.currency >= 3000) {
+            if (gameStatHandler.prototype.currency >= 3000 && gameStatHandler.prototype.laser == false) {
                 gameStatHandler.prototype.laser = true;
                 gameStatHandler.prototype.currency -= 3000;
             }
@@ -44,7 +44,7 @@ shop.prototype = {
                 gameStatHandler.prototype.currency -= 5000;
             }
         });
-        this.createButton(State,  game, "merc-shop", "Purchase an All Around Mercenary",(State.game.camera.width / 2) + 110, (State.game.camera.height / 4) + 100, 68, 68, "2000", function () {
+        this.createButton(State, game, "merc-shop", "Purchase an All Around Mercenary",(State.game.camera.width / 2) + 110, (State.game.camera.height / 4) + 100, 68, 68, "2000", function () {
             if (gameStatHandler.prototype.currency >= 2000 && gameStatHandler.prototype.mercsAmount + gameStatHandler.prototype.mercTanksAmount + gameStatHandler.prototype.mercHealersAmount < 3 ) {
                 gameStatHandler.prototype.mercsAmount +=1;
                 gameStatHandler.prototype.currency -= 2000;
@@ -80,7 +80,7 @@ shop.prototype = {
     createButton: function (State, game, sprite, description, x, y, width, height, string, callback) {
    
         
-        var button = game.add.button(x, y, sprite, callback, game, 2, 1, 0);
+        let button = game.add.button(x, y, sprite, callback, game, 2, 1, 0);
         button.anchor.setTo(0.5, 0.5);
         button.width = width;
         button.height = height;
@@ -89,25 +89,25 @@ shop.prototype = {
         State.buttons.visible = false;
 
 
-        var descriptiveText = game.add.text((State.game.camera.width/2), (State.game.camera.height / 2)+150, description, { font: "20px Arial", fill: "#fff", align: "center" });
+        let descriptiveText = game.add.text((State.game.camera.width/2), (State.game.camera.height / 2)+150, description, { font: "20px Arial", fill: "#fff", align: "center" });
         descriptiveText.fixedToCamera = true;
         descriptiveText.anchor.setTo(.5);
         descriptiveText.visible = false;
 
-        var onOver = function (target) {
+        let onOver = function (target) {
            button.scale.setTo(1.25);
            descriptiveText.visible = true;
-          };
-          var onOut = function (target) {
+        };
+        let onOut = function (target) {
             button.scale.setTo(1);
             descriptiveText.visible = false;
-          };
+        };
 
-          button.events.onInputUp.add(callback, this);
-          button.events.onInputOver.add(onOver, this);
-          button.events.onInputOut.add(onOut, this);
+        button.events.onInputUp.add(callback, this);
+        button.events.onInputOver.add(onOver, this);
+        button.events.onInputOut.add(onOut, this);
 
-        var text = game.add.text(button.x + 5, button.y + 63, string, { font: "20px Arial", fill: "#fff", align: "center" });
+        let text = game.add.text(button.x + 5, button.y + 63, string, { font: "20px Arial", fill: "#fff", align: "center" });
         text.anchor.setTo(0.5, 0.5);
         text.fixedToCamera = true;
         State.texts.add(text);

@@ -1,8 +1,8 @@
 behaviorsObj.prototype.healShoot = function(State, shooter, target, targets){
 
-    var range = shooter.gun.range * 200;
+    let range = shooter.gun.range * 200;
 
-    var found = false;
+    let found = false;
 
     if (target && target.alive && target.health < target.maxHealth && shooter.alive && State.game.physics.arcade.distanceBetween(shooter, target) <= range) {
 
@@ -11,7 +11,7 @@ behaviorsObj.prototype.healShoot = function(State, shooter, target, targets){
     }
 
     else if(targets){
-        for(var targetsIndex in targets){
+        for(let targetsIndex in targets){
 
             targets[targetsIndex].forEachAlive(
                 function(individual){

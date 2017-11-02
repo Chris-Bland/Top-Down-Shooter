@@ -1,4 +1,4 @@
-dungeonEvents = function () { };
+var dungeonEvents = function () { };
 
 dungeonEvents.prototype = {
 
