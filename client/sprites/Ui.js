@@ -163,7 +163,14 @@ Ui.prototype = {
         }
         
         State.mercMax = 0;
-      
+        if(State.dungeonKey === false){
+            State.keyRed.visible = true;
+            State.keyGreen.visible = false;
+        } else {
+            State.keyRed.visible = false;
+            State.keyGreen.visible = true;
+        }
+   
         if (State.mercs.length + State.mercTanks.length + State.mercHealers.length > State.mercMax){
             State.mercMax = State.mercs.length + State.mercTanks.length + State.mercHealers.length
         }
@@ -217,8 +224,7 @@ Ui.prototype = {
                 State.mercUiGreen3.visible = true;
             }
           
-                break;
-
+            break;
 
             
         }

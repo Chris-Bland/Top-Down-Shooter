@@ -5,7 +5,8 @@ LevelOutside.prototype = {
 
         create: function () {
 
-            
+            dungeonMusic.stop();
+            music.play();
             outsideMap.prototype.create(this);
 
             if(gameStatHandler.prototype.newGame){
