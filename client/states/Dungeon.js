@@ -24,17 +24,10 @@ Dungeon.prototype = {
 
     update: function () {
         Player.prototype.update(this);
-<<<<<<< HEAD
-        // Merc.prototype.update(this);
-
-
-        Ui.prototype.updateDungeon(this);
-=======
         Merc.prototype.update(this);
         MercTank.prototype.update(this);
         MercHealer.prototype.update(this);
-        Ui.prototype.updateOutside(this);
->>>>>>> 77f8ac457ec0d27773e79cd66a34f62c0c2ac075
+        Ui.prototype.updateDungeon(this);
         dungeonText.prototype.update(this);
         this.boss.angle += 15;
         this.boss.gun.shootDungeon(this, this.boss);

@@ -7,9 +7,9 @@ dungeonMap.prototype = {
         State.map = State.game.add.tilemap("dungeon");
         State.map.addTilesetImage('dungeon-tileset', 'dungeon-tileset');
 
-        let layer = State.map.createLayer('Base');
+        let layer = State.map.createLayer('base');
         layer.resizeWorld();
-        let collisionLayer = State.map.createLayer('Collision');
+        let collisionLayer = State.map.createLayer('collision');
         State.map.collisionLayer = collisionLayer;
         collisionLayer.visible = false;
         State.map.setCollisionByExclusion([], true, State.map.collisionLayer);

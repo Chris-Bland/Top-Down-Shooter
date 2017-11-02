@@ -13,7 +13,7 @@ Preloader.prototype.preload = function () {
     this.load.tilemap('inside', './client/assets/maps/inside.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('inside-tileset', './client/assets/maps/outside-tileset.png');
 
-    this.load.tilemap('dungeon', './client/assets/maps/dungeon.json', null, Phaser.Tilemap.TILED_JSON);
+    this.load.tilemap('dungeon', './client/assets/maps/dungeon32.json', null, Phaser.Tilemap.TILED_JSON);
     this.load.image('dungeon-tileset', './client/assets/maps/dungeon-tileset.png');
 
     this.load.atlasJSONHash(
