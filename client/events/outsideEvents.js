@@ -23,10 +23,8 @@ outsideEvents.prototype = {
         State.bossTweenSprite.angle = -105;
         State.player.angle = 0;
         let tween = State.game.add.tween(State.bossTweenSprite).to({ x: State.map.bossSpawn.x-200, y: State.map.bossSpawn.y }, 6500);
-        State.game.camera.follow(State.bossTweenSprite);
         tween.onComplete.add(() => {
             State.cutscene = false;
-            State.game.camera.follow(State.player);
             State.bossTweenSprite.alpha = 0;
             State.boss.alpha = 1;
         });
