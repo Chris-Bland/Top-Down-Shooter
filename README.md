@@ -3,7 +3,7 @@
 ## To Play Alpha on your local device (hosted soon to come!)
 * NPM Install
 * NPM Start
-* Localhost:9000
+* Localhost:7000
 * Try to survive!
 
 ## Tech Stack:
