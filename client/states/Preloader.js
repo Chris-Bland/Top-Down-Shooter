@@ -157,7 +157,7 @@ Preloader.prototype.create = function () {
     laserAudioPlayer.fadeOut = true;
     laserAudioNpc.volume = .08;
     laserAudioNpc.fadeOut = true;
-    rifleAudioPlayer.volumePlayer = .10;
+    rifleAudioPlayer.volumePlayer = .08;
     rifleAudioPlayer.fadeOutPlayer = true;
     rifleAudioNpc.volume = .08;
     rifleAudioNpc.fadeOut = true;
@@ -182,7 +182,7 @@ Preloader.prototype.create = function () {
 
     music = game.add.audio('music');
     music.loop = true;
-    music.volume = .5;
+    music.volume = .7;
     music.fadeOut = true;
     music.fadeIn= true;
     music.play();

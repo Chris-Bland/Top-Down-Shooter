@@ -14,7 +14,7 @@ Boss.prototype = {
         boss.animations.add('shoot', Phaser.Animation.generateFrameNames('helio-', 1, 8, '.png', 2), 1, true, false);
         boss.animations._anims.shoot.speed = 20;
         boss.play('move');
-        boss.maxHealth = 1000 * (State.wave / 5);
+        boss.maxHealth = 100 * (State.wave / 5);
         boss.health = boss.maxHealth;
         State.boss.health = boss.health;
         State.boss.maxHealth = boss.maxHealth;
