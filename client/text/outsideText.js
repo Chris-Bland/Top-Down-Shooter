@@ -40,6 +40,7 @@ outsideText.prototype = {
         State.text.currencyText.text =State.player.currency;
         State.text.houseText.text = State.house.health + "/" + State.house.maxHealth;
         //Update text for house
+         State.text.houseText.text = 'House: ' + gameStatHandler.prototype.houseLevel;
 
     }
 
