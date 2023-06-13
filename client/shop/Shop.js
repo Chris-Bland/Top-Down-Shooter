@@ -68,6 +68,18 @@ shop.prototype = {
                 gameStatHandler.prototype.currency -= 500;
             }
         });
+        this.createButton(State, game, "ampshot-shop", "Boost your hero's bullet speed",(State.game.camera.width / 2) + 5, (State.game.camera.height / 4) + 230, 68, 68, "500", function () {
+            if (gameStatHandler.prototype.currency >= 500) {
+                gameStatHandler.prototype.bulletSpeed += 1;
+                gameStatHandler.prototype.currency -= 500;
+            }
+        });
+        this.createButton(State, game, "slowshot-shop", "Your hero's bullets now slow enemies",(State.game.camera.width / 2) + 110, (State.game.camera.height / 4) + 230, 68, 68, "500", function () {
+            if (gameStatHandler.prototype.currency >= 500) {
+                gameStatHandler.prototype.bulletSlowing += 1;
+                gameStatHandler.prototype.currency -= 500;
+            }
+        });
     },
 
     buyStuff: function (State, npc, player) {
