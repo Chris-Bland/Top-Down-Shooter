@@ -5,17 +5,6 @@ var io = require('socket.io').listen(server);
 const bodyParser = require('body-parser');
 const mustache = require('mustache-express');
 const session = require('express-session');
-// const mongoose = require('mongoose');
-// mongoose.Promise = require('bluebird');
-// const Users = require("./models/Users");
-
-// mongoose.connect('mongodb://localhost:27017/Shooterbase');
-// mongoose.connection
-//     .once('open', () => console.log('good to go'))
-//     .on('error', (error) => {
-//         console.warn('Warning', error);
-//     });
-
 
 application.engine('mustache', mustache());
 
