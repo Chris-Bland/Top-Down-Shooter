@@ -24,6 +24,8 @@ outsideText.prototype = {
         State.text.houseText.fixedToCamera = true;
        
         //Set text for house
+        State.text.houseText = State.game.add.text(100,25, "house", { fontSize: '15px', fill: '#fff' });
+        State.text.houseText.fixedToCamera = true;
 
     },
 
