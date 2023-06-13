@@ -3,20 +3,24 @@ function Ui() { }
 Ui.prototype = {
 
     create: function (State) {
-
+        //Create hud sprite and fix tocamera
         State.hud = State.game.add.sprite(0, 0, 'hero-ui');
         State.hud.fixedToCamera = true;
 
+        //Create hero health hud fix to camera
         State.heroHealthTic = State.game.add.sprite(88,6, 'hero-ui-health-tic');
         State.heroHealthTic.fixedToCamera = true;
 
+        //Create hero XP hud fix to camera
         State.heroXpTic = State.game.add.sprite(88, 26, 'hero-ui-xp-tic');
         State.heroXpTic.fixedToCamera = true;
-
+        
+        //Create weapon hud, fix to camera in middle bottom
         State.weaponHud = State.game.add.sprite(State.game.camera.width / 2, 630, 'weapon-ui');
         State.weaponHud.fixedToCamera = true;
         State.weaponHud.anchor.setTo(.5, 0);
 
+        //create Currency counter token and fix to camera on bottom left
         State.bit = State.game.add.sprite((State.game.camera.width / 2)-100, 40, 'currency-icon');
         State.bit.fixedToCamera = true;
         State.bit.scale.setTo(0.02);
@@ -123,11 +127,6 @@ Ui.prototype = {
         State.houseHealth.anchor.setTo(.5)
         State.houseHealth.scale.setTo(.2);
         State.houseHealth.visible = true;
-
-        
-
-
-
     },
 
     updateOutside: function (State) {
@@ -262,18 +261,12 @@ Ui.prototype = {
     updateDungeon: function (State) {
         State.heroHealthTic.width = (State.player.health/State.player.maxHealth) * 81;
         State.heroXpTic.width = (State.player.playerXP/Math.pow(2, (State.player.playerLevel+1))) * 81;
-
-
-       
-        
         State.mercMax = 0;
-      
         if (State.mercs.length + State.mercTanks.length + State.mercHealers.length > State.mercMax){
             State.mercMax = State.mercs.length + State.mercTanks.length + State.mercHealers.length
         }
         switch (State.mercMax) {
             case 1:
-
                 if (State.mercs.countDead() + State.mercTanks.countDead() + State.mercHealers.countDead() === 1){
                     resetMercUi(State);
                     State.mercUiRed1.visible = true;
@@ -322,7 +315,6 @@ Ui.prototype = {
             }
           
                 break;
-
                 if(State.dungeonKey === false){
                     State.keyRed.visible = true;
                     State.keyGreen.visible = false;
