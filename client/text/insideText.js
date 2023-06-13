@@ -6,7 +6,7 @@ insideText.prototype = {
 
         State.text = {};
 
-         State.text.healthText = State.game.add.text(125, 6, "health", { fontSize: '10px', fill: '#fff' });
+        State.text.healthText = State.game.add.text(125, 6, "health", { fontSize: '10px', fill: '#fff' });
         State.text.healthText.fixedToCamera = true;
         State.text.healthText.anchor.setTo(0.5,0);
         State.text.levelText = State.game.add.text(70,48, "level", { fontSize: '15px', fill: '#fff' });
@@ -21,8 +21,9 @@ insideText.prototype = {
 
         State.text.towerText = State.game.add.text(12,75, "wave", { fontSize: '15px', fill: '#fff' });
         State.text.towerText.fixedToCamera = true;
-        //Set text for house
-        //Add some color??
+        
+        State.text.houseText = State.game.add.text(100,25, "house", { fontSize: '15px', fill: '#fff' });
+        State.text.houseText.fixedToCamera = true;
 
     },
 
@@ -32,7 +33,7 @@ insideText.prototype = {
         State.text.XPText.text = State.player.playerXP + "/" + Math.pow(2, (State.player.playerLevel+1));
         State.text.currencyText.text = gameStatHandler.prototype.currency;
         State.text.towerText.text = 'TTC: ' + gameStatHandler.prototype.towersAmount;
-        //Update text for house
+        State.text.houseText.text = 'House: ' + gameStatHandler.prototype.houseLevel;
 
     }
 
