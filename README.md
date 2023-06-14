@@ -1,10 +1,13 @@
 # A Top Down Tower Defense Horror Survival Game with a Fog of War Element
 
-## To Play Alpha on your local device (hosted soon to come!)
+## To Play Alpha on your local device 
 * NPM Install
 * NPM Start
 * Localhost:7000
 * Try to survive!
+
+## Play online (may be slower to load assets at first, github pages hosted)
+https://c-bland.github.io/Top-Down-Shooter/
 
 ## Tech Stack:
 
@@ -14,5 +17,3 @@
 * MongoDB
 * Node.js
 * A* Algorithmic Pathfinding
-
-## [Requirements Doc](https://docs.google.com/document/d/1uq8fucy3KjtSrrxY1A3BZ9wdiXPOfuDC3Cw5ZJEdDjQ/edit?usp=sharing)
