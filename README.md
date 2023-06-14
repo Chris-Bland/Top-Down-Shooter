@@ -1,5 +1,7 @@
 # A Top Down Tower Defense Horror Survival Game with a Fog of War Element
 
+## Coded from the ground up
+
 ## To Play Alpha on your local device 
 * NPM Install
 * NPM Start
